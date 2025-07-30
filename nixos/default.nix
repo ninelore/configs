@@ -14,19 +14,8 @@ let
   ];
 in
 {
-  options = {
-    ninelore.desktopOptions = lib.mkOption {
-      default = true;
-      example = false;
-      description = "Whether to use ninelore's basic NixOS configuration.";
-      type = lib.types.bool;
-    };
-    ninelore.gaming = lib.mkEnableOption "gaming stuff";
-    ninelore.vr = lib.mkEnableOption "vr stuff";
-  };
-
   imports = [
-    ./desktop.nix
+    ./desktop
   ];
 
   config = {
