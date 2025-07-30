@@ -31,7 +31,6 @@
           kicad-small
           libreoffice-fresh
           loupe
-          nwg-clipman
           papers
           pdfarranger
           scrcpy

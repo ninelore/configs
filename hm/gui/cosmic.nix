@@ -120,6 +120,7 @@
               [
                 "com.system76.CosmicAppletStatusArea"
                 "com.system76.CosmicAppletInputSources"
+                "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager"
                 "com.system76.CosmicAppletTiling"
                 "com.system76.CosmicAppletBluetooth"
                 "com.system76.CosmicAppletNetwork"

@@ -21,7 +21,7 @@
     environment = {
       localBinInPath = true;
       systemPackages = with pkgs; [
-        cliphist
+        cosmic-clipboard-manager
         firefox
         helvum
         mpv
@@ -139,16 +139,6 @@
         noto-fonts-cjk-sans
         open-sans
       ];
-    };
-
-    systemd.user.services.cliphist = {
-      enable = true;
-      wantedBy = [ "graphical-session.target" ];
-      description = "Cliphist";
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = ''${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store'';
-      };
     };
 
     systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
