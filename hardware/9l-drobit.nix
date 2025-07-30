@@ -1,0 +1,51 @@
+{
+  inputs,
+  modulesPath,
+  ...
+}:
+
+{
+  imports = [
+    "${inputs.nixos-hardware}/common/cpu/intel/tiger-lake"
+    (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.ninelore.nixosModules.cros
+    inputs.ninelore.nixosModules.crosSetuid
+  ];
+
+  boot.kernelParams = [
+    "initcall_blacklist=simpledrm_platform_driver_init"
+  ];
+
+  boot.initrd.availableKernelModules = [
+    "thunderbolt"
+    "nvme"
+    "sdhci_pci"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
+
+  boot.initrd.luks.devices."root" = {
+    device = "/dev/disk/by-uuid/052f554d-1f74-4800-816c-1d0fbd807b4a";
+    allowDiscards = true;
+  };
+
+  fileSystems."/" = {
+    device = "/dev/mapper/root";
+    fsType = "ext4";
+    options = [
+      "noatime"
+      "nodiratime"
+      "discard"
+    ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/7D36-428A";
+    fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
+  };
+}
