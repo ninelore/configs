@@ -31,7 +31,7 @@ let
       (mkSystem {
         inherit inputs;
         defaultUser = "9l";
-        hostName = "9l-drobit";
+        hostName = "9l-tomato";
         system = "aarch64-linux";
       })
     ];
