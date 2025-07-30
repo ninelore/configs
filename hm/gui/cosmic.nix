@@ -137,7 +137,7 @@
         }
         {
           anchor = cosmicLib.cosmic.mkRON "enum" "Bottom";
-          anchor_gap = true;
+          anchor_gap = false;
           autohide = cosmicLib.cosmic.mkRON "optional" {
             handle_size = 4;
             transition_time = 200;
