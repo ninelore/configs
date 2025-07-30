@@ -27,24 +27,34 @@ in
       inputs.chaotic.homeManagerModules.default
       inputs.nix-index-database.homeModules.nix-index
       inputs.ninelore.inputs.cosmic-manager.homeManagerModules.cosmic-manager
-      {
-        home = {
-          inherit username;
-          homeDirectory = "/home/${username}";
-        };
-        targets.genericLinux.enable = true;
-        nixGL = {
-          packages = inputs.nixgl.packages;
-          installScripts = [
-            "mesa"
-            "mesaPrime"
-            "nvidiaPrime"
-          ];
-        };
-        programs = {
-          nix-index-database.comma.enable = true;
-        };
-      }
+      (
+        { pkgs, ... }:
+        {
+          home = {
+            inherit username;
+            homeDirectory = "/home/${username}";
+          };
+          targets.genericLinux.enable = true;
+          nix = {
+            package = pkgs.nixVersions.latest;
+            settings = {
+              experimental-features = "nix-command flakes";
+              auto-optimise-store = true;
+            };
+          };
+          nixGL = {
+            packages = inputs.nixgl.packages;
+            installScripts = [
+              "mesa"
+              "mesaPrime"
+              "nvidiaPrime"
+            ];
+          };
+          programs = {
+            nix-index-database.comma.enable = true;
+          };
+        }
+      )
     ]
     ++ extraModules;
   };

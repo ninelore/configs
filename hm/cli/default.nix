@@ -14,18 +14,7 @@
     ./sh.nix
   ];
 
-  nix = {
-    package = pkgs.nixVersions.latest;
-    channels.nixpkgs = inputs.nixpkgs.lib.mkDefault inputs.nixpkgs;
-    settings = {
-      experimental-features = "nix-command flakes";
-      auto-optimise-store = true;
-      trusted-users = [
-        "root"
-        "@wheel"
-      ];
-    };
-  };
+  nix.channels.nixpkgs = inputs.nixpkgs.lib.mkDefault inputs.nixpkgs;
 
   programs = {
     home-manager.enable = true;
