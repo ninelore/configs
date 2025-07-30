@@ -416,16 +416,15 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1753866673,
-        "narHash": "sha256-jzDDBDP8YJdmpnVHvlsgOOL43LGjfceGQN5mEotsb8I=",
+        "lastModified": 1753917188,
+        "narHash": "sha256-vLCaf1pRY/y0QCMhN2n5Bif2o960hMPS1tmDE8gYNFg=",
         "owner": "ninelore",
         "repo": "flake",
-        "rev": "77d9d68d56588eb9296e3edf3c757405138e93bb",
+        "rev": "f9f51d02270e5f5c6897754a589189bdf2704c9c",
         "type": "github"
       },
       "original": {
         "owner": "ninelore",
-        "ref": "config-rework",
         "repo": "flake",
         "type": "github"
       }
