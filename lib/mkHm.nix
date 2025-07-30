@@ -5,6 +5,9 @@
   # Username
   username,
 
+  # Nix architecture double, for example "aarch64-linux"
+  system ? "x86_64-linux",
+
   inputs,
   ...
 }:
@@ -13,12 +16,17 @@ let
 in
 {
   ${username} = lib.homeManagerConfiguration {
-    extraSpecialArgs = { inherit inputs; };
+    pkgs = import inputs.nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    extraSpecialArgs = { inherit inputs username; };
     modules = [
-      inputs.self.homeModules.default
-      inputs.self.homeModules.ninelore
+      ./../hm
+      inputs.ninelore.homeModules.default
       inputs.chaotic.homeManagerModules.default
-      inputs.nix-index-database.hmModules.nix-index
+      inputs.nix-index-database.homeModules.nix-index
+      inputs.ninelore.inputs.cosmic-manager.homeManagerModules.cosmic-manager
       {
         home = {
           inherit username;
@@ -37,6 +45,7 @@ in
           nix-index-database.comma.enable = true;
         };
       }
-    ] ++ extraModules;
+    ]
+    ++ extraModules;
   };
 }

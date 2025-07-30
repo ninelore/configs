@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -27,8 +26,6 @@ in
   };
 
   imports = [
-    inputs.chaotic.nixosModules.default
-    inputs.nix-index-database.nixosModules.nix-index
     ./desktop.nix
   ];
 

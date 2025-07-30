@@ -35,7 +35,16 @@ let
         system = "aarch64-linux";
       })
     ];
-    hm = mergeAttrsList [ ];
+    hm = mergeAttrsList [
+      (mkHm {
+        inherit inputs;
+        username = "9l";
+      })
+      (mkHm {
+        inherit inputs;
+        username = "ninel";
+      })
+    ];
   };
 in
 configs
