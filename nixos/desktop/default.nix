@@ -20,15 +20,14 @@
   config = lib.mkIf (config.ninelore.desktop) {
     environment = {
       systemPackages = with pkgs; [
-        cosmic-clipboard-manager
         firefox
         helvum
         mpv
         wl-clipboard
       ];
-      cosmic.excludePackages = with pkgs; [
-        cosmic-player
-        cosmic-store
+      plasma6.excludePackages = with pkgs.kdePackages; [
+        elisa
+        khelpcenter
       ];
       variables = {
         COSMIC_DATA_CONTROL_ENABLED = 1;
@@ -36,17 +35,21 @@
     };
 
     services = {
-      desktopManager.cosmic = {
+      desktopManager.plasma6.enable = true;
+      displayManager.sddm = {
         enable = true;
-        xwayland.enable = true;
+        enableHidpi = true;
+        autoNumlock = true;
+        wayland = {
+          enable = true;
+          compositor = "kwin";
+        };
       };
-      displayManager.cosmic-greeter.enable = true;
       udev.packages =
         with pkgs;
         lib.optionals (system == "x86_64-linux") [
           via
         ];
-      flatpak.enable = false;
       logind = {
         powerKey = "suspend";
         lidSwitch = "suspend";

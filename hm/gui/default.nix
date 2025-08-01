@@ -6,7 +6,8 @@
 }:
 {
   imports = [
-    ./cosmic.nix
+    # ./cosmic.nix
+    ./plasma.nix
   ];
 
   config = lib.mkIf config.ninelore.gui {
@@ -98,13 +99,13 @@
       };
     };
 
-    fonts.fontconfig = {
-      enable = true;
-      defaultFonts = {
-        sansSerif = [ "Adwaita Sans 11" ];
-        serif = [ "Adwaita Sans 11" ];
-        monospace = [ "JetBrainsMono Nerd Font 11" ];
-      };
-    };
+    # fonts.fontconfig = {
+    #   enable = true;
+    #   defaultFonts = {
+    #     sansSerif = [ "Adwaita Sans 11" ];
+    #     serif = [ "Adwaita Sans 11" ];
+    #     monospace = [ "JetBrainsMono Nerd Font 11" ];
+    #   };
+    # };
   };
 }

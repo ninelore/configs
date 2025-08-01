@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name=""/>
+
+  <group name="General">
+    <entry name="middleButtonCommand" type="String">
+      <label>What happens when you middle click on the widget.</label>
+      <default>Grid View</default>
+    </entry>
+    <entry name="desktopWrapOn" type="Bool">
+      <label>Whether the desktop navigation stops at the end or wraps around.</label>
+      <default>true</default>
+    </entry>
+    <entry name="dotSizeCustom" type="Int">
+      <label>For fixed indicator dot size, select the size in pixels.</label>
+      <default>12</default>
+    </entry>
+    <entry name="spacingFactor" type="Double">
+      <label>Select spacing betwwen the dots horizontally.</label>
+      <default>1.1</default>
+    </entry>
+    <entry name="customColorsEnabled" type="Bool"><default>false</default></entry>
+    <entry name="activeColor" type="Color"><default>white</default></entry>
+
+    <entry name="activeSizeH" type="Int"><default>12</default></entry>
+    <entry name="activeSizeW" type="Int"><default>30</default></entry>
+  </group>
+</kcfg>

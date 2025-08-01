@@ -74,7 +74,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          sharedModules = [ inputs.ninelore.inputs.cosmic-manager.homeManagerModules.cosmic-manager ];
+          sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
           extraSpecialArgs = {
             inherit inputs defaultUser;
           };
