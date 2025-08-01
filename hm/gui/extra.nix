@@ -10,6 +10,8 @@
       with pkgs;
       [
         protonvpn-cli
+        quasselClient
+        signal-desktop
         tuba
       ]
       ++ lib.optionals (pkgs.system == "x86_64-linux") [
