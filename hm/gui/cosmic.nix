@@ -161,7 +161,7 @@
           apply_theme_global = true;
           icon_theme = "Tela-dracula";
           interface_font = {
-            family = "Inter";
+            family = "Fira Sans";
             stretch = cosmicLib.cosmic.mkRON "enum" "Normal";
             style = cosmicLib.cosmic.mkRON "enum" "Normal";
             weight = cosmicLib.cosmic.mkRON "enum" "Normal";
