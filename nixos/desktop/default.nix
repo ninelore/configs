@@ -19,7 +19,6 @@
 
   config = lib.mkIf (config.ninelore.desktop) {
     environment = {
-      localBinInPath = true;
       systemPackages = with pkgs; [
         cosmic-clipboard-manager
         firefox
@@ -133,8 +132,9 @@
     fonts = {
       enableDefaultPackages = true;
       packages = with pkgs; [
-        adwaita-fonts
         inter
+        fira
+        monaspace
         noto-fonts
         noto-fonts-cjk-sans
         open-sans
