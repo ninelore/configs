@@ -16,6 +16,14 @@
 
   nix.channels.nixpkgs = inputs.nixpkgs.lib.mkDefault inputs.nixpkgs;
 
+  home.packages = with pkgs; [
+    # Fonts
+    inter-nerdfont
+    nerd-fonts.monaspace
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+  ];
+
   programs = {
     home-manager.enable = true;
     kitty = {

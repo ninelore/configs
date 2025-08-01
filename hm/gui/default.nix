@@ -36,10 +36,6 @@
           scrcpy
           warp
           wl-clipboard
-          # Fonts
-          inter-nerdfont
-          nerd-fonts.jetbrains-mono
-          nerd-fonts.iosevka
           (pkgs.ghidra.withExtensions (
             p: with p; [
               ghidraninja-ghidra-scripts
