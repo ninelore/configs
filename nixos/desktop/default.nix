@@ -25,6 +25,7 @@
         helvum
         mpv
         wl-clipboard
+        xclip
       ];
       cosmic.excludePackages = with pkgs; [
         cosmic-player
