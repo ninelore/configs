@@ -44,12 +44,6 @@ in
         else
           lib.mkDefault pkgs.linuxPackages_latest;
       initrd.systemd.enable = true;
-      blacklistedKernelModules =
-        lib.optionals (lib.versionOlder "6.15" config.boot.kernelPackages.kernel.version)
-          [
-            "r8153_ecm"
-            "r8152"
-          ];
       kernelParams = [
         "boot.shell_on_fail"
       ];
