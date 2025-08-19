@@ -80,16 +80,9 @@ in
     };
 
     security = {
-      sudo.enable = false;
-      doas = {
+      sudo-rs = {
         enable = true;
-        extraRules = [
-          {
-            groups = [ "wheel" ];
-            keepEnv = true;
-            persist = true;
-          }
-        ];
+        execWheelOnly = true;
       };
       rtkit.enable = true;
       pam.services.systemd-run0 = { };
