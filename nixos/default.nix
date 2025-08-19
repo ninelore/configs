@@ -14,9 +14,7 @@ let
   ];
 in
 {
-  imports = [
-    ./desktop
-  ];
+  imports = [ ./desktop ];
 
   config = {
     system.stateVersion = lib.mkDefault "24.05";
@@ -44,9 +42,7 @@ in
         else
           lib.mkDefault pkgs.linuxPackages_latest;
       initrd.systemd.enable = true;
-      kernelParams = [
-        "boot.shell_on_fail"
-      ];
+      kernelParams = [ "boot.shell_on_fail" ];
       tmp.cleanOnBoot = true;
       loader = {
         timeout = 0;
@@ -75,13 +71,17 @@ in
       i2c.enable = true;
       keyboard.qmk.enable = true;
     }
-    // lib.optionalAttrs (pkgs.system != "x86_64-linux") {
-      graphics.enable32Bit = lib.mkForce false;
-    };
+    // lib.optionalAttrs (pkgs.system != "x86_64-linux") { graphics.enable32Bit = lib.mkForce false; };
 
     security = {
-      sudo-rs = {
+      doas = {
         enable = true;
+        extraConfig = ''
+                    permit persist :wheel
+          				'';
+      };
+      sudo-rs = {
+        enable = false;
         execWheelOnly = true;
       };
       rtkit.enable = true;
@@ -169,9 +169,7 @@ in
           swtpm.enable = true;
           ovmf = {
             enable = true;
-            packages = [
-              pkgs.OVMFFull.fd
-            ];
+            packages = [ pkgs.OVMFFull.fd ];
           };
         };
       };
