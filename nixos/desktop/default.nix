@@ -48,11 +48,11 @@
           via
         ];
       flatpak.enable = false;
-      logind = {
-        powerKey = "suspend";
-        lidSwitch = "suspend";
-        lidSwitchExternalPower = "suspend";
-        lidSwitchDocked = "ignore";
+      logind.settings.Login = {
+        HandlePowerKey = "suspend";
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "suspend";
+        HandleLidSwitchDocked = "ignore";
       };
       pulseaudio.enable = false;
       pipewire = {
