@@ -75,11 +75,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1756428693,
-        "narHash": "sha256-LDrJyCNqA8OskR0ji+7/DMEJqCfhY12oYXsoGyAgo0w=",
+        "lastModified": 1756429394,
+        "narHash": "sha256-sPN3fbQIrP9O9f4Ys2ySLktiLz+h05QcjLDZGFY9nV0=",
         "owner": "ninelore",
         "repo": "nixpkgs-cosmic-unstable",
-        "rev": "35e1ec3d00cfc4d5d23c1d212aa053fd1cfd3ffa",
+        "rev": "f1d040f2a01ca81f28533938d62905f4baebd907",
         "type": "github"
       },
       "original": {
