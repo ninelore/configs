@@ -20,7 +20,7 @@
   config = lib.mkIf (config.ninelore.desktop) {
     environment = {
       systemPackages = with pkgs; [
-        cosmic-clipboard-manager
+        cosmic-ext-applet-clipboard-manager
         firefox
         helvum
         mpv
