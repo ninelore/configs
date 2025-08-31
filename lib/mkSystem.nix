@@ -37,7 +37,6 @@ in
       ./../hardware/${hostName}.nix
       ./../nixos
       inputs.ninelore.nixosModules.default
-      inputs.cosmic-nightly.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.chaotic.nixosModules.default
       inputs.nix-index-database.nixosModules.nix-index
@@ -75,7 +74,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          sharedModules = [ inputs.ninelore.inputs.cosmic-manager.homeManagerModules.cosmic-manager ];
+          # sharedModules = [ ];
           extraSpecialArgs = {
             inherit inputs defaultUser;
           };

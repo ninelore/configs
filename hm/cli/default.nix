@@ -19,9 +19,10 @@
   home.packages = with pkgs; [
     # Fonts
     inter-nerdfont
+    nerd-fonts.iosevka
     nerd-fonts.monaspace
     nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
+    nerd-fonts.symbols-only
   ];
 
   programs = {
@@ -43,14 +44,14 @@
         clear_all_shortcuts = "yes";
         kitty_mod = "ctrl+shift";
         # https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/kitty/Monokai%20Remastered.conf
-        color0 = "#1a1a1a";
-        color1 = "#f4005f";
-        color2 = "#98e024";
-        color3 = "#fd971f";
-        color4 = "#9d65ff";
-        color5 = "#f4005f";
-        color6 = "#58d1eb";
-        color7 = "#c4c5b5";
+        color0 = "#1a1a1a"; # black
+        color1 = "#f4005f"; # red
+        color2 = "#98e024"; # green
+        color3 = "#fd971f"; # yellow
+        color4 = "#9d65ff"; # blue
+        color5 = "#f4005f"; # magenta
+        color6 = "#58d1eb"; # cyan
+        color7 = "#c4c5b5"; # white
         color8 = "#625e4c";
         color9 = "#f4005f";
         color10 = "#98e024";

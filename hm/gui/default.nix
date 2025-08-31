@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ./cosmic.nix
+    ./niri.nix
   ];
 
   config = lib.mkIf config.ninelore.gui {
@@ -16,10 +16,10 @@
         [
           # GUI Apps
           appimage-run
-          # darktable # https://github.com/NixOS/nixpkgs/issues/425306
-          file-roller
+          darktable
           fractal
           gimp3
+          gnome-calculator
           gnome-clocks
           gnome-connections
           gnome-disk-utility
@@ -54,6 +54,7 @@
         QT_AUTO_SCREEN_SCALE_FACTOR = 1;
         QT_ENABLE_HIGHDPI_SCALING = 1;
         QT_QPA_PLATFORM = "wayland;xcb";
+        SWWW_TRANSITION_STEP = 255;
       };
     };
 
@@ -96,6 +97,12 @@
             obs-pipewire-audio-capture
           ];
       };
+    };
+
+    services.kdeconnect = {
+      enable = true;
+      indicator = true;
+      package = pkgs.kdeconnect-kde_git;
     };
   };
 }

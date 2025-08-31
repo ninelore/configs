@@ -20,40 +20,48 @@
   config = lib.mkIf (config.ninelore.desktop) {
     environment = {
       systemPackages = with pkgs; [
-        cosmic-ext-applet-clipboard-manager
-        firefox
+        cliphist
         helvum
+        loupe
         mpv
+        nautilus
+        pavucontrol
         wl-clipboard
         xclip
       ];
-      cosmic.excludePackages = with pkgs; [
-        cosmic-player
-        cosmic-store
-      ];
-      variables = {
-        COSMIC_DATA_CONTROL_ENABLED = 1;
-      };
+    };
+
+    programs.niri = {
+      enable = true;
+      # package = pkgs.niri_git;
     };
 
     services = {
-      desktopManager.cosmic = {
+      greetd = {
         enable = true;
-        xwayland.enable = true;
+        settings = {
+          default_session = {
+            command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session";
+            user = "greeter";
+          };
+        };
       };
-      displayManager.cosmic-greeter.enable = true;
+      gvfs.enable = true;
       udev.packages =
         with pkgs;
         lib.optionals (system == "x86_64-linux") [
           via
         ];
       flatpak.enable = false;
+      gnome.sushi.enable = true;
+      gnome.gnome-keyring.enable = true;
       logind.settings.Login = {
         HandlePowerKey = "suspend";
         HandleLidSwitch = "suspend";
         HandleLidSwitchExternalPower = "suspend";
         HandleLidSwitchDocked = "ignore";
       };
+      power-profiles-daemon.enable = true;
       pulseaudio.enable = false;
       pipewire = {
         enable = true;
@@ -105,6 +113,7 @@
     programs = {
       adb.enable = true;
       dconf.enable = true;
+      firefox.enable = true;
       flashprog.enable = true;
       flashrom.enable = true;
       gamemode = {
@@ -125,7 +134,6 @@
       settings = {
         default = [
           "kitty.desktop"
-          "com.system76.CosmicTerm.desktop"
         ];
       };
     };
@@ -142,6 +150,18 @@
       ];
     };
 
+    systemd.user.services.cliphist = {
+      enable = true;
+      wantedBy = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      description = "Cliphist";
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = ''${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store'';
+      };
+    };
+
     systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
+    security.pam.services.hyprlock = { };
   };
 }
