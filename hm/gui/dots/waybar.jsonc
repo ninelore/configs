@@ -31,20 +31,6 @@
 	"clock": {
 		"tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt><small>{calendar}</small></tt>"
 	},
-	"temperature": {
-		"critical-threshold": 80,
-		"format": "{icon} {temperatureC}°C",
-		"tooltip-format": "{temperatureC}°C",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-		]
-	},
 	"backlight": {
 		"format": "{icon}",
 		"tooltip-format": "{percent}%",

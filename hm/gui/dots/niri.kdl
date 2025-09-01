@@ -53,10 +53,6 @@ layout {
 	}
 }
 
-// xwayland-satellite {
-// 	path "xwayland-satellite"
-// }
-
 hotkey-overlay {
 	skip-at-startup
 	// hide-not-bound
@@ -65,18 +61,17 @@ hotkey-overlay {
 binds {
 	Mod+Shift+Slash { show-hotkey-overlay; }
 
-	// Suggested binds for running programs: terminal, app launcher, screen locker.
 	Mod+Return { spawn "kitty"; }
 	Mod+D { spawn "fuzzel"; }
 	Mod+Escape hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
 
-	XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-	XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+	XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+	XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
 	XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
 	XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
-	XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+	XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+	XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
 	Mod+W repeat=false { toggle-overview; }
 	Mod+Q repeat=false { close-window; }
