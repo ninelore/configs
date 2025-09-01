@@ -26,7 +26,12 @@ input {
 
 output "AU Optronics 0xA48F Unknown" {
 	scale 1
-	position x=-1920 y=-200
+	position x=-1920 y=300
+}
+
+output "Thermotrex Corporation TL140ADXP01 Unknown" {
+	scale 1.4
+	position x=-1829 y=300
 }
 
 output "HP Inc. HP X34 6CM25210CS" {
@@ -131,10 +136,10 @@ binds {
 	Mod+Shift+U { move-workspace-down; }
 	Mod+Shift+I { move-workspace-up; }
 
-	Mod+WheelScrollDown { focus-column-right; }
-	Mod+WheelScrollUp { focus-column-left; }
-	Mod+WheelScrollRight { move-column-right; }
-	Mod+WheelScrollLeft { move-column-left; }
+	Mod+WheelScrollDown cooldown-ms=150 { focus-column-right; }
+	Mod+WheelScrollUp cooldown-ms=150 { focus-column-left; }
+	Mod+WheelScrollRight cooldown-ms=150 { move-column-right; }
+	Mod+WheelScrollLeft cooldown-ms=150 { move-column-left; }
 
 	Mod+Shift+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
 	Mod+Shift+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
@@ -186,7 +191,7 @@ binds {
 
 	Mod+T { toggle-column-tabbed-display; }
 
-	Print { screenshot; }
+	Mod+Shift+S { screenshot; }
 	Ctrl+Print { screenshot-screen; }
 	Alt+Print { screenshot-window; }
 

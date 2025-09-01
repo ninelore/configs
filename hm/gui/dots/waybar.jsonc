@@ -101,20 +101,15 @@
 		"on-click": "blueberry"
 	},
 	"wireplumber": {
-		"tooltip": "{volume}%",
+		"tooltip-format": " {node_name}: {volume}% \n {source_desc}: {source_volume}%",
+		"scroll-step": 5,
 		"format": "{icon}",
 		"format-muted": "",
-		"format-icons": {
-			"headphone": "",
-			"hands-free": "",
-			"headset": "",
-			"phone": "",
-			"portable": "",
-			"car": "",
-			"default": [
-				""
-			]
-		},
+		"format-icons": [
+			"",
+			"",
+			""
+		],
 		"on-click": "pavucontrol" //,
 		//"on-click-right": "easyeffects"
 	},
@@ -131,16 +126,16 @@
 	},
 	"custom/notification": {
 		"tooltip": false,
-		"format": "{icon} {}",
+		"format": "{icon}",
 		"format-icons": {
 			"notification": "󱅫",
 			"none": "",
-			"dnd-notification": " ",
+			"dnd-notification": "",
 			"dnd-none": "󰂛",
-			"inhibited-notification": " ",
+			"inhibited-notification": "󰅸",
 			"inhibited-none": "",
-			"dnd-inhibited-notification": " ",
-			"dnd-inhibited-none": " "
+			"dnd-inhibited-notification": "",
+			"dnd-inhibited-none": ""
 		},
 		"return-type": "json",
 		"exec-if": "which swaync-client",

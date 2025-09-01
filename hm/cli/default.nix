@@ -39,6 +39,7 @@
         shell = "nu";
         wayland_titlebar_color = "background";
         remember_window_size = true;
+        background_opacity = 0.9;
         enabled_layouts = "splits:split_axis=horizontal";
         # Keymap
         clear_all_shortcuts = "yes";
