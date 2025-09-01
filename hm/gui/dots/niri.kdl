@@ -26,7 +26,12 @@ input {
 
 output "AU Optronics 0xA48F Unknown" {
 	scale 1
-	position x=-1920 y=-200
+	position x=-1920 y=300
+}
+
+output "Thermotrex Corporation TL140ADXP01 Unknown" {
+	scale 1.4
+	position x=-1829 y=300
 }
 
 output "HP Inc. HP X34 6CM25210CS" {
@@ -186,7 +191,7 @@ binds {
 
 	Mod+T { toggle-column-tabbed-display; }
 
-	Print { screenshot; }
+	Mod+Shift+S { screenshot; }
 	Ctrl+Print { screenshot-screen; }
 	Alt+Print { screenshot-window; }
 
