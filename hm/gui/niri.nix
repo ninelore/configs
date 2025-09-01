@@ -82,6 +82,7 @@ in
           ];
           input-field = [
             {
+              size = "300,40";
               outer_color = "rgb(1a1a1a)";
               inner_color = "rgb(0c0c0c)";
               font_color = "rgb(c4c5b5)";
