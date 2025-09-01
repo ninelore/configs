@@ -10,7 +10,6 @@
 		{
 			"key": "󱩛  usr@host",
 			"type": "title",
-			"paddingLeft": 8,
 			"format": "{user-name-colored}{at-symbol-colored}{host-name-colored}",
 			"keyColor": "31"
 		},
@@ -40,6 +39,11 @@
 			"keyColor": "36"
 		},
 		{
+			"key": "󱂬  wm",
+			"type": "wm",
+			"keyColor": "34"
+		},
+		{
 			"key": "  term",
 			"type": "terminal",
 			"keyColor": "31"
@@ -58,7 +62,7 @@
 		{
 			"key": "  memory",
 			"type": "memory",
-			"keyColor": "35"
+			"keyColor": "36"
 		},
 		"break",
 		{
