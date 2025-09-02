@@ -2,7 +2,8 @@
 	"layer": "top",
 	"spacing": 16,
 	"modules-left": [
-		"niri/workspaces"
+		"niri/workspaces",
+		"niri/window"
 	],
 	"modules-center": [
 		"clock",
@@ -10,6 +11,7 @@
 	],
 	"modules-right": [
 		"tray",
+		"privacy",
 		"idle_inhibitor",
 		"bluetooth",
 		"network",
@@ -109,6 +111,26 @@
 			"balanced": "",
 			"power-saver": ""
 		}
+	},
+	"privacy": {
+		"icon-spacing": 3,
+		"icon-size": 16,
+		"transition-duration": 0,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		]
+	},
+	"niri/window": {
+		"format": "{app_id}"
 	},
 	"custom/notification": {
 		"tooltip": false,

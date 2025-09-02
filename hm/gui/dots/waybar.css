@@ -2,12 +2,12 @@
 	border: none;
 	font-family: JetBrainsMono Nerd Font Propo;
 	font-size: 16px;
-	color: #ffffff;
+	color: #f6f6ef;
 	border-radius: 0;
 }
 
 window#waybar {
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(12, 12, 12, 0.6);
 }
 
 /*-----module stuff----*/
@@ -19,7 +19,6 @@ window#waybar {
 .modules-right,
 .modules-left,
 .modules-center {
-	/*background-color: rgba(0, 0, 0, 0.7);*/
 	padding: 0 10px;
 }
 
@@ -32,38 +31,34 @@ window#waybar {
 
 #workspaces button:hover {
 	box-shadow: inherit;
-	background-color: rgba(200, 200, 200, 0.9);
+	background-color: rgba(98, 94, 76, 0.9);
 }
 
 #workspaces button.active {
-	background-color: rgba(128, 128, 128, 0.5);
+	background-color: rgba(196, 197, 181, 0.5);
 }
 
 #workspaces button.urgent {
-	background-color: #F85D6D;
+	background-color: rgba(244, 0, 95, 0.9);
 }
 
 /*-----Indicators----*/
 #idle_inhibitor.activated {
-	color: #2dcc36;
+	color: #9d65ff;
 }
 
 #wireplumber.muted {
-	color: #cc3436;
+	color: #f4005f;
 }
 
 #battery.charging {
-	color: #2dcc36;
+	color: #98e024;
 }
 
 #battery.warning:not(.charging) {
-	color: #e6e600;
+	color: #fd971f;
 }
 
 #battery.critical:not(.charging) {
-	color: #cc3436;
-}
-
-#temperature.critical {
-	color: #cc3436;
+	color: #f4005f;
 }
