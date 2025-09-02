@@ -13,48 +13,56 @@
   };
 
   imports = [
+    ./niri.nix
     ./gaming.nix
     ./vr.nix
   ];
 
   config = lib.mkIf (config.ninelore.desktop) {
-    environment = {
-      systemPackages = with pkgs; [
-        cliphist
-        helvum
-        loupe
-        mpv
-        nautilus
-        pavucontrol
-        wl-clipboard
-        xclip
+    environment.systemPackages = with pkgs; [
+      helvum
+      mpv
+      wl-clipboard
+      xclip
+    ];
+
+    fonts = {
+      enableDefaultPackages = true;
+      packages = with pkgs; [
+        inter
+        fira
+        monaspace
+        noto-fonts
+        noto-fonts-cjk-sans
+        open-sans
       ];
     };
 
-    programs.niri = {
-      enable = true;
-      # package = pkgs.niri_git;
+    programs = {
+      adb.enable = true;
+      dconf.enable = true;
+      firefox.enable = true;
+      flashprog.enable = true;
+      flashrom.enable = true;
+      gamemode = {
+        enable = true;
+      };
+      gnupg.agent = {
+        enable = true;
+      };
+      nix-index-database.comma.enable = true;
+      nix-ld.enable = true;
+      virt-manager.enable = true;
+      wireshark.enable = true;
+      ydotool.enable = true;
+    };
+
+    security = {
+      pam.services.hyprlock = { };
+      polkit.enable = true;
     };
 
     services = {
-      greetd = {
-        enable = true;
-        settings = {
-          default_session = {
-            command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --kb-power 1";
-            user = "greeter";
-          };
-        };
-      };
-      gvfs.enable = true;
-      udev.packages =
-        with pkgs;
-        lib.optionals (system == "x86_64-linux") [
-          via
-        ];
-      flatpak.enable = false;
-      gnome.sushi.enable = true;
-      gnome.gnome-keyring.enable = true;
       logind.settings.Login = {
         HandlePowerKey = "suspend";
         HandleLidSwitch = "suspend";
@@ -110,25 +118,6 @@
 
     virtualisation.waydroid.enable = true;
 
-    programs = {
-      adb.enable = true;
-      dconf.enable = true;
-      firefox.enable = true;
-      flashprog.enable = true;
-      flashrom.enable = true;
-      gamemode = {
-        enable = true;
-      };
-      gnupg.agent = {
-        enable = true;
-      };
-      nix-index-database.comma.enable = true;
-      nix-ld.enable = true;
-      virt-manager.enable = true;
-      wireshark.enable = true;
-      ydotool.enable = true;
-    };
-
     xdg.terminal-exec = {
       enable = true;
       settings = {
@@ -137,31 +126,5 @@
         ];
       };
     };
-
-    fonts = {
-      enableDefaultPackages = true;
-      packages = with pkgs; [
-        inter
-        fira
-        monaspace
-        noto-fonts
-        noto-fonts-cjk-sans
-        open-sans
-      ];
-    };
-
-    systemd.user.services.cliphist = {
-      enable = true;
-      wantedBy = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      description = "Cliphist";
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = ''${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store'';
-      };
-    };
-
-    systemd.tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
-    security.pam.services.hyprlock = { };
   };
 }

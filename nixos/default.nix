@@ -57,10 +57,13 @@ in
         ++ lib.optionals (pkgs.system == "aarch64-linux") [ "x86_64-linux" ];
     };
 
-    systemd.services."getty@tty11" = {
-      enable = true;
-      wantedBy = [ "getty.target" ];
-      serviceConfig.Restart = "always";
+    systemd = {
+      services."getty@tty11" = {
+        enable = true;
+        wantedBy = [ "getty.target" ];
+        serviceConfig.Restart = "always";
+      };
+      tmpfiles.rules = [ "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware" ];
     };
 
     hardware = {
@@ -77,8 +80,8 @@ in
       doas = {
         enable = true;
         extraConfig = ''
-                    permit persist :wheel
-          				'';
+          permit persist :wheel
+        '';
       };
       sudo-rs = {
         enable = false;

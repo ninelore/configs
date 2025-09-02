@@ -69,7 +69,9 @@
 			"󰂁",
 			"󰂂",
 			"󰁹"
-		]
+		],
+		"on-scroll-up": "swayosd-client --brightness raise",
+		"on-scroll-down": "swayosd-client --brightness lower"
 	},
 	"network": {
 		"format-wifi": "",
@@ -98,6 +100,8 @@
 			"",
 			""
 		],
+		"on-scroll-up": "swayosd-client --output-volume raise",
+		"on-scroll-down": "swayosd-client --output-volume lower",
 		"on-click": "pavucontrol" //,
 		//"on-click-right": "easyeffects"
 	},

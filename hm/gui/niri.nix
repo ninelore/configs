@@ -8,24 +8,12 @@ let
   cliphist-fuzzel = pkgs.writeShellScriptBin "cliphist-fuzzel" ''
     cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
   '';
-
-  cursorTheme = {
-    name = "Bibata-Modern-Ice";
-    size = 24;
-    package = pkgs.bibata-cursors;
-  };
-
-  font = {
-    name = "Inter Nerd Font";
-    package = pkgs.inter-nerdfont;
-  };
-
-  iconTheme = {
-    name = "Tela-dracula";
-    package = pkgs.tela-icon-theme;
-  };
 in
 {
+  imports = [
+    ./theme.nix
+  ];
+
   config = lib.mkIf config.ninelore.gui {
     home = {
       packages = with pkgs; [
@@ -36,9 +24,6 @@ in
         pavucontrol
         xwayland-satellite
       ];
-      pointerCursor = cursorTheme // {
-        gtk.enable = true;
-      };
     };
 
     xdg.configFile = {
@@ -52,7 +37,6 @@ in
         settings = {
           main = {
             anchor = "top";
-            icon-theme = iconTheme.name;
             terminal = "${pkgs.kitty}/bin/kitty";
             y-margin = 10;
           };
@@ -80,7 +64,7 @@ in
           label = [
             {
               text = "$TIME";
-              font_size = 100;
+              font_size = 200;
               font_family = "JetBrainsMono Nerd Font Propo";
               position = "0, 140";
             }
@@ -98,7 +82,7 @@ in
               check_color = "rgb(fd971f)";
               fail_color = "rgb(f4005f)";
               fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-              position = "0, -20";
+              position = "0, -200";
             }
           ];
         };
@@ -118,6 +102,7 @@ in
         enable = true;
         pinentry.package = pkgs.pinentry-gnome3;
       };
+      polkit-gnome.enable = true;
       swayidle =
         let
           lock = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
@@ -168,6 +153,15 @@ in
           }
         '';
       };
+      swayosd = {
+        enable = true;
+        topMargin = 0.9;
+        stylePath = pkgs.writeText "style.css" ''
+          * {
+            border-radius: 0;
+          }
+        '';
+      };
       swww.enable = true;
     };
 
@@ -176,66 +170,5 @@ in
       settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
     };
 
-    fonts.fontconfig = {
-      enable = true;
-      # antialiasing = true;
-      defaultFonts = {
-        serif = [ font.name ];
-        sansSerif = [ font.name ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
-      };
-
-    };
-
-    gtk =
-      let
-        gtkConf = {
-          extraConfig = {
-            gtk-application-prefer-dark-theme = true;
-            gtk-hint-font-metrics = true;
-          };
-        };
-
-        theme = {
-          name = "adw-gtk3";
-          package = pkgs.adw-gtk3;
-        };
-      in
-      {
-        inherit
-          cursorTheme
-          font
-          iconTheme
-          ;
-        enable = true;
-        gtk3 = gtkConf // {
-          inherit theme;
-        };
-        gtk4 = gtkConf;
-      };
-
-    qt = {
-      enable = true;
-      platformTheme.name = "xdgdesktopportal";
-      style.name = "adwaita-dark";
-    };
-
-    systemd.user.services.polkit-gnome-authentication-agent-1 = {
-      Unit = {
-        Description = "polkit-gnome-authentication-agent-1";
-        Wants = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
   };
 }
