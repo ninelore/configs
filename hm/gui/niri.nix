@@ -103,46 +103,35 @@ in
         pinentry.package = pkgs.pinentry-gnome3;
       };
       polkit-gnome.enable = true;
-      swayidle =
+      hypridle =
         let
-          lock = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+          lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
           display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
         in
         {
           enable = true;
-          events = [
-            {
-              event = "before-sleep";
-              command = (display "off") + "; " + lock;
-            }
-            {
-              event = "after-resume";
-              command = display "on";
-            }
-            {
-              event = "lock";
-              command = (display "off") + "; " + lock;
-            }
-            {
-              event = "unlock";
-              command = display "on";
-            }
-          ];
-          timeouts = [
-            {
-              timeout = 300;
-              command = lock;
-            }
-            {
-              timeout = 310;
-              command = display "off";
-              resumeCommand = display "on";
-            }
-            {
-              timeout = 1800;
-              command = "${pkgs.systemd}/bin/systemctl suspend";
-            }
-          ];
+          settings = {
+            general = {
+              inherit lock_cmd;
+              before_sleep_cmd = lock_cmd;
+              after_sleep_cmd = display "on";
+            };
+            listener = [
+              {
+                timeout = 300;
+                on-timeout = lock_cmd;
+              }
+              {
+                timeout = 320;
+                on-timeout = display "off";
+                on-resume = display "on";
+              }
+              {
+                timeout = 1800;
+                on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
+              }
+            ];
+          };
         };
       swaync = {
         enable = true;
