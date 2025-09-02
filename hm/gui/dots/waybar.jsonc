@@ -2,8 +2,7 @@
 	"layer": "top",
 	"spacing": 16,
 	"modules-left": [
-		"niri/workspaces",
-		"niri/window"
+		"niri/workspaces"
 	],
 	"modules-center": [
 		"clock",
