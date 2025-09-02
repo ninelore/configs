@@ -192,6 +192,4 @@ binds {
 	Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
 	Mod+Shift+E { quit; }
-
-	Mod+Shift+P { power-off-monitors; }
 }
