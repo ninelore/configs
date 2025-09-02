@@ -120,7 +120,7 @@ in
       };
       swayidle =
         let
-          lock = "${pkgs.hyprlock}/bin/hyprlock";
+          lock = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
           display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
         in
         {

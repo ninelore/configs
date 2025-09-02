@@ -61,7 +61,8 @@ binds {
 
 	Mod+Return { spawn "kitty"; }
 	Mod+D { spawn "fuzzel"; }
-	Mod+Escape hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
+	Mod+V { spawn "cliphist-fuzzel"; }
+	Mod+Escape hotkey-overlay-title="Lock the Screen" { spawn "loginctl" "lock-session"; }
 
 	XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
 	XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
@@ -179,8 +180,8 @@ binds {
 	Mod+Shift+Minus { set-window-height "-10%"; }
 	Mod+Shift+Equal { set-window-height "+10%"; }
 
-	Mod+V { toggle-window-floating; }
-	Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+	Mod+G { toggle-window-floating; }
+	Mod+Shift+G { switch-focus-between-floating-and-tiling; }
 
 	Mod+T { toggle-column-tabbed-display; }
 
