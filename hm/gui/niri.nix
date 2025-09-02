@@ -5,6 +5,10 @@
   ...
 }:
 let
+  cliphist-fuzzel = pkgs.writeShellScriptBin "cliphist-fuzzel" ''
+    cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
+  '';
+
   cursorTheme = {
     name = "Bibata-Modern-Ice";
     size = 24;
@@ -28,6 +32,7 @@ in
         blueberry
         brightnessctl
         cliphist
+        cliphist-fuzzel
         pavucontrol
         xwayland-satellite
       ];
