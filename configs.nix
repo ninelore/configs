@@ -31,6 +31,12 @@ let
       (mkSystem {
         inherit inputs;
         defaultUser = "9l";
+        hostName = "9l-eldrid";
+        swapfile = 32 * 1024;
+      })
+      (mkSystem {
+        inherit inputs;
+        defaultUser = "9l";
         hostName = "9l-tomato";
         system = "aarch64-linux";
       })

@@ -22,16 +22,25 @@ input {
 	disable-power-key-handling
 }
 
+// 9l-drobit internal
 output "AU Optronics 0xA48F Unknown" {
 	scale 1
 	position x=-1920 y=300
 }
 
+// 9l-eldrid internal
+output "Chimei Innolux Corporation 0x1406 Unknown" {
+	scale 1.1
+	position x=-1746 y=300
+}
+
+// 9l-zephyr internal
 output "Thermotrex Corporation TL140ADXP01 Unknown" {
 	scale 1.4
 	position x=-1829 y=300
 }
 
+// ~ primary
 output "HP Inc. HP X34 6CM25210CS" {
 	scale 1
 	position x=0 y=0
