@@ -120,17 +120,13 @@ in
       };
       swayidle =
         let
-          command = "${pkgs.hyprlock}/bin/hyprlock";
+          command = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
         in
         {
           enable = true;
           events = [
             {
               event = "before-sleep";
-              inherit command;
-            }
-            {
-              event = "lock";
               inherit command;
             }
           ];

@@ -1,8 +1,6 @@
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshot-%Y_%m_%d-%H_%M_%S.png"
 
-spawn-at-startup "swww-daemon"
-
 input {
 	keyboard {
 		xkb {
