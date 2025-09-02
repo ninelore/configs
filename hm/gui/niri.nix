@@ -120,20 +120,38 @@ in
       };
       swayidle =
         let
-          command = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+          lock = "${pkgs.hyprlock}/bin/hyprlock";
+          display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
         in
         {
           enable = true;
           events = [
             {
               event = "before-sleep";
-              inherit command;
+              command = (display "off") + "; " + lock;
+            }
+            {
+              event = "after-resume";
+              command = display "on";
+            }
+            {
+              event = "lock";
+              command = (display "off") + "; " + lock;
+            }
+            {
+              event = "unlock";
+              command = display "on";
             }
           ];
           timeouts = [
             {
-              timeout = 600;
-              inherit command;
+              timeout = 300;
+              command = lock;
+            }
+            {
+              timeout = 310;
+              command = display "off";
+              resumeCommand = display "on";
             }
             {
               timeout = 1800;
