@@ -8,7 +8,6 @@ let
     "q" = "exit";
     "untar" = "tar -xavf";
     "v" = "nvim";
-    "z" = "zellij";
   };
 in
 {
@@ -33,6 +32,8 @@ in
       shortcut = "s";
       # plugins = with pkgs.tmuxPlugins; [ ];
     };
+
+    zoxide.enable = true;
 
     starship = {
       enable = true;
