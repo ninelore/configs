@@ -68,16 +68,12 @@ in
       viAlias = true;
       vimAlias = true;
       withNodeJs = true;
-      withPython3 = true;
       extraPackages = with pkgs; [
-        fd
-        gcc
+        curl
         git
-        lua5_1
-        luarocks
+        gnutar
         ripgrep
         tree-sitter
-        wget
         wl-clipboard
         # Always have these available
         bash-language-server
