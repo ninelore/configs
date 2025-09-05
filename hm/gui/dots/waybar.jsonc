@@ -97,6 +97,7 @@
 		"format-icons": [
 			"",
 			"",
+			"",
 			""
 		],
 		"on-scroll-up": "swayosd-client --output-volume raise",
@@ -116,7 +117,7 @@
 		}
 	},
 	"privacy": {
-		"icon-spacing": 3,
+		"icon-spacing": 8,
 		"icon-size": 16,
 		"transition-duration": 0,
 		"modules": [

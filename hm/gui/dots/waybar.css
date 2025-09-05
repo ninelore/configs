@@ -17,7 +17,6 @@ window#waybar {
 
 /*-----module groups----*/
 .modules-right,
-.modules-left,
 .modules-center {
 	padding: 0 10px;
 }
@@ -61,4 +60,11 @@ window#waybar {
 
 #battery.critical:not(.charging) {
 	color: #f4005f;
+}
+
+#privacy {
+	border-radius: 100px;
+	background-color: #fd971f;
+	padding: 0 10px;
+	margin: 2px 0;
 }
