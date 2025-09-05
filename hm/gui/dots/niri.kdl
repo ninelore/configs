@@ -56,13 +56,18 @@ layout {
 	}
 	focus-ring {
 		width 2
-		active-gradient from="#DE0159" to="#6B01FF" angle=315
+		active-gradient from="#9d65ff" to="#f4005f" angle=315
 	}
 }
 
 hotkey-overlay {
 	skip-at-startup
-	// hide-not-bound
+	hide-not-bound
+}
+
+overview {
+	zoom 0.6
+	backdrop-color "#0c0c0c"
 }
 
 binds {
