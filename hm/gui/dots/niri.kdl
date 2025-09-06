@@ -70,6 +70,12 @@ overview {
 	backdrop-color "#0c0c0c"
 }
 
+window-rule {
+	match app-id="org.pulseaudio.pavucontrol"
+	match app-id="blueberry.py"
+	open-floating true
+}
+
 binds {
 	Mod+Shift+Slash { show-hotkey-overlay; }
 
