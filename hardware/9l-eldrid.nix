@@ -15,10 +15,10 @@
     "xhci_pci"
     "nvme"
     "sdhci_pci"
+    "cros_ec_typec"
+    "intel_pmc_mux"
   ];
-  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
 
   boot.initrd.luks.devices."root" = {
     device = "/dev/disk/by-uuid/344b2bdb-794f-4a65-b630-471c2334892b";

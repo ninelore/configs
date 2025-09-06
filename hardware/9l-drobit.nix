@@ -20,10 +20,10 @@
     "thunderbolt"
     "nvme"
     "sdhci_pci"
+    "cros_ec_typec"
+    "intel_pmc_mux"
   ];
-  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
 
   boot.initrd.luks.devices."root" = {
     device = "/dev/disk/by-uuid/052f554d-1f74-4800-816c-1d0fbd807b4a";
