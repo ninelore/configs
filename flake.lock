@@ -306,11 +306,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1757302534,
-        "narHash": "sha256-B8KXA8bkQNQL3eXag+7Gz7q8bfHd/IsQGYPMRD7Zgrs=",
+        "lastModified": 1757334219,
+        "narHash": "sha256-DUwWTmM2QSkVkoLHcf01PStC/gazFFrqqz4uLigEX2I=",
         "owner": "ninelore",
         "repo": "flake",
-        "rev": "1508deaf3a124b4b48aaf2a5efa597363295c26c",
+        "rev": "fa1fef6ae82647c897c3808b912fb540c6a19059",
         "type": "github"
       },
       "original": {
