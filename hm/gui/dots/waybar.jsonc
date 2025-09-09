@@ -102,7 +102,7 @@
 		],
 		"on-scroll-up": "swayosd-client --output-volume raise",
 		"on-scroll-down": "swayosd-client --output-volume lower",
-		"on-click": "pavucontrol" //,
+		"on-click": "pwvucontrol" //,
 		//"on-click-right": "easyeffects"
 	},
 	"power-profiles-daemon": {

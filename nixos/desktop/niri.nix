@@ -11,7 +11,7 @@
       cliphist
       loupe
       nautilus
-      pavucontrol
+      pwvucontrol
     ];
 
     programs.niri.enable = true;

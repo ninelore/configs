@@ -71,7 +71,7 @@ overview {
 }
 
 window-rule {
-	match app-id="org.pulseaudio.pavucontrol"
+	match app-id="com.saivert.pwvucontrol"
 	match app-id="blueberry.py"
 	open-floating true
 }

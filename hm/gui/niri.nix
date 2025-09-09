@@ -32,7 +32,7 @@ in
         cliphist
         cliphist-fuzzel
         kbd_backlight_osd
-        pavucontrol
+        pwvucontrol
         xwayland-satellite
       ];
     };
