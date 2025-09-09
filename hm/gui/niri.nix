@@ -8,6 +8,16 @@ let
   cliphist-fuzzel = pkgs.writeShellScriptBin "cliphist-fuzzel" ''
     cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
   '';
+
+  kbd_backlight_osd = pkgs.writeShellScriptBin "kbd_backlight_osd" ''
+    ctl="${pkgs.brightnessctl}/bin/brightnessctl -d *kbd_backlight"
+    $ctl s $1
+    current=$(${pkgs.bc}/bin/bc <<< "scale=2; $($ctl g) / $($ctl m)")
+    if [[ $current == '0' ]]; then
+      current='0.0001'
+    fi
+    swayosd-client --custom-icon=input-keyboard --custom-progress="$current"
+  '';
 in
 {
   imports = [
@@ -21,6 +31,7 @@ in
         brightnessctl
         cliphist
         cliphist-fuzzel
+        kbd_backlight_osd
         pavucontrol
         xwayland-satellite
       ];

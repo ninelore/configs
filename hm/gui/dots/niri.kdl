@@ -92,6 +92,9 @@ binds {
 	XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
 	XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
 
+	XF86KbdBrightnessUp allow-when-locked=true { spawn "kbd_backlight_osd" "10%+"; }
+	XF86KbdBrightnessDown allow-when-locked=true { spawn "kbd_backlight_osd" "10%-"; }
+
 	Mod+W repeat=false { toggle-overview; }
 	Mod+Q repeat=false { close-window; }
 
