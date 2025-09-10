@@ -8,6 +8,9 @@ let
     "q" = "exit";
     "untar" = "tar -xavf";
     "v" = "nvim";
+    "sgfx0" = "supergfxctl -m Integrated";
+    "sgfx1" = "supergfxctl -m Hybrid";
+    "sgfx" = "supergfxctl -S";
   };
 in
 {
