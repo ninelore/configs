@@ -48,15 +48,21 @@ output "HP Inc. HP X34 6CM25210CS" {
 }
 
 layout {
-	gaps 4
+	gaps 3
 	center-focused-column "never"
-
+	focus-ring {
+		width 3
+		active-gradient from="#9d65ff" to="#f4005f" angle=315
+	}
 	border {
 		off
 	}
-	focus-ring {
-		width 2
-		active-gradient from="#9d65ff" to="#f4005f" angle=315
+	tab-indicator {
+		width 6
+		gap 6
+		length total-proportion=1.0
+		position "top"
+		place-within-column
 	}
 }
 

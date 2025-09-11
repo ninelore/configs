@@ -146,10 +146,19 @@ in
         };
       swaync = {
         enable = true;
-        #settings = {};
+        settings = {
+          positionX = "center";
+          positionY = "top";
+          cssPriority = "user";
+          fit-to-screen = false;
+          control-center-margin-top = 8;
+          hide-on-action = false;
+        };
         style = ''
-          .control-center {
-            border-radius: 0;
+          :root {
+            --cc-bg: rgba(12, 12, 12, 0.95);
+            --noti-bg: 12, 12, 12;
+            --noti-bg-focus: rgba(56, 56, 56, 0.15)
           }
         '';
       };
