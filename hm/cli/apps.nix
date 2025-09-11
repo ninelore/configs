@@ -77,6 +77,7 @@ in
         wl-clipboard
         # Always have these available
         bash-language-server
+        clang-tools
         lua-language-server
         nil
         nixd
