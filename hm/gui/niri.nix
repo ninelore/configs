@@ -159,6 +159,7 @@ in
             --cc-bg: rgba(12, 12, 12, 0.95);
             --noti-bg: 12, 12, 12;
             --noti-bg-focus: rgba(56, 56, 56, 0.15)
+            --border-radius: 0;
           }
         '';
       };
