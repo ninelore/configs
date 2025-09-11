@@ -7,6 +7,7 @@ in
     packages = with pkgs; [
       android-tools
       bcal
+      bear
       binwalk
       curl
       ddcutil
@@ -16,6 +17,7 @@ in
       hexpatch
       pciutils
       picocom
+      python3Minimal
       vboot_reference
       unzip
       usbutils

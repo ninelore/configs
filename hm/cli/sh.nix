@@ -4,7 +4,7 @@ let
     "c" = "clear";
     "db" = "distrobox";
     "grep" = "grep --color=auto";
-    "py" = "python3";
+    "py" = "python";
     "q" = "exit";
     "untar" = "tar -xavf";
     "v" = "nvim";
