@@ -72,10 +72,11 @@ in
       withNodeJs = true;
       extraPackages = with pkgs; [
         curl
+        gcc
         git
         gnutar
         ripgrep
-        # inputs.neovim-nightly-overlay.packages.${pkgs.system}.tree-sitter
+        inputs.neovim-nightly-overlay.packages.${pkgs.system}.tree-sitter
         wl-clipboard
         # Always have these available
         bash-language-server
