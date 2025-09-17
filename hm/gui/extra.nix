@@ -9,7 +9,7 @@
     home.packages =
       with pkgs;
       [
-        protonvpn-cli
+        protonvpn-gui
         quasselClient
         signal-desktop
         tuba
