@@ -80,7 +80,7 @@ in
       doas = {
         enable = true;
         extraConfig = ''
-          permit persist :wheel
+          permit persist keepenv :wheel
         '';
       };
       sudo-rs = {
