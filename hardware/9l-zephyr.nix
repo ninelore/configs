@@ -1,4 +1,3 @@
-# Partially formerly /etc/nixos/hardware-configuration.nix from 9l-zephyr
 {
   inputs,
   modulesPath,
