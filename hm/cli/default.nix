@@ -110,9 +110,5 @@
     };
   };
 
-  home = {
-    sessionVariables = {
-      NIXPKGS_ALLOW_UNFREE = 1;
-    };
-  };
+  home.sessionVariables.NIXPKGS_ALLOW_UNFREE = 1;
 }

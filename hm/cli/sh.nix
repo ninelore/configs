@@ -14,17 +14,7 @@ let
   };
 in
 {
-  xdg.configFile = {
-    "zellij".source = ./zellij;
-  };
   programs = {
-    zellij = {
-      enable = true;
-      enableBashIntegration = false;
-      enableFishIntegration = false;
-      enableZshIntegration = false;
-    };
-
     tmux = {
       enable = true;
       baseIndex = 1;
@@ -56,6 +46,8 @@ in
       inherit shellAliases;
       enable = true;
     };
+
+    # TODO: redo completions
     nushell = {
       inherit shellAliases;
       enable = true;
