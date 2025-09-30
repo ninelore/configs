@@ -12,7 +12,7 @@
         protonvpn-gui
         quasselClient
         signal-desktop
-        tuba
+        # tuba
       ]
       ++ lib.optionals (pkgs.system == "x86_64-linux") [
         discord-canary
