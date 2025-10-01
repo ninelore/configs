@@ -82,6 +82,7 @@ in
         bash-language-server
         clang-tools
         lua-language-server
+        marksman
         nil
         nixd
         nixfmt-rfc-style
