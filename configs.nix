@@ -13,7 +13,7 @@ let
         extraModules = [
           {
             ninelore.gaming = true;
-            ninelore.vr = true;
+            # ninelore.vr = true;
           }
         ];
       })
