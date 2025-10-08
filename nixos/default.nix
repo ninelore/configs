@@ -168,13 +168,7 @@ in
       libvirtd = {
         enable = true;
         onBoot = "ignore";
-        qemu = {
-          swtpm.enable = true;
-          ovmf = {
-            enable = true;
-            packages = [ pkgs.OVMFFull.fd ];
-          };
-        };
+        qemu.swtpm.enable = true;
       };
     };
 
