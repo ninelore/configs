@@ -26,7 +26,7 @@
           vba-m
         ]
         ++ lib.optionals (pkgs.system == "x86_64-linux") [
-          # pcsx2 # Broken 2025-10-08
+          pcsx2
           ppsspp
         ]
       ))

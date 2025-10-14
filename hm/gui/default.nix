@@ -32,17 +32,17 @@
           libreoffice-fresh
           loupe
           papers
-          # pdfarranger # Broken (dep) 2025-10-08
+          pdfarranger
           scrcpy
           warp
           wl-clipboard
-          # (pkgs.ghidra.withExtensions ( # Broken (dep) 2025-10-08
-          #   p: with p; [
-          #     ghidraninja-ghidra-scripts
-          #     ret-sync
-          #     wasm
-          #   ]
-          # ))
+          (pkgs.ghidra.withExtensions (
+            p: with p; [
+              ghidraninja-ghidra-scripts
+              ret-sync
+              wasm
+            ]
+          ))
         ]
         ++ lib.optionals (pkgs.system == "x86_64-linux") [
           spotify
@@ -102,7 +102,6 @@
     services.kdeconnect = {
       enable = true;
       indicator = true;
-      package = pkgs.kdeconnect-kde_git;
     };
   };
 }
