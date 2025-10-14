@@ -1,4 +1,5 @@
 {
+	"height": 28,
 	"layer": "top",
 	"spacing": 16,
 	"modules-left": [
@@ -30,7 +31,26 @@
 		"spacing": 14
 	},
 	"clock": {
-		"tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt><small>{calendar}</small></tt>"
+		"format": "<span color='#c4c5b5'>{:%a %m/%d</span> <b>%H:%M}</b>",
+		"tooltip-format": "<big>{:%A %F}</big>\n{calendar}",
+		"calendar": {
+			"mode-mon-col": 4,
+			"weeks-pos": "left",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#f4005f'><b>{}</b></span>",
+				"days": "<span color='#c4c5b5'>{}</span>",
+				"weeks": "<span color='#58d1eb'><b>W{}</b></span>",
+				"weekdays": "<span color='#e0d561'><b>{}</b></span>",
+				"today": "<span color='#f4005f'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		},
+		"on-click": "gnome-clocks"
 	},
 	"backlight": {
 		"format": "{icon}",
@@ -142,7 +162,7 @@
 		"format-icons": {
 			"notification": "󱅫",
 			"none": "",
-			"dnd-notification": "",
+			"dnd-notification": "󰂛",
 			"dnd-none": "󰂛",
 			"inhibited-notification": "󰅸",
 			"inhibited-none": "",
