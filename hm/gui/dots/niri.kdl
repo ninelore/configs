@@ -50,9 +50,10 @@ output "HP Inc. HP X34 6CM25210CS" {
 layout {
 	gaps 3
 	center-focused-column "never"
+	always-center-single-column
 	focus-ring {
 		width 3
-		active-gradient from="#9d65ff" to="#f4005f" angle=315
+		active-gradient from="#9d65ff" to="#f4005f" angle=45
 	}
 	border {
 		off
