@@ -50,6 +50,7 @@ in
             anchor = "top";
             terminal = "${pkgs.kitty}/bin/kitty";
             y-margin = 10;
+            dpi-aware = "no";
           };
           colors = {
             background = "090909f0";
