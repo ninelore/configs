@@ -16,6 +16,7 @@ input {
 		tap
 		natural-scroll
 		drag true
+		click-method "clickfinger"
 		tap-button-map "left-right-middle"
 		scroll-method "two-finger"
 	}
