@@ -26,6 +26,8 @@ in
       # plugins = with pkgs.tmuxPlugins; [ ];
     };
 
+    nix-your-shell.enable = true;
+    carapace.enable = true;
     zoxide.enable = true;
 
     starship = {
@@ -39,8 +41,6 @@ in
         };
       };
     };
-
-    nix-your-shell.enable = true;
 
     bash = {
       inherit shellAliases;
@@ -114,27 +114,12 @@ in
               }
             ];
           };
-          completions =
-            let
-              completion = name: ''
-                source ${nuscripts}/custom-completions/${name}/${name}-completions.nu
-              '';
-            in
-            names: builtins.foldl' (prev: str: "${prev}\n${str}") "" (map (name: completion name) names);
         in
         ''
           use ${nuscripts}/themes/nu-themes/${theme}.nu;
           $env.config = ${conf};
           $env.config.color_config = (${theme});
           source ${nuscripts}/nu-hooks/nu-hooks/rusty-paths/rusty-paths.nu
-          ${completions [
-            "curl"
-            "gh"
-            "git"
-            "nix"
-            "ssh"
-            "tar"
-          ]}
         '';
     };
   };
