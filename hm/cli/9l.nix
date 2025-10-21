@@ -8,14 +8,13 @@ let
 in
 {
   programs.git = {
-    extraConfig = {
-      github.user = ghName;
-    };
     signing = {
       signByDefault = true;
       key = "794BE2582FB7A351"; # TODO decouple from config somehow?
     };
-    userEmail = email;
-    userName = name;
+    settings.github.user = ghName;
+    settings.user = {
+      inherit email name;
+    };
   };
 }

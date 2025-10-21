@@ -46,7 +46,7 @@ in
     git = {
       enable = true;
       lfs.enable = true;
-      extraConfig = {
+      settings = {
         color.ui = true;
         commit.verbose = true;
         core.editor = EDITOR;
