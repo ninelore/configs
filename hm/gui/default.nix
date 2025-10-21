@@ -7,6 +7,7 @@
 {
   imports = [
     ./niri.nix
+    ./web.nix
   ];
 
   config = lib.mkIf config.ninelore.gui {
@@ -59,17 +60,6 @@
     };
 
     programs = {
-      chromium = {
-        enable = true;
-        package = pkgs.ungoogled-chromium;
-        commandLineArgs = [
-          "--enable-features=UseOzonePlatform"
-          "--ozone-platform=wayland"
-        ];
-      };
-      firefox = {
-        enable = true;
-      };
       mpv = {
         enable = true;
         scripts = with pkgs.mpvScripts; [
