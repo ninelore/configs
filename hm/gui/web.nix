@@ -30,25 +30,28 @@
         profiles.default = {
           settings = {
             "webgl.disabled" = false;
+            "browser.startup.page" = 3;
             "privacy.clearOnShutdown.history" = false;
             "privacy.clearOnShutdown.cookies" = false;
             "network.cookie.lifetimePolicy" = 0;
             "general.autoScroll" = true;
 
+            "browser.toolbars.bookmarks.visibility" = "newtab";
             "sidebar.visibity" = "always-show";
             "sidebar.verticalTabs" = true;
-            "browser.uiCustomization.navBarWhenVerticalTabs" = [
-              "sidebar-button"
-              "back-button"
-              "forward-button"
-              "stop-reload-button"
-              "vertical-spacer"
-              "urlbar-container"
-              "ublock0_raymondhill_net-browser-action"
-              "unified-extensions-button"
-              "downloads-button"
-              "library-button"
-            ];
+            "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
+            # "browser.uiCustomization.navBarWhenVerticalTabs" = [
+            #   "sidebar-button"
+            #   "back-button"
+            #   "forward-button"
+            #   "stop-reload-button"
+            #   "vertical-spacer"
+            #   "urlbar-container"
+            #   "ublock0_raymondhill_net-browser-action"
+            #   "unified-extensions-button"
+            #   "downloads-button"
+            #   "library-button"
+            # ];
           };
         };
       };
