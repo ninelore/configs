@@ -29,6 +29,7 @@
           hunspell
           hunspellDicts.de_DE
           hunspellDicts.en_GB-ise
+          inkscape
           kicad-small
           libreoffice-fresh
           loupe
