@@ -17,7 +17,11 @@ in
       hexpatch
       pciutils
       picocom
-      python3Minimal
+      (python3.withPackages (
+        ps: with ps; [
+          gnureadline
+        ]
+      ))
       vboot_reference
       unzip
       usbutils
