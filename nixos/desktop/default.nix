@@ -70,6 +70,7 @@
         HandleLidSwitchDocked = "ignore";
       };
       power-profiles-daemon.enable = true;
+      playerctld.enable = true;
       pulseaudio.enable = false;
       pipewire = {
         enable = true;
