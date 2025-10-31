@@ -87,10 +87,12 @@ in
         clang-tools
         lua-language-server
         marksman
+        markdown-oxide
         nil
         nixd
         nixfmt-rfc-style
         nushell
+        rust-analyzer
         shellcheck
         stylua
         typescript-language-server
