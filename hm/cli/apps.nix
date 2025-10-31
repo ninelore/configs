@@ -49,6 +49,7 @@ in
     fzf.enable = true;
     git = {
       enable = true;
+      package = pkgs.gitFull;
       lfs.enable = true;
       settings = {
         color.ui = true;
