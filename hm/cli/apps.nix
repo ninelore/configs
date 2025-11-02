@@ -70,7 +70,7 @@ in
     };
     neovim = {
       enable = true;
-      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
@@ -81,7 +81,7 @@ in
         git
         gnutar
         ripgrep
-        inputs.neovim-nightly-overlay.packages.${pkgs.system}.tree-sitter
+        inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.tree-sitter
         wl-clipboard
         # Always have these available
         bash-language-server

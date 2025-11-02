@@ -25,14 +25,14 @@
           desmume
           vba-m
         ]
-        ++ lib.optionals (pkgs.system == "x86_64-linux") [
+        ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
           pcsx2
           ppsspp
         ]
       ))
     ];
     programs.steam = {
-      enable = pkgs.system == "x86_64-linux";
+      enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
       extraCompatPackages = [
         pkgs.proton-ge-custom
       ];

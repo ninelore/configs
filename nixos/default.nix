@@ -37,7 +37,7 @@ in
 
     boot = {
       kernelPackages =
-        if pkgs.system == "x86_64-linux" then
+        if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then
           lib.mkDefault pkgs.linuxPackages_cachyos-lto
         else
           lib.mkDefault pkgs.linuxPackages_latest;
@@ -53,8 +53,8 @@ in
         efi.canTouchEfiVariables = true;
       };
       binfmt.emulatedSystems =
-        lib.optionals (pkgs.system == "x86_64-linux") [ "aarch64-linux" ]
-        ++ lib.optionals (pkgs.system == "aarch64-linux") [ "x86_64-linux" ];
+        lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [ "aarch64-linux" ]
+        ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "aarch64-linux") [ "x86_64-linux" ];
     };
 
     systemd = {
@@ -74,7 +74,9 @@ in
       i2c.enable = true;
       keyboard.qmk.enable = true;
     }
-    // lib.optionalAttrs (pkgs.system != "x86_64-linux") { graphics.enable32Bit = lib.mkForce false; };
+    // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system != "x86_64-linux") {
+      graphics.enable32Bit = lib.mkForce false;
+    };
 
     security = {
       doas = {

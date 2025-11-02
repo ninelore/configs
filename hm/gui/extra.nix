@@ -14,7 +14,7 @@
         signal-desktop
         # tuba
       ]
-      ++ lib.optionals (pkgs.system == "x86_64-linux") [
+      ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
         discord-canary
       ];
   };
