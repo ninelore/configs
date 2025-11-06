@@ -67,6 +67,10 @@
         cursor_text_color = "#000000";
         foreground = "#d9d9d9";
         selection_background = "#d9d9d9";
+        active_tab_foreground = "#f6f6ef";
+        active_tab_background = "#0c0c0c";
+        inactive_tab_foreground = "#c4c5b5";
+        inactive_tab_background = "#625e4c";
       };
       keybindings = {
         "kitty_mod+c" = "copy_to_clipboard";
