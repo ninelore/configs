@@ -14,6 +14,11 @@ let
   ];
 in
 {
+  # FIXME: (2025-11-08) Weird infinite recursion in
+  # default value expression of `hardware.facter.detected.dhcp`.
+  # Probably upstream bug. TODO Investigate.
+  disabledModules = [ "hardware/facter" ];
+
   imports = [ ./desktop ];
 
   config = {
