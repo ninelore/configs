@@ -19,9 +19,13 @@
   home.packages = with pkgs; [
     # Fonts
     inter-nerdfont
+    nerd-fonts.fira-mono
+    nerd-fonts.fira-code
+    nerd-fonts.blex-mono
     nerd-fonts.iosevka
-    nerd-fonts.monaspace
     nerd-fonts.jetbrains-mono
+    nerd-fonts.monaspace
+    nerd-fonts.terminess-ttf
     nerd-fonts.symbols-only
   ];
 
