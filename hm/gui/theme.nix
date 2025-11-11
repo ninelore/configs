@@ -29,7 +29,7 @@ in
       defaultFonts = {
         serif = [ font.name ];
         sansSerif = [ font.name ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
+        monospace = [ "ZedMono Nerd Font" ];
       };
 
     };

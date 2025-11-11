@@ -19,14 +19,10 @@
   home.packages = with pkgs; [
     # Fonts
     inter-nerdfont
-    nerd-fonts.fira-mono
-    nerd-fonts.fira-code
-    nerd-fonts.blex-mono
     nerd-fonts.iosevka
     nerd-fonts.jetbrains-mono
-    nerd-fonts.monaspace
-    nerd-fonts.terminess-ttf
-    nerd-fonts.symbols-only
+    nerd-fonts.lilex
+    nerd-fonts.zed-mono
   ];
 
   programs = {
@@ -34,11 +30,14 @@
     kitty = {
       enable = true;
       package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
-      font = {
-        name = "JetBrainsMono Nerd Font";
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        size = 11;
-      };
+      # use extraConfig to be able to copypasta settings from `kitten` STDOUT
+      extraConfig = ''
+        font_size 12.0
+        font_family      family='ZedMono Nerd Font'
+        bold_font        family='ZedMono Nerd Font'
+        italic_font      family='ZedMono Nerd Font'
+        bold_italic_font family='ZedMono Nerd Font'
+      '';
       settings = {
         shell = "nu";
         wayland_titlebar_color = "background";

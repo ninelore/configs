@@ -69,15 +69,15 @@ in
           background = [
             {
               path = "screenshot";
-              color = "rgba(9, 9, 9, 1.0)";
+              color = "rgba(12, 12, 12, 1.0)";
               blur_passes = 5;
             }
           ];
           label = [
             {
               text = "$TIME";
-              font_size = 200;
-              font_family = "JetBrainsMono Nerd Font Propo";
+              font_size = 240;
+              font_family = "ZedMono Nerd Font Propo Expanded";
               position = "0, 140";
             }
           ];
@@ -88,7 +88,6 @@ in
               inner_color = "rgb(0c0c0c)";
               font_color = "rgb(c4c5b5)";
               fade_timeout = 1000;
-              placeholder_text = "<i>Input Password...</i>";
               hide_input = true;
               rounding = 0;
               check_color = "rgb(fd971f)";
