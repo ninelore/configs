@@ -32,7 +32,7 @@
       package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
       # use extraConfig to be able to copypasta settings from `kitten` STDOUT
       extraConfig = ''
-        font_size 12.0
+        font_size 11.5
         font_family      family='ZedMono Nerd Font'
         bold_font        family='ZedMono Nerd Font'
         italic_font      family='ZedMono Nerd Font'
