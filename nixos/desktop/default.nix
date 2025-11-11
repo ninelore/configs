@@ -30,6 +30,7 @@
       enableDefaultPackages = true;
       packages = with pkgs; [
         inter
+        iosevka
         fira
         monaspace
         noto-fonts

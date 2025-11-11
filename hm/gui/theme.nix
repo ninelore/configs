@@ -29,9 +29,8 @@ in
       defaultFonts = {
         serif = [ font.name ];
         sansSerif = [ font.name ];
-        monospace = [ "ZedMono Nerd Font" ];
+        monospace = [ "Iosevka Nerd Font Propo:size=11.5:fontfeatures=+ss07" ];
       };
-
     };
 
     home.pointerCursor = cursorTheme // {

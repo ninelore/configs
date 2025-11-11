@@ -20,7 +20,6 @@
     # Fonts
     inter-nerdfont
     nerd-fonts.iosevka
-    nerd-fonts.jetbrains-mono
     nerd-fonts.lilex
     nerd-fonts.zed-mono
   ];
@@ -32,13 +31,13 @@
       package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
       # use extraConfig to be able to copypasta settings from `kitten` STDOUT
       extraConfig = ''
-        font_size 11.5
-        font_family      family='ZedMono Nerd Font'
-        bold_font        family='ZedMono Nerd Font'
-        italic_font      family='ZedMono Nerd Font'
-        bold_italic_font family='ZedMono Nerd Font'
+        font_family      family='Iosevka Nerd Font' features=+ss07
+        bold_font        family='Iosevka Nerd Font' features=+ss07
+        italic_font      family='Iosevka Nerd Font' features=+ss07
+        bold_italic_font family='Iosevka Nerd Font' features=+ss07
       '';
       settings = {
+        font_size = 11.5;
         shell = "nu";
         wayland_titlebar_color = "background";
         remember_window_size = true;

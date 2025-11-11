@@ -47,7 +47,7 @@ in
         enable = true;
         settings = {
           main = {
-            font = "ZedMono Nerd Font Propo:size=16:width=expanded";
+            font = "Iosevka Nerd Font Propo:size=16:fontfeatures=+ss07";
             anchor = "top";
             terminal = "${pkgs.kitty}/bin/kitty";
             y-margin = 10;
