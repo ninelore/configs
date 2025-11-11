@@ -36,13 +36,13 @@
         italic_font      family='Iosevka Nerd Font' features=+ss07
         bold_italic_font family='Iosevka Nerd Font' features=+ss07
       '';
-      settings = {
+      settings = rec {
         font_size = 11.5;
         shell = "nu";
         wayland_titlebar_color = "background";
         remember_window_size = true;
         background_opacity = 0.9;
-        enabled_layouts = "splits:split_axis=horizontal";
+        enabled_layouts = "splits:split_axis=auto";
         # Keymap
         clear_all_shortcuts = "yes";
         kitty_mod = "ctrl+shift";
@@ -64,15 +64,16 @@
         color14 = "#58d1eb";
         color15 = "#f6f6ef";
         background = "#0c0c0c";
-        selection_foreground = "#0c0c0c";
+        foreground = "#d9d9d9";
+        selection_foreground = background;
         cursor = "#ffffff";
         cursor_text_color = "#000000";
-        foreground = "#d9d9d9";
-        selection_background = "#d9d9d9";
-        active_tab_foreground = "#f6f6ef";
-        active_tab_background = "#0c0c0c";
-        inactive_tab_foreground = "#c4c5b5";
-        inactive_tab_background = "#625e4c";
+        selection_background = foreground;
+        active_tab_foreground = color15;
+        active_tab_background = color8;
+        inactive_tab_foreground = color7;
+        inactive_tab_background = background;
+        tab_activity_symbol = "󰦖 ";
       };
       keybindings = {
         "kitty_mod+c" = "copy_to_clipboard";
