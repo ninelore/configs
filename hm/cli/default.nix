@@ -21,7 +21,6 @@
     inter-nerdfont
     nerd-fonts.iosevka
     nerd-fonts.lilex
-    nerd-fonts.zed-mono
   ];
 
   programs = {

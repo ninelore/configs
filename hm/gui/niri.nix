@@ -76,10 +76,10 @@ in
           ];
           label = [
             {
-              text = "$TIME";
-              font_size = 240;
-              font_family = "ZedMono Nerd Font Propo Expanded";
-              position = "0, 140";
+              text = "<span allow_breaks='true' font_features='+zero'>$TIME</span>";
+              font_size = 300;
+              font_family = "Lilex Nerd Font Propo";
+              position = "0, 100";
             }
           ];
           input-field = [
@@ -94,7 +94,8 @@ in
               check_color = "rgb(fd971f)";
               fail_color = "rgb(f4005f)";
               fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-              position = "0, -200";
+              position = "0, 300";
+              valign = "bottom";
             }
           ];
         };
