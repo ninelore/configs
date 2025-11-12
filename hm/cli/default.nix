@@ -30,10 +30,10 @@
       package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
       # use extraConfig to be able to copypasta settings from `kitten` STDOUT
       extraConfig = ''
-        font_family      family='Iosevka Nerd Font' features=+ss07
-        bold_font        family='Iosevka Nerd Font' features=+ss07
-        italic_font      family='Iosevka Nerd Font' features=+ss07
-        bold_italic_font family='Iosevka Nerd Font' features=+ss07
+        font_family      family='Iosevka Nerd Font' features='+ss07 cv36=1'
+        bold_font        family='Iosevka Nerd Font' features='+ss07 cv36=1'
+        italic_font      family='Iosevka Nerd Font' features='+ss07 cv36=1'
+        bold_italic_font family='Iosevka Nerd Font' features='+ss07 cv36=1'
       '';
       settings = rec {
         font_size = 11.5;

@@ -29,7 +29,7 @@ in
       defaultFonts = {
         serif = [ font.name ];
         sansSerif = [ font.name ];
-        monospace = [ "Iosevka Nerd Font Propo:size=11.5:fontfeatures=+ss07" ];
+        monospace = [ "Iosevka Nerd Font Propo:size=11.5:fontfeatures='+ss07 cv36=1'" ];
       };
     };
 
