@@ -22,6 +22,7 @@
     environment.systemPackages = with pkgs; [
       helvum
       mpv
+      networkmanagerapplet
       wl-clipboard
       xclip
     ];
