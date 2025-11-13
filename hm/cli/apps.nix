@@ -13,7 +13,7 @@ in
       ddcutil
       dmidecode
       file
-      flyctl
+      # flyctl # https://github.com/NixOS/nixpkgs/issues/461179
       hexpatch
       pciutils
       picocom
