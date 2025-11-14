@@ -4,6 +4,11 @@
   pkgs,
   ...
 }:
+let
+  nm-editor = pkgs.writeShellScriptBin "nm-connection-editor" ''
+    ${pkgs.networkmanagerapplet}/bin/nm-connection-editor $@
+  '';
+in
 {
   options.ninelore.desktop = lib.mkOption {
     default = true;
@@ -22,7 +27,7 @@
     environment.systemPackages = with pkgs; [
       helvum
       mpv
-      networkmanagerapplet
+      nm-editor
       wl-clipboard
       xclip
     ];
