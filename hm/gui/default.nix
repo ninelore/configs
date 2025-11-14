@@ -40,7 +40,7 @@
           wl-clipboard
           (pkgs.ghidra.withExtensions (
             p: with p; [
-              ghidraninja-ghidra-scripts
+              # ghidraninja-ghidra-scripts
               ret-sync
               wasm
             ]

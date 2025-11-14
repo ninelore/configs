@@ -9,7 +9,7 @@
     home.packages =
       with pkgs;
       [
-        protonvpn-gui
+        # protonvpn-gui # Broken 2025-11-14
         quasselClient
         signal-desktop
         # tuba
