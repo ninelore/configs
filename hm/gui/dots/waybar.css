@@ -2,6 +2,7 @@
 	border: none;
 	font-family: Lilex Nerd Font Propo;
 	font-size: 17px;
+	font-feature-settings: "+zero";
 	color: #f6f6ef;
 	border-radius: 0;
 }
