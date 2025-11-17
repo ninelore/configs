@@ -15,7 +15,6 @@
       }
     ];
     environment.systemPackages = with pkgs; [
-      wineWowPackages.stagingFull
       (pkgs.bottles.override { removeWarningPopup = true; })
       (pkgs.retroarch.withCores (
         cores:
