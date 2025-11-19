@@ -25,6 +25,7 @@ in
 
   config = lib.mkIf (config.ninelore.desktop) {
     environment.systemPackages = with pkgs; [
+      (pkgs.bottles.override { removeWarningPopup = true; })
       helvum
       mpv
       nm-editor

@@ -15,7 +15,6 @@
       }
     ];
     environment.systemPackages = with pkgs; [
-      (pkgs.bottles.override { removeWarningPopup = true; })
       (pkgs.retroarch.withCores (
         cores:
         with cores;
