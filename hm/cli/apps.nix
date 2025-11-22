@@ -86,6 +86,7 @@ in
         # Always have these available
         bash-language-server
         clang-tools
+        gopls
         lua-language-server
         marksman
         markdown-oxide
