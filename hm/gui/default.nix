@@ -18,7 +18,7 @@
           # GUI Apps
           appimage-run
           darktable
-          fluffychat
+          element-desktop
           gimp3
           gnome-calculator
           gnome-clocks
