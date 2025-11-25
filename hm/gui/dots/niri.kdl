@@ -1,5 +1,5 @@
 prefer-no-csd
-screenshot-path "~/Pictures/Screenshot-%Y_%m_%d-%H_%M_%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot-%Y_%m_%d-%H_%M_%S.png"
 
 input {
 	keyboard {
