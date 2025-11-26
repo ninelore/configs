@@ -47,7 +47,6 @@ in
       enable = true;
     };
 
-    # TODO: redo completions
     nushell = {
       inherit shellAliases;
       enable = true;
