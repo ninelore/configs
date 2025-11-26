@@ -23,6 +23,7 @@
       };
       librewolf = {
         enable = true;
+        package = pkgs.librewolf-bin;
         settings = {
           "middlemouse.paste" = false;
           "identity.fxaccounts.enabled" = true;
