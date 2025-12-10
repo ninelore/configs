@@ -41,11 +41,7 @@ in
     # ];
 
     boot = {
-      kernelPackages =
-        if pkgs.stdenv.hostPlatform.system == "x86_64-linux" then
-          lib.mkDefault pkgs.linuxPackages_cachyos-lto
-        else
-          lib.mkDefault pkgs.linuxPackages_latest;
+      kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
       initrd.systemd.enable = true;
       kernelParams = [ "boot.shell_on_fail" ];
       tmp.cleanOnBoot = true;

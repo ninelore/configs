@@ -1,6 +1,7 @@
 {
   inputs,
   modulesPath,
+  pkgs,
   ...
 }:
 {
@@ -39,6 +40,7 @@
     supergfxd.enable = true;
   };
 
+  boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux-cachyos-latest-lto;
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.initrd.availableKernelModules = [
     "nvme"

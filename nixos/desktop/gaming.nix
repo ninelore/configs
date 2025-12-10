@@ -29,11 +29,6 @@
         ]
       ))
     ];
-    programs.steam = {
-      enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-      extraCompatPackages = [
-        pkgs.proton-ge-custom
-      ];
-    };
+    programs.steam.enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
   };
 }

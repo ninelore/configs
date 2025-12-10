@@ -24,7 +24,6 @@ in
     modules = [
       ./../hm
       inputs.ninelore.homeModules.default
-      inputs.chaotic.homeManagerModules.default
       inputs.nix-index-database.homeModules.nix-index
       inputs.ninelore.inputs.cosmic-manager.homeManagerModules.cosmic-manager
       (

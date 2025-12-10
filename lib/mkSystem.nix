@@ -41,7 +41,6 @@ in
       ./../nixos
       inputs.ninelore.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
-      inputs.chaotic.nixosModules.default
       inputs.nix-index-database.nixosModules.nix-index
       {
         networking = { inherit hostName; };
