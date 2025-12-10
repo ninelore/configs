@@ -6,7 +6,6 @@
     ninelore.url = "github:ninelore/flake";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
