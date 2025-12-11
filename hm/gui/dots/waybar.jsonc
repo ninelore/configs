@@ -1,5 +1,5 @@
 {
-	"height": 28,
+	"height": 24,
 	"layer": "top",
 	"spacing": 16,
 	"modules-left": [
@@ -15,10 +15,9 @@
 		"idle_inhibitor",
 		"bluetooth",
 		"network",
-		"backlight",
 		"wireplumber",
-		"power-profiles-daemon",
-		"battery"
+		"battery",
+		"power-profiles-daemon"
 	],
 	"idle_inhibitor": {
 		"format": "{icon}",
@@ -28,7 +27,8 @@
 		}
 	},
 	"tray": {
-		"spacing": 14
+		"spacing": 12,
+		"icon-size": 14
 	},
 	"clock": {
 		"format": "<span color='#c4c5b5'>{:%a %m/%d</span> <b>%H:%M}</b>",
@@ -52,43 +52,15 @@
 		},
 		"on-click": "gnome-clocks"
 	},
-	"backlight": {
-		"format": "{icon}",
-		"tooltip-format": "{percent}%",
-		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			"",
-			""
-		]
-	},
 	"battery": {
 		"states": {
 			"warning": 30,
 			"critical": 15
 		},
-		"format": "{icon}",
-		"format-charging": "{icon}󱐋",
-		"format-plugged": "{icon}",
+		"format": "󰁹 {capacity}%",
+		"format-charging": "󱐋 {capacity}%",
+		"format-plugged": " {capacity}%",
 		"tooltip-format": "{capacity}% | {timeTo}",
-		"format-icons": [
-			"󰂎",
-			"󰁺",
-			"󰁻",
-			"󰁼",
-			"󰁽",
-			"󰁾",
-			"󰁿",
-			"󰂀",
-			"󰂁",
-			"󰂂",
-			"󰁹"
-		],
 		"on-scroll-up": "swayosd-client --brightness raise",
 		"on-scroll-down": "swayosd-client --brightness lower"
 	},
@@ -112,7 +84,7 @@
 	"wireplumber": {
 		"tooltip-format": " {node_name}: {volume}% \n {source_desc}: {source_volume}%",
 		"scroll-step": 5,
-		"format": "{icon}",
+		"format": "{icon} {volume}%",
 		"format-muted": "",
 		"format-icons": [
 			"",
@@ -138,7 +110,7 @@
 	},
 	"privacy": {
 		"icon-spacing": 8,
-		"icon-size": 16,
+		"icon-size": 14,
 		"transition-duration": 0,
 		"modules": [
 			{
@@ -153,11 +125,7 @@
 			}
 		]
 	},
-	"niri/window": {
-		"format": "{app_id}"
-	},
 	"custom/notification": {
-		"tooltip": false,
 		"format": "{icon}",
 		"format-icons": {
 			"notification": "󱅫",

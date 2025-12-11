@@ -1,7 +1,7 @@
 * {
 	border: none;
 	font-family: Lilex Nerd Font Propo;
-	font-size: 17px;
+	font-size: 15px;
 	font-feature-settings: "+zero";
 	color: #f6f6ef;
 	border-radius: 0;
@@ -10,11 +10,6 @@
 window#waybar {
 	/* background: rgba(12, 12, 12, 0.6); */
 	background-color: #0c0c0c;
-}
-
-/*-----module stuff----*/
-#bluetooth {
-	font-size: 18px;
 }
 
 /*-----module groups----*/
@@ -26,7 +21,7 @@ window#waybar {
 /*-----modules indv----*/
 /*#workspaces {}*/
 #workspaces button {
-	padding: 2px 10px;
+	padding: 0 10px;
 	background-color: transparent;
 }
 
@@ -66,8 +61,6 @@ window#waybar {
 }
 
 #privacy {
-	border-radius: 100px;
 	background-color: #fd971f;
 	padding: 0 10px;
-	margin: 2px 0;
 }
