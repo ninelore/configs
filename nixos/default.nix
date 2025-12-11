@@ -4,15 +4,6 @@
   pkgs,
   ...
 }:
-let
-  usbDontAutosuspend = [
-    {
-      # HP USB-C G5 Essential Dock
-      vendor = "03f0";
-      product = "279d";
-    }
-  ];
-in
 {
   # FIXME: (2025-11-08) Weird infinite recursion in
   # default value expression of `hardware.facter.detected.dhcp`.
@@ -175,27 +166,6 @@ in
       };
     };
 
-    services = {
-      udev.extraRules = lib.concatLines (
-        [ ]
-        ++ (builtins.map (
-          dev:
-          ''ACTION=="bind", SUBSYSTEM=="usb", ATTR{idVendor}=="${dev.vendor}", ATTR{idProduct}=="${dev.product}", TEST=="power/control", ATTR{power/control}="on"''
-        ) usbDontAutosuspend)
-      );
-    };
-
-    powerManagement = {
-      enable = true;
-      powertop = {
-        enable = true;
-        postStart = lib.concatLines (
-          builtins.map (
-            dev:
-            ''${lib.getExe' config.systemd.package "udevadm"} trigger -c bind -s usb -a idVendor=${dev.vendor} -a idProduct=${dev.product}''
-          ) usbDontAutosuspend
-        );
-      };
-    };
+    powerManagement.enable = true;
   };
 }

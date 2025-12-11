@@ -77,7 +77,6 @@ in
         HandleLidSwitchExternalPower = "suspend";
         HandleLidSwitchDocked = "ignore";
       };
-      power-profiles-daemon.enable = true;
       playerctld.enable = true;
       pulseaudio.enable = false;
       pipewire = {
@@ -123,6 +122,14 @@ in
           };
         };
       };
+      # Power Management
+      tlp.enable = false;
+      upower = {
+        enable = true;
+      };
+      tuned = {
+        enable = true;
+      };
     };
 
     virtualisation.waydroid.enable = true;
@@ -135,5 +142,7 @@ in
         ];
       };
     };
+
+    powerManagement.enable = true;
   };
 }
