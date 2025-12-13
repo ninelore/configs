@@ -16,6 +16,7 @@
         with pkgs;
         [
           # GUI Apps
+          appimage-run
           darktable
           element-desktop
           gimp3
@@ -46,7 +47,6 @@
           ))
         ]
         ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
-          appimage-run
           onlyoffice-desktopeditors
           spotify
           wineWowPackages.stable

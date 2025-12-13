@@ -24,18 +24,14 @@ in
   ];
 
   config = lib.mkIf (config.ninelore.desktop) {
-    environment.systemPackages =
-      with pkgs;
-      [
-        helvum
-        mpv
-        nm-editor
-        wl-clipboard
-        xclip
-      ]
-      ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
-        (pkgs.bottles.override { removeWarningPopup = true; })
-      ];
+    environment.systemPackages = with pkgs; [
+      (pkgs.bottles.override { removeWarningPopup = true; })
+      helvum
+      mpv
+      nm-editor
+      wl-clipboard
+      xclip
+    ];
 
     fonts = {
       enableDefaultPackages = true;
