@@ -18,7 +18,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           nix flake update --commit-lock-file
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: ci/update
           delete-branch: true
