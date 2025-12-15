@@ -16,6 +16,7 @@
         with pkgs;
         [
           # GUI Apps
+          anytype
           appimage-run
           darktable
           element-desktop
