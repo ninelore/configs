@@ -29,9 +29,6 @@ in
     pkgs = import inputs.nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      # config.permittedInsecurePackages = [
-      #   "mbedtls-2.28.10" # NOTE: for retroarch 2025-10-14
-      # ];
     };
     specialArgs = {
       inherit inputs defaultUser;
