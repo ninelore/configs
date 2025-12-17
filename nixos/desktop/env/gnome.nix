@@ -16,6 +16,7 @@
       systemPackages = with pkgs; [
         loupe
         pwvucontrol
+        refine
       ];
       gnome.excludePackages = with pkgs; [
         baobab
@@ -28,7 +29,6 @@
         gnome-contacts
         gnome-logs
         gnome-music
-        gnome-shell-extensions
         gnome-software
         gnome-terminal
         gnome-text-editor
