@@ -32,7 +32,7 @@ let
         swapfile = 64 * 1024;
         extraModules = [
           {
-            ninelore.desktop.cosmic = true;
+            ninelore.desktop.niri = true;
             ninelore.gaming = true;
           }
         ];
@@ -42,7 +42,7 @@ let
         defaultUser = "9l";
         hostName = "9l-eldrid";
         swapfile = 32 * 1024;
-        extraModules = [ { ninelore.desktop.cosmic = true; } ];
+        extraModules = [ { ninelore.desktop.gnome = true; } ];
       })
       (mkSystem {
         inherit inputs;
