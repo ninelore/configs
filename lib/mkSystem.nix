@@ -49,45 +49,49 @@ in
           }
         ];
       }
-      (lib.mkIf (defaultUser != null) {
-        users.users.${defaultUser} = {
-          isNormalUser = true;
-          initialPassword = defaultUser;
-          extraGroups = [
-            "networkmanager"
-            "power"
-            "wheel"
-            "audio"
-            "video"
-            "libvirtd"
-            "docker"
-            "podman"
-            "adbusers"
-            "plugdev"
-            "openrazer"
-            "wireshark"
-            "ydotool"
-            "dialout"
-          ];
-        };
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          # sharedModules = [ ];
-          extraSpecialArgs = {
-            inherit inputs defaultUser;
+      (
+        { config, ... }:
+        lib.mkIf (defaultUser != null) {
+          users.users.${defaultUser} = {
+            isNormalUser = true;
+            initialPassword = defaultUser;
+            extraGroups = [
+              "networkmanager"
+              "power"
+              "wheel"
+              "audio"
+              "video"
+              "libvirtd"
+              "docker"
+              "podman"
+              "adbusers"
+              "plugdev"
+              "openrazer"
+              "wireshark"
+              "ydotool"
+              "dialout"
+            ];
           };
-          users.${defaultUser} = {
-            imports = [
-              ./../hm
-              {
-                ninelore.gui = lib.mkDefault true;
-              }
-            ]
-            ++ extraHomeModules;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            # sharedModules = [ ];
+            extraSpecialArgs = {
+              inherit inputs defaultUser;
+              nixosConfig = config;
+            };
+            users.${defaultUser} = {
+              imports = [
+                ./../hm
+                {
+                  ninelore.gui = lib.mkDefault true;
+                }
+              ]
+              ++ extraHomeModules;
+            };
           };
-        };
-      })
+        }
+      )
     ]
     ++ extraModules;
   };

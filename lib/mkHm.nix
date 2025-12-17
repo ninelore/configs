@@ -25,7 +25,6 @@ in
       ./../hm
       inputs.ninelore.homeModules.default
       inputs.nix-index-database.homeModules.nix-index
-      inputs.ninelore.inputs.cosmic-manager.homeManagerModules.cosmic-manager
       (
         { pkgs, ... }:
         {
@@ -41,14 +40,15 @@ in
               auto-optimise-store = true;
             };
           };
-          nixGL = {
-            packages = inputs.nixgl.packages;
-            installScripts = [
-              "mesa"
-              "mesaPrime"
-              "nvidiaPrime"
-            ];
-          };
+          # FIXME: Broken
+          # targets.genericLinux.nixGL = {
+          #   packages = inputs.nixgl.packages;
+          #   installScripts = [
+          #     "mesa"
+          #     "mesaPrime"
+          #     "nvidiaPrime"
+          #   ];
+          # };
           programs = {
             nix-index-database.comma.enable = true;
           };
