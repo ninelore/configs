@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) mkDefault;
+in
 {
   options.ninelore.vr = lib.mkEnableOption "vr stuff";
 
@@ -16,17 +19,15 @@
     ];
     services = {
       monado = {
-        enable = true;
-        defaultRuntime = true;
+        enable = mkDefault true;
+        defaultRuntime = mkDefault true;
       };
       udev.packages = with pkgs; [ xr-hardware ];
     };
     systemd.user.services.monado.environment = {
-      STEAMVR_LH_ENABLE = "0";
-      XRT_COMPOSITOR_COMPUTE = "1";
-      # XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT = "1";
-      AMD_VULKAN_ICD = "RADV";
+      STEAMVR_LH_ENABLE = mkDefault "0";
+      XRT_COMPOSITOR_COMPUTE = mkDefault "1";
+      # XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT = mkDefault "1";
     };
-
   };
 }

@@ -5,25 +5,47 @@
   ...
 }:
 let
+  inherit (lib) mkDefault;
+
   nm-editor = pkgs.writeShellScriptBin "nm-connection-editor" ''
     ${pkgs.networkmanagerapplet}/bin/nm-connection-editor $@
   '';
 in
 {
-  options.ninelore.desktop = lib.mkOption {
-    default = true;
-    example = false;
-    description = "Whether to use ninelore's NixOS desktop options.";
-    type = lib.types.bool;
-  };
-
   imports = [
-    ./niri.nix
+    ./env/cosmic.nix
+    ./env/gnome.nix
+    ./env/niri.nix
+
     ./gaming.nix
     ./vr.nix
   ];
 
-  config = lib.mkIf (config.ninelore.desktop) {
+  options = {
+    ninelore.commonDesktop = lib.mkEnableOption "ninelore's common desktop options.";
+    ninelore.hasDesktop = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+      description = "Internal: Assert that a desktop environment is enabled";
+    };
+  };
+
+  config = lib.mkIf config.ninelore.commonDesktop {
+    assertions = [
+      {
+        assertion = config.ninelore.common;
+        message = "ninelore.commonDesktop depends on ninelore.common";
+      }
+      {
+        assertion = config.ninelore.hasDesktop;
+        message = ''
+          You need to enable a desktop environment.
+          If you configured a desktop environment and a display manager you can remove this error by setting
+          `ninelore.hasDesktop = true;`
+        '';
+      }
+    ];
+
     environment.systemPackages = with pkgs; [
       (pkgs.bottles.override { removeWarningPopup = true; })
       helvum
@@ -34,7 +56,7 @@ in
     ];
 
     fonts = {
-      enableDefaultPackages = true;
+      enableDefaultPackages = mkDefault true;
       packages = with pkgs; [
         inter
         iosevka
@@ -47,27 +69,25 @@ in
     };
 
     programs = {
-      adb.enable = true;
-      dconf.enable = true;
-      firefox.enable = true;
-      flashprog.enable = true;
-      flashrom.enable = true;
+      adb.enable = mkDefault true;
+      dconf.enable = mkDefault true;
+      firefox.enable = mkDefault true;
+      flashprog.enable = mkDefault true;
+      flashrom.enable = mkDefault true;
       gamemode = {
-        enable = true;
+        enable = mkDefault true;
       };
-      gnupg.agent = {
-        enable = true;
-      };
-      nix-index-database.comma.enable = true;
-      nix-ld.enable = true;
-      virt-manager.enable = true;
-      wireshark.enable = true;
-      ydotool.enable = true;
+      gnupg.agent.enable = mkDefault true;
+      nix-index-database.comma.enable = mkDefault true;
+      nix-ld.enable = mkDefault true;
+      virt-manager.enable = mkDefault true;
+      wireshark.enable = mkDefault true;
+      ydotool.enable = mkDefault true;
     };
 
     security = {
       pam.services.hyprlock = { };
-      polkit.enable = true;
+      polkit.enable = mkDefault true;
     };
 
     services = {
@@ -77,16 +97,15 @@ in
         HandleLidSwitchExternalPower = "suspend";
         HandleLidSwitchDocked = "ignore";
       };
-      playerctld.enable = true;
-      pulseaudio.enable = false;
+      playerctld.enable = mkDefault true;
       pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-        jack.enable = true;
+        enable = mkDefault true;
+        alsa.enable = mkDefault true;
+        alsa.support32Bit = mkDefault true;
+        pulse.enable = mkDefault true;
+        jack.enable = mkDefault true;
         wireplumber = {
-          enable = true;
+          enable = mkDefault true;
           extraConfig = {
             "10-disable-camera" = {
               "wireplumber.profiles" = {
@@ -123,19 +142,20 @@ in
         };
       };
       # Power Management
-      tlp.enable = false;
+      power-profiles-daemon.enable = lib.mkForce false;
+      tlp.enable = lib.mkForce false;
       upower = {
-        enable = true;
+        enable = mkDefault true;
       };
       tuned = {
-        enable = true;
+        enable = mkDefault true;
       };
     };
 
-    virtualisation.waydroid.enable = true;
+    virtualisation.waydroid.enable = mkDefault true;
 
     xdg.terminal-exec = {
-      enable = true;
+      enable = mkDefault true;
       settings = {
         default = [
           "kitty.desktop"
@@ -143,6 +163,6 @@ in
       };
     };
 
-    powerManagement.enable = true;
+    powerManagement.enable = mkDefault true;
   };
 }

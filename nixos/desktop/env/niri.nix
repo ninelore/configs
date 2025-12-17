@@ -4,9 +4,17 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) mkDefault;
+in
 {
+  options.ninelore.desktop.niri = lib.mkEnableOption "ninelore's niri desktop environment options.";
 
-  config = lib.mkIf (config.ninelore.desktop) {
+  config = lib.mkIf config.ninelore.desktop.niri {
+    ninelore.common = true;
+    ninelore.commonDesktop = true;
+    ninelore.hasDesktop = true;
+
     environment.systemPackages = with pkgs; [
       cliphist
       loupe
@@ -14,23 +22,23 @@
       pwvucontrol
     ];
 
-    programs.niri.enable = true;
+    programs.niri.enable = mkDefault true;
 
     services = {
       dbus.packages = with pkgs; [ swayosd ];
       greetd = {
-        enable = true;
-        useTextGreeter = true;
+        enable = mkDefault true;
+        useTextGreeter = mkDefault true;
         settings = {
           default_session = {
-            command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --kb-power 1";
-            user = "greeter";
+            command = mkDefault "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --kb-power 1";
+            user = mkDefault "greeter";
           };
         };
       };
-      gnome.sushi.enable = true;
-      gnome.gnome-keyring.enable = true;
-      gvfs.enable = true;
+      gnome.sushi.enable = mkDefault true;
+      gnome.gnome-keyring.enable = mkDefault true;
+      gvfs.enable = mkDefault true;
       udev.packages = with pkgs; [ swayosd ];
     };
 
@@ -49,7 +57,7 @@
         };
       };
       user.services.cliphist = {
-        enable = true;
+        enable = mkDefault true;
         wantedBy = [ "graphical-session.target" ];
         after = [ "graphical-session.target" ];
         description = "Cliphist";

@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) mkDefault;
+in
 {
   # FIXME: (2025-11-08) Weird infinite recursion in
   # default value expression of `hardware.facter.detected.dhcp`.
@@ -12,14 +15,16 @@
 
   imports = [ ./desktop ];
 
-  config = {
+  options.ninelore.common = lib.mkEnableOption "ninelore's common options.";
+
+  config = lib.mkIf config.ninelore.common {
     system.stateVersion = lib.mkDefault "24.05";
 
     nix = {
       package = pkgs.nixVersions.latest;
       settings = {
         experimental-features = "nix-command flakes";
-        auto-optimise-store = true;
+        auto-optimise-store = mkDefault true;
         trusted-users = [
           "root"
           "@wheel"
@@ -33,16 +38,16 @@
 
     boot = {
       kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-      initrd.systemd.enable = true;
-      kernelParams = [ "boot.shell_on_fail" ];
-      tmp.cleanOnBoot = true;
+      initrd.systemd.enable = mkDefault true;
+      # kernelParams = [ ];
+      tmp.cleanOnBoot = mkDefault true;
       loader = {
-        timeout = 0;
+        timeout = mkDefault 0;
         systemd-boot = {
-          enable = true;
-          configurationLimit = 15;
+          enable = mkDefault true;
+          configurationLimit = mkDefault 15;
         };
-        efi.canTouchEfiVariables = true;
+        efi.canTouchEfiVariables = mkDefault true;
       };
       binfmt.emulatedSystems =
         lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [ "aarch64-linux" ]
@@ -51,7 +56,7 @@
 
     systemd = {
       services."getty@tty11" = {
-        enable = true;
+        enable = mkDefault true;
         wantedBy = [ "getty.target" ];
         serviceConfig.Restart = "always";
       };
@@ -60,11 +65,11 @@
 
     hardware = {
       bluetooth = {
-        enable = true;
-        powerOnBoot = true;
+        enable = mkDefault true;
+        powerOnBoot = mkDefault true;
       };
-      i2c.enable = true;
-      keyboard.qmk.enable = true;
+      i2c.enable = mkDefault true;
+      keyboard.qmk.enable = mkDefault true;
     }
     // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system != "x86_64-linux") {
       graphics.enable32Bit = lib.mkForce false;
@@ -72,25 +77,21 @@
 
     security = {
       doas = {
-        enable = true;
+        enable = mkDefault true;
         extraConfig = ''
           permit persist keepenv :wheel
         '';
       };
-      sudo-rs = {
-        enable = false;
-        execWheelOnly = true;
-      };
-      rtkit.enable = true;
+      rtkit.enable = mkDefault true;
       pam.services.systemd-run0 = { };
     };
 
     networking = {
-      useDHCP = lib.mkDefault true;
-      networkmanager.enable = true;
+      useDHCP = mkDefault true;
+      networkmanager.enable = mkDefault true;
       firewall = rec {
-        enable = true;
-        allowPing = false;
+        enable = mkDefault true;
+        allowPing = mkDefault false;
         allowedTCPPortRanges = [
           # KDEConnect
           {
@@ -108,8 +109,8 @@
       };
     };
 
-    time.timeZone = "Europe/Berlin";
-    i18n.defaultLocale = "en_GB.UTF-8";
+    time.timeZone = mkDefault "Europe/Berlin";
+    i18n.defaultLocale = mkDefault "en_GB.UTF-8";
     i18n.supportedLocales = [
       "C.UTF-8/UTF-8"
       "en_US.UTF-8/UTF-8"
@@ -118,18 +119,18 @@
       "en_DK.UTF-8/UTF-8" # For ISO 8601 date format
     ];
     i18n.extraLocaleSettings = {
-      LC_ADDRESS = "de_DE.UTF-8";
-      LC_IDENTIFICATION = "de_DE.UTF-8";
-      LC_MEASUREMENT = "de_DE.UTF-8";
-      LC_MONETARY = "de_DE.UTF-8";
-      LC_NAME = "de_DE.UTF-8";
-      LC_NUMERIC = "de_DE.UTF-8";
-      LC_PAPER = "de_DE.UTF-8";
-      LC_TELEPHONE = "de_DE.UTF-8";
-      LC_TIME = "en_DK.UTF-8"; # For ISO 8601 date format
+      LC_ADDRESS = mkDefault "de_DE.UTF-8";
+      LC_IDENTIFICATION = mkDefault "de_DE.UTF-8";
+      LC_MEASUREMENT = mkDefault "de_DE.UTF-8";
+      LC_MONETARY = mkDefault "de_DE.UTF-8";
+      LC_NAME = mkDefault "de_DE.UTF-8";
+      LC_NUMERIC = mkDefault "de_DE.UTF-8";
+      LC_PAPER = mkDefault "de_DE.UTF-8";
+      LC_TELEPHONE = mkDefault "de_DE.UTF-8";
+      LC_TIME = mkDefault "en_DK.UTF-8"; # For ISO 8601 date format
     };
     environment = {
-      localBinInPath = true;
+      localBinInPath = mkDefault true;
       systemPackages = with pkgs; [
         curl
         dmidecode
@@ -146,26 +147,22 @@
     };
 
     programs = {
-      gnupg.agent = {
-        enable = true;
-      };
-      nix-index-database.comma.enable = true;
-      nix-ld.enable = true;
+      gnupg.agent.enable = mkDefault true;
+      nix-index-database.comma.enable = mkDefault true;
+      nix-ld.enable = mkDefault true;
     };
 
     virtualisation = {
       podman = {
-        enable = true;
-        dockerSocket.enable = true;
-        dockerCompat = true;
+        enable = mkDefault true;
+        dockerSocket.enable = mkDefault true;
+        dockerCompat = mkDefault true;
       };
       libvirtd = {
-        enable = true;
-        onBoot = "ignore";
-        qemu.swtpm.enable = true;
+        enable = mkDefault true;
+        onBoot = mkDefault "ignore";
+        qemu.swtpm.enable = mkDefault true;
       };
     };
-
-    powerManagement.enable = true;
   };
 }
