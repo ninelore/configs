@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -15,12 +16,22 @@ in
     ninelore.commonDesktop = true;
     ninelore.hasDesktop = true;
 
-    environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
-    environment.systemPackages = with pkgs; [
-      loupe
-      ptyxis
-      pwvucontrol
-    ];
+    nixpkgs.overlays = [ inputs.cosmic-unstable.overlays.default ];
+
+    environment = {
+      systemPackages = with pkgs; [
+        loupe
+        ptyxis
+        pwvucontrol
+      ];
+      cosmic.excludePackages = with pkgs; [
+        cosmic-player
+        cosmic-store
+      ];
+      sessionVariables = {
+        COSMIC_DATA_CONTROL_ENABLED = 1;
+      };
+    };
 
     programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
