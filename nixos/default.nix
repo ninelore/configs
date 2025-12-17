@@ -110,24 +110,17 @@ in
     };
 
     time.timeZone = mkDefault "Europe/Berlin";
-    i18n.defaultLocale = mkDefault "en_GB.UTF-8";
+    i18n.defaultLocale = mkDefault "de_DE.UTF-8";
     i18n.supportedLocales = [
       "C.UTF-8/UTF-8"
       "en_US.UTF-8/UTF-8"
       "en_GB.UTF-8/UTF-8"
       "de_DE.UTF-8/UTF-8"
-      "en_DK.UTF-8/UTF-8" # For ISO 8601 date format
     ];
     i18n.extraLocaleSettings = {
-      LC_ADDRESS = mkDefault "de_DE.UTF-8";
-      LC_IDENTIFICATION = mkDefault "de_DE.UTF-8";
-      LC_MEASUREMENT = mkDefault "de_DE.UTF-8";
-      LC_MONETARY = mkDefault "de_DE.UTF-8";
-      LC_NAME = mkDefault "de_DE.UTF-8";
-      LC_NUMERIC = mkDefault "de_DE.UTF-8";
-      LC_PAPER = mkDefault "de_DE.UTF-8";
-      LC_TELEPHONE = mkDefault "de_DE.UTF-8";
-      LC_TIME = mkDefault "en_DK.UTF-8"; # For ISO 8601 date format
+      LANGUAGE = mkDefault "en_GB.UTF-8";
+      LC_NUMERIC = mkDefault "en_US.UTF-8";
+      LC_TIME = mkDefault "en_US.UTF-8";
     };
     environment = {
       localBinInPath = mkDefault true;
