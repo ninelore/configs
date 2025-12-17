@@ -140,7 +140,6 @@ in
     };
 
     programs = {
-      gnupg.agent.enable = mkDefault true;
       nix-index-database.comma.enable = mkDefault true;
       nix-ld.enable = mkDefault true;
     };

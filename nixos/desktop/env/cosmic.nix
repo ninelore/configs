@@ -22,6 +22,8 @@ in
       pwvucontrol
     ];
 
+    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+
     services = {
       desktopManager.cosmic = {
         enable = true;

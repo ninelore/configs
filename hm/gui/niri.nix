@@ -114,10 +114,6 @@ in
 
         services = {
           #easyeffects.enable = true;
-          gpg-agent = {
-            enable = true;
-            pinentry.package = pkgs.pinentry-gnome3;
-          };
           polkit-gnome.enable = true;
           hypridle =
             let

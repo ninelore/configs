@@ -41,6 +41,8 @@
       ];
     };
 
+    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+
     services = {
       desktopManager.gnome.enable = true;
       displayManager.gdm = {

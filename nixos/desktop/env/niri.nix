@@ -23,6 +23,7 @@ in
     ];
 
     programs.niri.enable = mkDefault true;
+    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
     services = {
       dbus.packages = with pkgs; [ swayosd ];
