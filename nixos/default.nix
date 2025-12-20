@@ -145,6 +145,13 @@ in
     programs = {
       nix-index-database.comma.enable = mkDefault true;
       nix-ld.enable = mkDefault true;
+      nh = {
+        enable = true;
+        clean = {
+          enable = false;
+          extraArgs = "--keep 3 --keep-since 7d";
+        };
+      };
     };
 
     virtualisation = {
