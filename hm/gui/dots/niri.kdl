@@ -88,6 +88,7 @@ overview {
 window-rule {
 	match app-id="com.saivert.pwvucontrol"
 	match app-id="blueberry.py"
+	match app-id="tuned-gui"
 	open-floating true
 }
 
