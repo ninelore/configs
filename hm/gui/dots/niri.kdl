@@ -49,12 +49,12 @@ output "HP Inc. HP X34 6CM25210CS" {
 }
 
 layout {
-	gaps 3
+	gaps 2
 	center-focused-column "never"
 	always-center-single-column
 	focus-ring {
-		width 3
-		active-gradient from="#9d65ff" to="#f4005f" angle=45
+		width 2
+		active-gradient from="#c4c5b5" to="#625e4c" angle=135
 	}
 	border {
 		off
@@ -119,7 +119,7 @@ binds {
 
 	Mod+Left { focus-column-left; }
 	Mod+Down { focus-window-down; }
-	Mod+Up{ focus-window-up; }
+	Mod+Up { focus-window-up; }
 	Mod+Right { focus-column-right; }
 	Mod+H { focus-column-left; }
 	Mod+J { focus-window-or-workspace-down; }

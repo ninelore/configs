@@ -8,8 +8,8 @@
 }
 
 window#waybar {
-	/* background: rgba(12, 12, 12, 0.6); */
-	background-color: #0c0c0c;
+	background: rgba(12, 12, 12, 0.66);
+	/* background-color: #0c0c0c; */
 }
 
 /*-----module groups----*/
@@ -32,7 +32,7 @@ window#waybar {
 
 #workspaces button.active {
 	/* background-image: linear-gradient(315deg, #9d65ff, #f4005f); */
-	background-color: #9d65ff;
+	background-color: #625e4c;
 }
 
 #workspaces button.urgent {
