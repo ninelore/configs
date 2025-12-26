@@ -20,6 +20,9 @@ in
   config = lib.mkIf config.ninelore.common {
     system.stateVersion = lib.mkDefault "24.05";
 
+    # Fails due to disabledModules
+    documentation.nixos.checkRedirects = false;
+
     nix = {
       package = pkgs.nixVersions.latest;
       settings = {
