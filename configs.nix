@@ -14,7 +14,7 @@ let
           {
             ninelore.desktop.niri = true;
             ninelore.gaming = true;
-            # ninelore.vr = true;
+            ninelore.vr = true;
           }
         ];
       })
