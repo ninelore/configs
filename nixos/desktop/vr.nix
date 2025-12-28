@@ -21,11 +21,12 @@ in
       monado = {
         enable = mkDefault true;
         defaultRuntime = mkDefault true;
+        forceDefaultRuntime = mkDefault true;
       };
       udev.packages = with pkgs; [ xr-hardware ];
     };
     systemd.user.services.monado.environment = {
-      STEAMVR_LH_ENABLE = mkDefault "0";
+      WMR_HANDTRACKING = mkDefault "0";
       XRT_COMPOSITOR_COMPUTE = mkDefault "1";
       # XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT = mkDefault "1";
     };
