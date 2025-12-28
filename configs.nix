@@ -49,7 +49,7 @@ let
         defaultUser = "9l";
         hostName = "9l-tomato";
         system = "aarch64-linux";
-        extraModules = [ { ninelore.desktop.cosmic = true; } ];
+        extraModules = [ { ninelore.desktop.niri = true; } ];
       })
     ];
     hm = mergeAttrsList [
