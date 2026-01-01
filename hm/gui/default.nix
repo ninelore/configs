@@ -20,6 +20,7 @@
           appimage-run
           darktable
           element-desktop
+          geary
           gimp3
           gnome-calculator
           gnome-clocks
@@ -41,7 +42,7 @@
           wl-clipboard
           (pkgs.ghidra.withExtensions (
             p: with p; [
-              # ghidraninja-ghidra-scripts
+              ghidraninja-ghidra-scripts
               ret-sync
               wasm
             ]
