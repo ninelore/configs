@@ -36,9 +36,13 @@ in
       };
     };
 
-    # nixpkgs.overlays = [
-    #   (final: prev: { })
-    # ];
+    nixpkgs.overlays = [
+      (final: prev: {
+        lrzsz = prev.lrzsz.overrideAttrs (oldAttrs: {
+          env.NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=incompatible-pointer-types -std=gnu17";
+        });
+      })
+    ];
 
     boot = {
       kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
