@@ -20,7 +20,6 @@
           appimage-run
           darktable
           element-desktop
-          geary
           gimp3
           gnome-calculator
           gnome-clocks
@@ -38,6 +37,7 @@
           papers
           pdfarranger
           scrcpy
+          thunderbird
           warp
           wl-clipboard
           (pkgs.ghidra.withExtensions (
