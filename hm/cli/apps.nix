@@ -6,7 +6,6 @@ in
   home = {
     packages = with pkgs; [
       android-tools
-      bcal
       bear
       binwalk
       curl
