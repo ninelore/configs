@@ -70,9 +70,8 @@
         scripts = with pkgs.mpvScripts; [
           mpris
           (quality-menu.override { oscSupport = true; })
-          sponsorblock
+          sponsorblock-minimal
           thumbfast
-          uosc
           videoclip
         ];
         scriptOpts = {
