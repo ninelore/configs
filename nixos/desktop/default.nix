@@ -69,7 +69,6 @@ in
     };
 
     programs = {
-      adb.enable = mkDefault true;
       dconf.enable = mkDefault true;
       firefox.enable = mkDefault true;
       flashprog.enable = mkDefault true;
