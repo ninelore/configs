@@ -58,6 +58,8 @@ in
         ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "aarch64-linux") [ "x86_64-linux" ];
     };
 
+    services.fwupd.enable = true;
+
     systemd = {
       services."getty@tty11" = {
         enable = mkDefault true;
