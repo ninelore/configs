@@ -37,7 +37,7 @@
         default = inputs.ninelore.devShells.${system}.default;
       });
 
-      formatter = forSystems (system: inputs.nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = forSystems (system: inputs.nixpkgs.legacyPackages.${system}.nixfmt);
 
       lib = import ./lib;
 

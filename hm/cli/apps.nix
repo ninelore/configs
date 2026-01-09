@@ -90,7 +90,7 @@ in
         markdown-oxide
         nil
         nixd
-        nixfmt-rfc-style
+        nixfmt
         nushell
         rust-analyzer
         shellcheck
