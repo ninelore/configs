@@ -36,8 +36,8 @@ in
         scan_timeout = 2000;
         command_timeout = 2000;
         character = {
-          success_symbol = "[->](bold green)";
-          error_symbol = "[->](bold red)";
+          success_symbol = "[>](bold green)";
+          error_symbol = "[>](bold red)";
         };
       };
     };
@@ -54,72 +54,71 @@ in
         PROMPT_INDICATOR_VI_INSERT = "";
         PROMPT_INDICATOR_VI_NORMAL = "";
       };
-      extraConfig =
-        let
-          theme = "monokai-soda";
+      settings = {
+        show_banner = false;
+        edit_mode = "vi";
+        ls.clickable_links = true;
+        use_kitty_protocol = true;
+        datetime_format.normal = "%y-%m-%d %I:%M:%S%p";
 
-          nuscripts = "${pkgs.nu_scripts}/share/nu_scripts";
-          conf = builtins.toJSON {
-            show_banner = false;
-            edit_mode = "vi";
-            ls.clickable_links = true;
-            use_kitty_protocol = true;
+        history = {
+          file_format = "sqlite";
+          max_size = 1000000;
+          isolation = true;
+        };
 
-            history = {
-              file_format = "sqlite";
-              max_size = 1000000;
-              isolation = true;
-            };
+        cursor_shape = {
+          vi_insert = "line";
+          vi_normal = "block";
+        };
 
-            cursor_shape = {
-              vi_insert = "line";
-              vi_normal = "block";
-            };
+        filesize = {
+          precision = 2;
+          unit = "binary";
+        };
 
-            datetime_format.normal = "%y-%m-%d %I:%M:%S%p";
-            filesize.precision = 2;
-
-            table = {
-              index_mode = "always";
-              header_on_separator = false;
-            };
-
-            completions = {
-              quick = true;
-              partial = true;
-              algorithm = "fuzzy";
-              use_ls_colors = true;
-              external = {
-                enable = true;
-                max_results = 50;
-              };
-            };
-
-            menus = [
-              {
-                name = "completion_menu";
-                only_buffer_difference = false;
-                marker = "";
-                type = {
-                  layout = "columnar"; # list, description
-                  columns = 4;
-                  col_padding = 2;
-                };
-                style = {
-                  text = "magenta";
-                  selected_text = "blue_reverse";
-                  description_text = "yellow";
-                };
-              }
-            ];
+        table = {
+          mode = "light";
+          index_mode = "auto";
+          header_on_separator = true;
+          trim = {
+            methodology = "truncating";
+            truncating_suffix = "..";
           };
-        in
-        ''
-          use ${nuscripts}/themes/nu-themes/${theme}.nu;
-          $env.config = ${conf};
-          $env.config.color_config = (${theme});
-          source ${nuscripts}/nu-hooks/nu-hooks/rusty-paths/rusty-paths.nu
-        '';
+        };
+
+        completions = {
+          quick = true;
+          partial = true;
+          algorithm = "fuzzy";
+          use_ls_colors = true;
+          external = {
+            enable = true;
+            max_results = 100;
+          };
+        };
+
+        menus = [
+          {
+            name = "completion_menu";
+            only_buffer_difference = false;
+            marker = "";
+            type = {
+              layout = "columnar"; # list, description
+              columns = 4;
+              col_padding = 2;
+            };
+            style = {
+              text = "magenta";
+              selected_text = "blue_reverse";
+              description_text = "yellow";
+            };
+          }
+        ];
+      };
+      extraConfig = ''
+        source ${pkgs.nu_scripts}/share/nu_scripts/nu-hooks/nu-hooks/rusty-paths/rusty-paths.nu
+      '';
     };
   };
 }

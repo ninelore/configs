@@ -24,6 +24,7 @@ in
     modules = [
       ./../hm
       inputs.ninelore.homeModules.default
+      inputs.stylix.homeModules.stylix
       inputs.nix-index-database.homeModules.nix-index
       (
         { pkgs, ... }:

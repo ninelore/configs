@@ -19,6 +19,12 @@ let
     fi
     swayosd-client --custom-icon=input-keyboard --custom-progress="$current"
   '';
+
+  noBorderCSS = ''
+    * {
+      border-radius: 0;
+    }
+  '';
 in
 {
   imports = [
@@ -40,6 +46,8 @@ in
           ];
         };
 
+        dconf.enable = true;
+
         xdg.configFile = {
           "niri/config.kdl".source = ./dots/niri.kdl;
           "waybar/config.jsonc".source = ./dots/waybar.jsonc;
@@ -50,16 +58,11 @@ in
             enable = true;
             settings = {
               main = {
-                font = "Iosevka Nerd Font Propo:size=16:fontfeatures='+ss07 cv36=1'";
+                font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='+ss07 cv36=1'";
                 anchor = "top";
                 terminal = "${pkgs.kitty}/bin/kitty";
                 y-margin = 10;
                 dpi-aware = "no";
-              };
-              colors = {
-                background = "090909f0";
-                selection = "202020ff";
-                border = "de0159f0";
               };
               border = {
                 width = 2;
@@ -155,31 +158,14 @@ in
               control-center-margin-top = 8;
               hide-on-action = false;
             };
-            style = ''
-              :root {
-                --cc-bg: rgba(12, 12, 12, 0.95);
-                --noti-bg: 12, 12, 12;
-                --noti-bg-focus: rgba(56, 56, 56, 0.15)
-                --border-radius: 0;
-              }
-            '';
+            style = noBorderCSS;
           };
           swayosd = {
             enable = true;
             topMargin = 0.9;
-            stylePath = pkgs.writeText "style.css" ''
-              * {
-                border-radius: 0;
-              }
-            '';
+            stylePath = pkgs.writeText "swayosd-style.css" noBorderCSS;
           };
           swww.enable = true;
         };
-
-        dconf = {
-          enable = true;
-          settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-        };
-
       };
 }

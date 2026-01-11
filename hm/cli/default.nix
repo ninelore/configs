@@ -14,7 +14,7 @@
     ./sh.nix
   ];
 
-  nix.channels.nixpkgs = inputs.nixpkgs.lib.mkDefault inputs.nixpkgs;
+  nix.channels.nixpkgs = lib.mkDefault inputs.nixpkgs;
 
   home.packages = with pkgs; [
     # Fonts
@@ -35,44 +35,16 @@
         italic_font      family='Iosevka Nerd Font' features='+ss07 cv36=1'
         bold_italic_font family='Iosevka Nerd Font' features='+ss07 cv36=1'
       '';
-      settings = rec {
+      settings = {
         font_size = 11.5;
         shell = "nu";
         wayland_titlebar_color = "background";
         remember_window_size = true;
-        background_opacity = 0.9;
         enabled_layouts = "splits:split_axis=auto";
         # Keymap
         clear_all_shortcuts = "yes";
         kitty_mod = "ctrl+shift";
-        # https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/kitty/Monokai%20Remastered.conf
-        color0 = "#1a1a1a"; # black
-        color1 = "#f4005f"; # red
-        color2 = "#98e024"; # green
-        color3 = "#fd971f"; # yellow
-        color4 = "#9d65ff"; # blue
-        color5 = "#f4005f"; # magenta
-        color6 = "#58d1eb"; # cyan
-        color7 = "#c4c5b5"; # white
-        color8 = "#625e4c";
-        color9 = "#f4005f";
-        color10 = "#98e024";
-        color11 = "#e0d561";
-        color12 = "#9d65ff";
-        color13 = "#f4005f";
-        color14 = "#58d1eb";
-        color15 = "#f6f6ef";
-        background = "#0c0c0c";
-        foreground = "#d9d9d9";
-        selection_foreground = background;
-        cursor = "#ffffff";
-        cursor_text_color = "#000000";
-        selection_background = foreground;
-        active_tab_foreground = color15;
-        active_tab_background = color8;
-        inactive_tab_foreground = color7;
-        inactive_tab_background = background;
-        tab_activity_symbol = "󰦖 ";
+        tab_activity_symbol = "\"󰦖 \"";
       };
       keybindings = {
         "kitty_mod+c" = "copy_to_clipboard";
