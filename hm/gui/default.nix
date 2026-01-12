@@ -83,6 +83,22 @@
           };
         };
       };
+      neovide = {
+        enable = true;
+        settings = {
+          fork = true;
+          font = {
+            normal = [ "Iosevka Nerd Font" ];
+            size = 12.0;
+            features = {
+              "Iosevka Nerd Font" = [
+                "+ss07"
+                "cv36=1"
+              ];
+            };
+          };
+        };
+      };
       obs-studio = {
         enable = true;
         plugins =

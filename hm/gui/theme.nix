@@ -21,9 +21,7 @@
         hyprlock.colors.enable = false;
         librewolf.enable = false;
         neovim.enable = false;
-        # neovide.enable = false;
-        # nushell.enable = false;
-        # starship.enable = false; # Inherit from terminal
+        neovide.enable = false;
         waybar.enable = false;
 
         # Overrides
