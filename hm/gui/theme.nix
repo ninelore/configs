@@ -45,7 +45,7 @@
         swaync = {
           fonts.enable = false;
           colors.override.withHashtag = with config.lib.stylix.colors.withHashtag; {
-            base0D = base03;
+            base0D = base01;
             base0F = base08;
           };
         };

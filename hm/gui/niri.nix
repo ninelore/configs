@@ -20,7 +20,7 @@ let
     swayosd-client --custom-icon=input-keyboard --custom-progress="$current"
   '';
 
-  noBorderCSS = ''
+  noRoundCornerCSS = ''
     * {
       border-radius: 0;
     }
@@ -158,12 +158,16 @@ in
               control-center-margin-top = 8;
               hide-on-action = false;
             };
-            style = noBorderCSS;
+            style = noRoundCornerCSS + ''
+              .notification-group.collapsed .notification-row .notification {
+                background: inherit;
+              }
+            '';
           };
           swayosd = {
             enable = true;
             topMargin = 0.9;
-            stylePath = pkgs.writeText "swayosd-style.css" noBorderCSS;
+            stylePath = pkgs.writeText "swayosd-style.css" noRoundCornerCSS;
           };
           swww.enable = true;
         };
