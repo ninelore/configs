@@ -100,5 +100,13 @@ in
         yaml-language-server
       ];
     };
+    ripgrep = {
+      enable = true;
+      arguments = [
+        "--hidden"
+        "--glob=!.git/*"
+        "--smart-case"
+      ];
+    };
   };
 }
