@@ -5,7 +5,16 @@
   ...
 }:
 {
+  options.ninelore.font_features = lib.mkOption {
+    default = "";
+    description = "Font features (for Iosevka)";
+    type = lib.types.str;
+  };
+
   config = lib.mkIf config.ninelore.gui {
+
+    ninelore.font_features = "cv36=1 VSAB=3 VLAA=2";
+
     stylix = {
       # Stylix basics
       enable = true;
@@ -32,7 +41,7 @@
           @define-color accent_bg_color #${base08-hex};
         '';
         kitty = {
-          fonts.enable = true;
+          fonts.override.monospace.name = "Iosevka Nerd Font";
           colors.override = {
             base00-hex = "0c0c0c";
             base01-hex = "0c0c0c";
@@ -42,7 +51,7 @@
         };
         qt.standardDialogs = "xdgdesktopportal";
         swaync = {
-          fonts.enable = false;
+          fonts.enable = false; # Inherits Fontconfig?
           colors.override.withHashtag = with config.lib.stylix.colors.withHashtag; {
             base0D = base01;
             base0F = base08;
@@ -65,7 +74,7 @@
         sansSerif = serif;
         monospace = {
           package = pkgs.nerd-fonts.iosevka;
-          name = "Iosevka Nerd Font Propo:size=11.5:fontfeatures='+ss07 cv36=1'";
+          name = "Iosevka Nerd Font:size=11.5:fontfeatures='${config.ninelore.font_features}'";
         };
         emoji = {
           package = pkgs.noto-fonts-color-emoji;

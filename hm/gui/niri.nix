@@ -58,7 +58,7 @@ in
             enable = true;
             settings = {
               main = {
-                font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='+ss07 cv36=1'";
+                font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='${config.ninelore.font_features}'";
                 anchor = "top";
                 terminal = "${pkgs.kitty}/bin/kitty";
                 y-margin = 10;
@@ -72,39 +72,45 @@ in
           };
           hyprlock = {
             enable = true;
-            settings = {
-              background = [
-                {
-                  path = "screenshot";
-                  color = "rgba(12, 12, 12, 1.0)";
-                  blur_passes = 5;
-                }
-              ];
-              label = [
-                {
-                  text = "<span allow_breaks='true' font_features='+zero'>$TIME</span>";
-                  font_size = 300;
-                  font_family = "Lilex Nerd Font Propo";
-                  position = "0, 100";
-                }
-              ];
-              input-field = [
-                {
-                  size = "300,40";
-                  outer_color = "rgb(1a1a1a)";
-                  inner_color = "rgb(0c0c0c)";
-                  font_color = "rgb(c4c5b5)";
-                  fade_timeout = 1000;
-                  hide_input = true;
-                  rounding = 0;
-                  check_color = "rgb(fd971f)";
-                  fail_color = "rgb(f4005f)";
-                  fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-                  position = "0, 300";
-                  valign = "bottom";
-                }
-              ];
-            };
+            settings =
+              let
+                span = inner: "<span font_features='${config.ninelore.font_features}'>${inner}</span>";
+                font_family = "Iosevka Nerd Font Propo";
+              in
+              {
+                background = [
+                  {
+                    path = "screenshot";
+                    color = "rgba(12, 12, 12, 1.0)";
+                    blur_passes = 5;
+                  }
+                ];
+                label = [
+                  {
+                    inherit font_family;
+                    text = span "$TIME";
+                    font_size = 300;
+                    position = "0, 100";
+                  }
+                ];
+                input-field = [
+                  {
+                    inherit font_family;
+                    size = "300,40";
+                    outer_color = "rgb(1a1a1a)";
+                    inner_color = "rgb(0c0c0c)";
+                    font_color = "rgb(c4c5b5)";
+                    fade_timeout = 1000;
+                    hide_input = true;
+                    rounding = 0;
+                    check_color = "rgb(fd971f)";
+                    fail_color = "rgb(f4005f)";
+                    fail_text = span "$FAIL <b>($ATTEMPTS)</b>";
+                    position = "0, 300";
+                    valign = "bottom";
+                  }
+                ];
+              };
           };
           waybar = {
             enable = true;

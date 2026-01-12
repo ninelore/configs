@@ -28,15 +28,8 @@
     kitty = {
       enable = true;
       package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
-      # use extraConfig to be able to copypasta settings from `kitten` STDOUT
-      extraConfig = ''
-        font_family      family='Iosevka Nerd Font' features='+ss07 cv36=1'
-        bold_font        family='Iosevka Nerd Font' features='+ss07 cv36=1'
-        italic_font      family='Iosevka Nerd Font' features='+ss07 cv36=1'
-        bold_italic_font family='Iosevka Nerd Font' features='+ss07 cv36=1'
-      '';
       settings = {
-        font_size = 11.5;
+        font_features = "IosevkaNF " + config.ninelore.font_features;
         shell = "nu";
         wayland_titlebar_color = "background";
         remember_window_size = true;
