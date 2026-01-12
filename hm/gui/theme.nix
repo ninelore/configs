@@ -21,7 +21,6 @@
         hyprlock.colors.enable = false;
         librewolf.enable = false;
         neovim.enable = false;
-        neovide.enable = false;
         waybar.enable = false;
 
         # Overrides
