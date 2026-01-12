@@ -12,7 +12,7 @@
       polarity = "dark";
 
       # Theme
-      base16Scheme = ../monokai-edit.yaml;
+      base16Scheme = ../../9lorekai.yaml;
 
       # Target overrides
       targets = {
@@ -47,7 +47,7 @@
         swaync = {
           fonts.enable = false;
           colors.override.withHashtag = with config.lib.stylix.colors.withHashtag; {
-            base0D = base05;
+            base0D = base03;
             base0F = base08;
           };
         };
