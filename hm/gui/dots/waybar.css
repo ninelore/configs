@@ -1,8 +1,8 @@
 * {
 	border: none;
-	font-family: Lilex Nerd Font Propo;
+	font-family: Iosevka Extended, Iosevka Nerd Font Propo;
 	font-size: 15px;
-	font-feature-settings: "+zero";
+	font-feature-settings: "cv10=1, cv36=1";
 	color: #f6f6ef;
 	border-radius: 0;
 }

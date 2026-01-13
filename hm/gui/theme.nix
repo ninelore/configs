@@ -5,15 +5,11 @@
   ...
 }:
 {
-  options.ninelore.font_features = lib.mkOption {
-    default = "";
-    description = "Font features (for Iosevka)";
-    type = lib.types.str;
-  };
-
   config = lib.mkIf config.ninelore.gui {
-
-    ninelore.font_features = "cv36=1 VSAB=3 VLAA=2";
+    home.packages = with pkgs; [
+      # Extra fonts
+      iosevka
+    ];
 
     stylix = {
       # Stylix basics
@@ -74,7 +70,7 @@
         sansSerif = serif;
         monospace = {
           package = pkgs.nerd-fonts.iosevka;
-          name = "Iosevka Nerd Font:size=11.5:fontfeatures='${config.ninelore.font_features}'";
+          name = "Iosevka Nerd Font:fontfeatures='${lib.join " " config.ninelore.font_features}'";
         };
         emoji = {
           package = pkgs.noto-fonts-color-emoji;

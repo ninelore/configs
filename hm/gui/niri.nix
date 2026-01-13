@@ -58,7 +58,7 @@ in
             enable = true;
             settings = {
               main = {
-                font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='${config.ninelore.font_features}'";
+                font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='${lib.join " " config.ninelore.font_features}'";
                 anchor = "top";
                 terminal = "${pkgs.kitty}/bin/kitty";
                 y-margin = 10;
@@ -74,7 +74,8 @@ in
             enable = true;
             settings =
               let
-                span = inner: "<span font_features='${config.ninelore.font_features}'>${inner}</span>";
+                span =
+                  inner: "<span font_features='${lib.join ", " config.ninelore.font_features}'>${inner}</span>";
                 font_family = "Iosevka Nerd Font Propo";
               in
               {

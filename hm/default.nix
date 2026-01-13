@@ -14,6 +14,13 @@
       description = "Whether to enable additional GUI apps";
       type = lib.types.bool;
     };
+
+    ninelore.font_features = lib.mkOption {
+      default = "";
+      description = "Iosevka font features";
+      type = lib.types.listOf lib.types.str;
+    };
+
   };
 
   imports = [
