@@ -153,12 +153,15 @@ in
 
     virtualisation.waydroid.enable = mkDefault true;
 
-    xdg.terminal-exec = {
-      enable = mkDefault true;
-      settings = {
-        default = [
-          "kitty.desktop"
-        ];
+    xdg = {
+      sounds.enable = true;
+      terminal-exec = {
+        enable = mkDefault true;
+        settings = {
+          default = [
+            "kitty.desktop"
+          ];
+        };
       };
     };
 
