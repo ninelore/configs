@@ -16,6 +16,7 @@ in
     ./env/cosmic.nix
     ./env/gnome.nix
     ./env/niri.nix
+    ./env/kde.nix
 
     ./gaming.nix
     ./vr.nix
