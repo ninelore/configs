@@ -5,7 +5,7 @@
   ...
 }:
 {
-  options.ninelore.desktop.gnome = lib.mkEnableOption "ninelore's niri desktop environment options.";
+  options.ninelore.desktop.gnome = lib.mkEnableOption "ninelore's GNOME desktop environment options.";
 
   config = lib.mkIf config.ninelore.desktop.gnome {
     ninelore.common = true;

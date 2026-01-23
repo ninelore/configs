@@ -9,7 +9,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  options.ninelore.desktop.cosmic = lib.mkEnableOption "ninelore's niri desktop environment options.";
+  options.ninelore.desktop.cosmic = lib.mkEnableOption "ninelore's COSMIC desktop environment options.";
 
   config = lib.mkIf config.ninelore.desktop.cosmic {
     ninelore.common = true;
