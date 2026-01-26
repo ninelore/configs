@@ -18,20 +18,20 @@
       librewolf = {
         enable = true;
         settings = {
+          "webgl.disabled" = false;
           "middlemouse.paste" = false;
           "identity.fxaccounts.enabled" = true;
+          "browser.compactmode.show" = true;
         };
         profiles = {
           default = {
             settings = {
-              "webgl.disabled" = false;
               "browser.startup.page" = 3;
               "privacy.clearOnShutdown.history" = false;
               "privacy.clearOnShutdown.cookies" = false;
               "network.cookie.lifetimePolicy" = 0;
               "general.autoScroll" = true;
-
-              "browser.compactmode.show" = true;
+              # Personal preferences
               "browser.uidensity" = 1;
               "browser.toolbars.bookmarks.visibility" = "newtab";
               "sidebar.visibity" = "always-show";
