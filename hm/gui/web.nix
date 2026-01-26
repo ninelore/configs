@@ -15,12 +15,6 @@
           "--ozone-platform=wayland"
         ];
       };
-      firefox = {
-        enable = true;
-        policies = {
-          DisableTelemetry = true;
-        };
-      };
       librewolf = {
         enable = true;
         settings = {
