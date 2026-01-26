@@ -29,6 +29,9 @@
               "browser.startup.page" = 3;
               "privacy.clearOnShutdown.history" = false;
               "privacy.clearOnShutdown.cookies" = false;
+              "privacy.clearOnShutdown_v2.cache" = false;
+              "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+              "privacy.clearOnShutdown_v2.formdata" = false;
               "network.cookie.lifetimePolicy" = 0;
               "general.autoScroll" = true;
               # Personal preferences

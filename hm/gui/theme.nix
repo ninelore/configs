@@ -22,7 +22,6 @@
       # Target overrides
       targets = {
         # Disable
-        firefox.enable = false;
         hyprlock.colors.enable = false;
         librewolf.enable = false;
         neovim.enable = false;
