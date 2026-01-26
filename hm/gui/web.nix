@@ -22,7 +22,7 @@
         };
       };
       librewolf = {
-        enable = false;
+        enable = true;
         settings = {
           "middlemouse.paste" = false;
           "identity.fxaccounts.enabled" = true;
