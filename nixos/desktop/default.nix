@@ -71,7 +71,10 @@ in
 
     programs = {
       dconf.enable = mkDefault true;
-      firefox.enable = mkDefault true;
+      firefox = {
+        enable = mkDefault true;
+        package = pkgs.librewolf;
+      };
       flashprog.enable = mkDefault true;
       flashrom.enable = mkDefault true;
       gamemode = {
