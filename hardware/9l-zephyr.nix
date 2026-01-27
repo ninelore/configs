@@ -1,6 +1,7 @@
 {
   inputs,
   modulesPath,
+  pkgs,
   ...
 }:
 {
@@ -38,6 +39,8 @@
     };
     supergfxd.enable = true;
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.initrd.availableKernelModules = [
