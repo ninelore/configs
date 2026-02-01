@@ -23,7 +23,6 @@
       targets = {
         # Disable
         hyprlock.colors.enable = false;
-        librewolf.enable = false;
         neovim.enable = false;
         waybar.enable = false;
 
@@ -51,6 +50,11 @@
             base0D = base01;
             base0F = base08;
           };
+        };
+
+        # Browsers
+        librewolf = {
+          profileNames = [ "default" ];
         };
       };
 
