@@ -27,7 +27,6 @@ in
     };
 
     nix-your-shell.enable = true;
-    nix-your-shell.nix-output-monitor.enable = true;
     carapace.enable = true;
     zoxide.enable = true;
 
