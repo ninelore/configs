@@ -37,7 +37,19 @@ in
     };
 
     nixpkgs.overlays = [
-      # (final: prev: { })
+      (final: prev: {
+        # https://github.com/folke/lazydev.nvim/issues/136
+        lua-language-server = prev.lua-language-server.overrideAttrs rec {
+          version = "3.16.4";
+          src = prev.fetchFromGitHub {
+            owner = "luals";
+            repo = "lua-language-server";
+            tag = version;
+            hash = "sha256-5dBAxxtVtJXuS9CQj3IoxSKTdChxQhGjRitxydLna00=";
+            fetchSubmodules = true;
+          };
+        };
+      })
     ];
 
     boot = {
