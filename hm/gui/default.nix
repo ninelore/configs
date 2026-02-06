@@ -40,14 +40,13 @@
           thunderbird
           warp
           wl-clipboard
-          # FIXME: Broken in nixpkgs as of 2026-01-12
-          # (pkgs.ghidra.withExtensions (
-          #   p: with p; [
-          #     ghidraninja-ghidra-scripts
-          #     ret-sync
-          #     wasm
-          #   ]
-          # ))
+          (pkgs.ghidra.withExtensions (
+            p: with p; [
+              ghidraninja-ghidra-scripts
+              ret-sync
+              wasm
+            ]
+          ))
         ]
         ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
           onlyoffice-desktopeditors
