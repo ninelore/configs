@@ -100,6 +100,7 @@ in
         HandleLidSwitchExternalPower = "suspend";
         HandleLidSwitchDocked = "ignore";
       };
+      pcscd.enable = true;
       playerctld.enable = mkDefault true;
       pipewire = {
         enable = mkDefault true;

@@ -9,6 +9,7 @@
     home.packages =
       with pkgs;
       [
+        ausweisapp
         quasselClient
         signal-desktop
         # tuba
