@@ -22,6 +22,7 @@
       # Target overrides
       targets = {
         # Disable
+        btop.enable = false;
         hyprlock.colors.enable = false;
         neovim.enable = false;
         waybar.enable = false;
