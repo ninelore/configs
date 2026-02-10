@@ -91,6 +91,7 @@ in
         nil
         nixd
         nixfmt
+        nufmt
         nushell
         rust-analyzer
         shellcheck
