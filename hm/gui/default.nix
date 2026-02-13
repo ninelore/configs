@@ -51,7 +51,7 @@
         ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
           onlyoffice-desktopeditors
           spotify
-          wineWowPackages.stable
+          wine64
         ];
       sessionVariables = {
         ELECTRON_OZONE_PLATFORM_HINT = "wayland";
