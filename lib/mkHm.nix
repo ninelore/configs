@@ -32,6 +32,7 @@ in
           home = {
             inherit username;
             homeDirectory = "/home/${username}";
+            packages = [ pkgs.scripts-9l ];
           };
           targets.genericLinux.enable = true;
           nix = {
