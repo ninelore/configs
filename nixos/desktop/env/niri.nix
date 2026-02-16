@@ -18,6 +18,7 @@ in
     environment.systemPackages = with pkgs; [
       cliphist
       loupe
+      luminance
       nautilus
       pwvucontrol
     ];
@@ -64,7 +65,7 @@ in
         description = "Cliphist";
         serviceConfig = {
           Type = "simple";
-          ExecStart = ''${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store'';
+          ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
         };
       };
     };
