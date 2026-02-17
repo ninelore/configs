@@ -12,7 +12,7 @@
   services = {
     asusd.enable = true;
     asusd.enableUserService = true;
-    supergfxd.enable = true;
+    supergfxd.enable = false;
   };
 
   boot.initrd.kernelModules = [ "amdgpu" ];
