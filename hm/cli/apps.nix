@@ -6,9 +6,9 @@ in
   home = {
     packages = with pkgs; [
       android-tools
-      bear
       binwalk
       curl
+      compiledb
       ddcutil
       dmidecode
       file
