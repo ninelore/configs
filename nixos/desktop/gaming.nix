@@ -30,5 +30,9 @@
       ))
     ];
     programs.steam.enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+    programs.gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
   };
 }

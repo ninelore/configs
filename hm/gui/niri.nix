@@ -28,29 +28,9 @@ let
 in
 {
   imports = [
-    ./theme.nix
   ];
 
   config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
-    # Make sure these services only start when niri is started
-    wayland.systemd.target = "niri-session.target";
-    systemd.user.targets.niri-session =
-      let
-        niriUnit = "niri.service";
-      in
-      {
-        Unit = {
-          Description = "niri compositor session";
-          Documentation = [ "man:systemd.special(7)" ];
-          BindsTo = [ niriUnit ];
-          PartOf = [ niriUnit ];
-          After = [ niriUnit ];
-        };
-        Install = {
-          WantedBy = [ niriUnit ];
-        };
-      };
-
     home = {
       packages = with pkgs; [
         blueberry
@@ -138,7 +118,6 @@ in
     };
 
     services = {
-      easyeffects.enable = true;
       hypridle =
         let
           lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
@@ -192,18 +171,39 @@ in
       };
       swww.enable = true;
     };
-    systemd.user.services.cliphist = {
-      Unit = {
-        Description = "Cliphist";
-        After = [ config.wayland.systemd.target ];
+
+    systemd.user.services =
+      let
+        wmService =
+          srv:
+          lib.recursiveUpdate srv {
+            Unit = {
+              After = [ config.wayland.systemd.target ];
+              PartOf = [ config.wayland.systemd.target ];
+            };
+            Install = {
+              WantedBy = [ config.wayland.systemd.target ];
+            };
+          };
+      in
+      {
+        cliphist = wmService {
+          Unit = {
+            Description = "Cliphist";
+          };
+          Service = {
+            Type = "simple";
+            ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
+          };
+        };
+        polkit-kde = wmService {
+          Unit = {
+            Description = "KDE PolicyKit Agent";
+          };
+          Service = {
+            ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+          };
+        };
       };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
-      };
-      Install = {
-        WantedBy = [ config.wayland.systemd.target ];
-      };
-    };
   };
 }

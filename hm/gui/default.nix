@@ -7,6 +7,7 @@
 {
   imports = [
     ./niri.nix
+    ./theme.nix
     ./web.nix
   ];
 
@@ -21,7 +22,11 @@
           darktable
           element-desktop
           gimp3
+          gnome-calculator
+          gnome-clocks
+          gnome-connections
           gnome-disk-utility
+          gnome-maps
           gradia
           hunspell
           hunspellDicts.de_DE
@@ -29,6 +34,8 @@
           inkscape
           kicad-small
           libreoffice-fresh
+          loupe
+          kdePackages.okular
           pdfarranger
           scrcpy
           thunderbird
@@ -157,9 +164,12 @@
 
     dconf.enable = true;
 
-    services.kdeconnect = {
-      enable = true;
-      indicator = true;
+    services = {
+      easyeffects.enable = true;
+      kdeconnect = {
+        enable = true;
+        indicator = true;
+      };
     };
   };
 }

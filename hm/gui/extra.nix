@@ -18,9 +18,6 @@
         discord-canary
       ];
 
-    services.protonmail-bridge = {
-      enable = true;
-      extraPackages = with pkgs; [ gnome-keyring ];
-    };
+    services.protonmail-bridge.enable = true;
   };
 }

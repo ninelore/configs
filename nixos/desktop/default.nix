@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkDefault;
+  inherit (lib) mkDefault mkForce;
 
   nm-editor = pkgs.writeShellScriptBin "nm-connection-editor" ''
     ${pkgs.networkmanagerapplet}/bin/nm-connection-editor $@
@@ -25,24 +25,21 @@ in
     ninelore.common = true;
 
     programs.niri.enable = true;
-    programs.niri.useNautilus = false;
-    services.desktopManager.plasma6.enable = true;
 
     environment = {
       systemPackages = with pkgs; [
         (pkgs.bottles.override { removeWarningPopup = true; })
+        cliphist
         helvum
+        luminance
+        loupe
         mpv
+        nautilus
         nm-editor
+        kdePackages.okular
+        pwvucontrol
         wl-clipboard
         xclip
-        cliphist
-        luminance
-        pwvucontrol
-      ];
-      plasma6.excludePackages = with pkgs.kdePackages; [
-        elisa
-        khelpcenter
       ];
     };
 
@@ -59,7 +56,7 @@ in
         noto-fonts-cjk-sans
         open-sans
       ];
-      fontconfig.defaultFonts = lib.mkForce {
+      fontconfig.defaultFonts = mkForce {
         monospace = [ "Iosevka Nerd Font" ];
         sansSerif = [ "Inter Nerd Font" ];
         serif = [ "Noto Serif" ];
@@ -78,6 +75,7 @@ in
         enable = mkDefault true;
       };
       gnupg.agent.enable = mkDefault true;
+      gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
       nix-index-database.comma.enable = mkDefault true;
       nix-ld.enable = mkDefault true;
       virt-manager.enable = mkDefault true;
@@ -88,10 +86,6 @@ in
     security = {
       pam.services = {
         hyprlock = { };
-        greetd.kwallet = {
-          enable = true;
-          package = pkgs.kdePackages.kwallet-pam;
-        };
       };
       polkit.enable = mkDefault true;
     };
@@ -119,11 +113,13 @@ in
         settings = {
           default_session = {
             command = mkDefault "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --kb-power 1";
-            user = mkDefault "greeter";
           };
         };
       };
       dbus.packages = with pkgs; [ swayosd ];
+      gnome.sushi.enable = mkDefault true;
+      gnome.gnome-keyring.enable = mkDefault true;
+      gnome.gcr-ssh-agent.enable = mkDefault true;
       gvfs.enable = mkDefault true;
       logind.settings.Login = {
         HandlePowerKey = "suspend";
@@ -178,8 +174,8 @@ in
         };
       };
       # Power Management
-      power-profiles-daemon.enable = lib.mkForce false;
-      tlp.enable = lib.mkForce false;
+      power-profiles-daemon.enable = mkForce false;
+      tlp.enable = mkForce false;
       upower = {
         enable = mkDefault true;
       };
@@ -199,29 +195,6 @@ in
             "kitty.desktop"
           ];
         };
-      };
-      portal = {
-        enable = lib.mkDefault true;
-        # NOTE: `configPackages` is ignored when `xdg.portal.config.niri` is defined.
-        config.niri = lib.mkForce {
-          default = [
-            "kde"
-            "gtk"
-            "gnome"
-          ];
-          "org.freedesktop.impl.portal.Settings" = [
-            "kde"
-            "gtk"
-          ];
-          "org.freedesktop.impl.portal.Secret" = "kwallet";
-          "org.freedesktop.impl.portal.ScreenCast" = "gnome";
-        };
-        extraPortals = [
-          pkgs.kdePackages.kwallet
-          pkgs.kdePackages.xdg-desktop-portal-kde
-          pkgs.xdg-desktop-portal-gnome
-          pkgs.xdg-desktop-portal-gtk
-        ];
       };
     };
 
