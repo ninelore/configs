@@ -10,7 +10,7 @@
   config = lib.mkIf config.ninelore.gaming {
     assertions = [
       {
-        assertion = config.ninelore.commonDesktop;
+        assertion = config.ninelore.desktop;
         message = "ninelore.gaming depends on ninelore.desktop";
       }
     ];

@@ -31,152 +31,179 @@ in
     ./theme.nix
   ];
 
-  config =
-    lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop.niri))
+  config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
+    # Make sure these services only start when niri is started
+    wayland.systemd.target = "niri-session.target";
+    systemd.user.targets.niri-session =
+      let
+        niriUnit = "niri.service";
+      in
       {
-        home = {
-          packages = with pkgs; [
-            blueberry
-            brightnessctl
-            cliphist
-            cliphist-fuzzel
-            kbd_backlight_osd
-            pwvucontrol
-            xwayland-satellite
-          ];
+        Unit = {
+          Description = "niri compositor session";
+          Documentation = [ "man:systemd.special(7)" ];
+          BindsTo = [ niriUnit ];
+          PartOf = [ niriUnit ];
+          After = [ niriUnit ];
         };
-
-        dconf.enable = true;
-
-        xdg.configFile = {
-          "niri/config.kdl".source = ./dots/niri.kdl;
-          "waybar/config.jsonc".source = ./dots/waybar.jsonc;
-        };
-
-        programs = {
-          fuzzel = {
-            enable = true;
-            settings = {
-              main = {
-                font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='${lib.join " " config.ninelore.font_features}'";
-                anchor = "top";
-                terminal = "${pkgs.kitty}/bin/kitty";
-                y-margin = 10;
-                dpi-aware = "no";
-              };
-              border = {
-                width = 2;
-                radius = 0;
-              };
-            };
-          };
-          hyprlock = {
-            enable = true;
-            settings =
-              let
-                span =
-                  inner: "<span font_features='${lib.join ", " config.ninelore.font_features}'>${inner}</span>";
-                font_family = "Iosevka Nerd Font Propo";
-              in
-              {
-                background = [
-                  {
-                    path = "screenshot";
-                    color = "rgba(12, 12, 12, 1.0)";
-                    blur_passes = 5;
-                  }
-                ];
-                label = [
-                  {
-                    inherit font_family;
-                    text = span "$TIME";
-                    font_size = 300;
-                    position = "0, 100";
-                  }
-                ];
-                input-field = [
-                  {
-                    inherit font_family;
-                    size = "300,40";
-                    outer_color = "rgb(1a1a1a)";
-                    inner_color = "rgb(0c0c0c)";
-                    font_color = "rgb(c4c5b5)";
-                    fade_timeout = 1000;
-                    hide_input = true;
-                    rounding = 0;
-                    check_color = "rgb(fd971f)";
-                    fail_color = "rgb(f4005f)";
-                    fail_text = span "$FAIL <b>($ATTEMPTS)</b>";
-                    position = "0, 300";
-                    valign = "bottom";
-                  }
-                ];
-              };
-          };
-          waybar = {
-            enable = true;
-            style = ./dots/waybar.css;
-            systemd = {
-              enable = true;
-            };
-          };
-        };
-
-        services = {
-          #easyeffects.enable = true;
-          polkit-gnome.enable = true;
-          hypridle =
-            let
-              lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
-              display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
-            in
-            {
-              enable = true;
-              settings = {
-                general = {
-                  inherit lock_cmd;
-                  before_sleep_cmd = lock_cmd;
-                  after_sleep_cmd = display "on";
-                };
-                listener = [
-                  {
-                    timeout = 300;
-                    on-timeout = lock_cmd;
-                  }
-                  {
-                    timeout = 320;
-                    on-timeout = display "off";
-                    on-resume = display "on";
-                  }
-                  {
-                    timeout = 1800;
-                    on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
-                  }
-                ];
-              };
-            };
-          swaync = {
-            enable = true;
-            settings = {
-              positionX = "center";
-              positionY = "top";
-              cssPriority = "user";
-              fit-to-screen = false;
-              control-center-margin-top = 8;
-              hide-on-action = false;
-            };
-            style = noRoundCornerCSS + ''
-              .notification-group.collapsed .notification-row .notification {
-                background: inherit;
-              }
-            '';
-          };
-          swayosd = {
-            enable = true;
-            topMargin = 0.9;
-            stylePath = pkgs.writeText "swayosd-style.css" noRoundCornerCSS;
-          };
-          swww.enable = true;
+        Install = {
+          WantedBy = [ niriUnit ];
         };
       };
+
+    home = {
+      packages = with pkgs; [
+        blueberry
+        brightnessctl
+        cliphist
+        cliphist-fuzzel
+        kbd_backlight_osd
+        pwvucontrol
+        xwayland-satellite
+      ];
+    };
+
+    xdg.configFile = {
+      "niri/config.kdl".source = ./dots/niri.kdl;
+      "waybar/config.jsonc".source = ./dots/waybar.jsonc;
+    };
+
+    programs = {
+      fuzzel = {
+        enable = true;
+        settings = {
+          main = {
+            font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='${lib.join " " config.ninelore.font_features}'";
+            anchor = "top";
+            terminal = "${pkgs.kitty}/bin/kitty";
+            y-margin = 10;
+            dpi-aware = "no";
+          };
+          border = {
+            width = 2;
+            radius = 0;
+          };
+        };
+      };
+      hyprlock = {
+        enable = true;
+        settings =
+          let
+            span =
+              inner: "<span font_features='${lib.join ", " config.ninelore.font_features}'>${inner}</span>";
+            font_family = "Iosevka Nerd Font Propo";
+          in
+          {
+            background = [
+              {
+                path = "screenshot";
+                color = "rgba(12, 12, 12, 1.0)";
+                blur_passes = 5;
+              }
+            ];
+            label = [
+              {
+                inherit font_family;
+                text = span "$TIME";
+                font_size = 300;
+                position = "0, 100";
+              }
+            ];
+            input-field = [
+              {
+                inherit font_family;
+                size = "300,40";
+                outer_color = "rgb(1a1a1a)";
+                inner_color = "rgb(0c0c0c)";
+                font_color = "rgb(c4c5b5)";
+                fade_timeout = 1000;
+                hide_input = true;
+                rounding = 0;
+                check_color = "rgb(fd971f)";
+                fail_color = "rgb(f4005f)";
+                fail_text = span "$FAIL <b>($ATTEMPTS)</b>";
+                position = "0, 300";
+                valign = "bottom";
+              }
+            ];
+          };
+      };
+      waybar = {
+        enable = true;
+        style = ./dots/waybar.css;
+        systemd = {
+          enable = true;
+        };
+      };
+    };
+
+    services = {
+      easyeffects.enable = true;
+      hypridle =
+        let
+          lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
+          display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
+        in
+        {
+          enable = true;
+          settings = {
+            general = {
+              inherit lock_cmd;
+              before_sleep_cmd = lock_cmd;
+              after_sleep_cmd = display "on";
+            };
+            listener = [
+              {
+                timeout = 300;
+                on-timeout = lock_cmd;
+              }
+              {
+                timeout = 320;
+                on-timeout = display "off";
+                on-resume = display "on";
+              }
+              {
+                timeout = 1800;
+                on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
+              }
+            ];
+          };
+        };
+      swaync = {
+        enable = true;
+        settings = {
+          positionX = "center";
+          positionY = "top";
+          cssPriority = "user";
+          fit-to-screen = false;
+          control-center-margin-top = 8;
+          hide-on-action = false;
+        };
+        style = noRoundCornerCSS + ''
+          .notification-group.collapsed .notification-row .notification {
+            background: inherit;
+          }
+        '';
+      };
+      swayosd = {
+        enable = true;
+        topMargin = 0.9;
+        stylePath = pkgs.writeText "swayosd-style.css" noRoundCornerCSS;
+      };
+      swww.enable = true;
+    };
+    systemd.user.services.cliphist = {
+      Unit = {
+        Description = "Cliphist";
+        After = [ config.wayland.systemd.target ];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
+      };
+      Install = {
+        WantedBy = [ config.wayland.systemd.target ];
+      };
+    };
+  };
 }

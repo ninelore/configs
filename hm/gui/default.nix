@@ -21,11 +21,7 @@
           darktable
           element-desktop
           gimp3
-          gnome-calculator
-          gnome-clocks
-          gnome-connections
           gnome-disk-utility
-          gnome-maps
           gradia
           hunspell
           hunspellDicts.de_DE
@@ -33,8 +29,6 @@
           inkscape
           kicad-small
           libreoffice-fresh
-          loupe
-          papers
           pdfarranger
           scrcpy
           thunderbird
@@ -160,6 +154,8 @@
           ];
       };
     };
+
+    dconf.enable = true;
 
     services.kdeconnect = {
       enable = true;
