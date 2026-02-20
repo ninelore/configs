@@ -39,7 +39,6 @@ in
       inputs.ninelore.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.nix-index-database.nixosModules.nix-index
-      inputs.nixpkgs-xr.nixosModules.nixpkgs-xr
       {
         networking = { inherit hostName; };
         nixpkgs.hostPlatform = lib.mkDefault system;
