@@ -38,7 +38,7 @@ output "Chimei Innolux Corporation 0x1406 Unknown" {
 // 9l-zephyr internal
 output "Thermotrex Corporation TL140ADXP01 Unknown" {
 	scale 1.3
-	position x=-2133 y=300
+	position x=-1969 y=300
 }
 
 // 9l-tomato internal
