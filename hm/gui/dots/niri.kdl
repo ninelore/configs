@@ -79,7 +79,13 @@ layout {
 		proportion 0.66667
 		proportion 0.75
 		proportion 1.0
-  }
+	}
+	preset-window-heights {
+			proportion 0.33333
+			proportion 0.5
+			proportion 0.66667
+			proportion 1.0
+	}
 }
 
 hotkey-overlay {
@@ -247,9 +253,10 @@ binds {
 	Mod+R { switch-preset-column-width; }
 	Mod+Shift+R { switch-preset-window-height; }
 	Mod+Ctrl+R { reset-window-height; }
-	Mod+F { maximize-window-to-edges; }
+	Mod+F { maximize-column; }
 	Mod+Shift+F { fullscreen-window; }
 	Mod+Ctrl+F { expand-column-to-available-width; }
+	Mod+M { maximize-window-to-edges; }
 	Mod+C { center-column; }
 	Mod+Ctrl+C { center-visible-columns; }
 	Mod+Minus { set-column-width "-5%"; }
