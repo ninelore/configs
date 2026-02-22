@@ -39,6 +39,7 @@ in
         cliphist-fuzzel
         kbd_backlight_osd
         pwvucontrol
+        (wl-mirror.override { installExampleScripts = false; })
         xwayland-satellite
       ];
     };

@@ -88,7 +88,15 @@ hotkey-overlay {
 
 overview {
 	zoom 0.6
-	backdrop-color "#0c0c0c"
+	backdrop-color "#151515"
+}
+
+clipboard {
+	disable-primary
+}
+
+animations {
+	slowdown 0.5
 }
 
 window-rule {
@@ -99,8 +107,23 @@ window-rule {
 }
 
 window-rule {
+	match app-id=r#"^org\.gnome\.World\.Secrets$"#
+	match app-id="thunderbird"
+	match app-id="Element"
+	match app-id="signal"
+	block-out-from "screen-capture"
+}
+
+window-rule {
 	match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
 	default-floating-position x=10 y=10 relative-to="bottom-right"
+	block-out-from "screen-capture"
+}
+
+layer-rule {
+	match namespace="swaync-notification-window"
+	match namespace="swaync-control-center"
+	block-out-from "screen-capture"
 }
 
 binds {
@@ -223,7 +246,7 @@ binds {
 	Mod+R { switch-preset-column-width; }
 	Mod+Shift+R { switch-preset-window-height; }
 	Mod+Ctrl+R { reset-window-height; }
-	Mod+F { maximize-column; }
+	Mod+F { maximize-window-to-edges; }
 	Mod+Shift+F { fullscreen-window; }
 	Mod+Ctrl+F { expand-column-to-available-width; }
 	Mod+C { center-column; }
@@ -239,7 +262,10 @@ binds {
 
 	Mod+T { toggle-column-tabbed-display; }
 
+	Mod+P repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+
 	Mod+Shift+S { screenshot; }
+	Print { screenshot; }
 	Ctrl+Print { screenshot-screen; }
 	Alt+Print { screenshot-window; }
 
