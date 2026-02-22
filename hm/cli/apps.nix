@@ -12,8 +12,9 @@ in
       ddcutil
       dmidecode
       file
-      # flyctl # https://github.com/NixOS/nixpkgs/issues/461179
+      flyctl
       hexpatch
+      jq
       pciutils
       picocom
       (python3.withPackages (
