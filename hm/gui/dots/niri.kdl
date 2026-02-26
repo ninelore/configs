@@ -127,11 +127,11 @@ window-rule {
 	block-out-from "screen-capture"
 }
 
-layer-rule {
-	match namespace="swaync-notification-window"
-	match namespace="swaync-control-center"
-	block-out-from "screen-capture"
-}
+// layer-rule {
+// 	match namespace="swaync-notification-window"
+// 	match namespace="swaync-control-center"
+// 	block-out-from "screen-capture"
+// }
 
 binds {
 	Mod+Shift+Slash { show-hotkey-overlay; }
