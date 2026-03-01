@@ -11,7 +11,6 @@
 
   services = {
     asusd.enable = true;
-    asusd.enableUserService = true;
     supergfxd.enable = false;
   };
 
