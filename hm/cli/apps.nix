@@ -35,10 +35,7 @@ in
       enable = true;
     };
     direnv.enable = true;
-    fastfetch = {
-      enable = true;
-      settings = builtins.fromJSON (builtins.readFile ./fastfetch.jsonc);
-    };
+    fastfetch.enable = true;
     fd = {
       enable = true;
       hidden = true;
