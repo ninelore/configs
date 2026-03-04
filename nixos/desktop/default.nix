@@ -30,7 +30,7 @@ in
       systemPackages = with pkgs; [
         (pkgs.bottles.override { removeWarningPopup = true; })
         cliphist
-        helvum
+        crosspipe
         luminance
         loupe
         mpv
