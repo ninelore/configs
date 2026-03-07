@@ -3,7 +3,8 @@
 	"layer": "top",
 	"spacing": 16,
 	"modules-left": [
-		"niri/workspaces"
+		"niri/workspaces",
+		"mpris"
 	],
 	"modules-center": [
 		"clock",
@@ -17,8 +18,32 @@
 		"network",
 		"wireplumber",
 		"battery",
+		"temperature",
 		"power-profiles-daemon"
 	],
+	"mpris": {
+		"format": "{status_icon} {dynamic}",
+		"format-stopped": "",
+		"dynamic-len": 100,
+		"dynamic-importance-order": [
+			"artist",
+			"title",
+			"length",
+			"album",
+			"position"
+		],
+		"status-icons": {
+			"playing": " ",
+			"paused": " ",
+			"stopped": "  "
+		},
+		"ignored-players": [
+			"firefox"
+		]
+	},
+	"temperature": {
+		"format": " {temperatureC}°C"
+	},
 	"idle_inhibitor": {
 		"format": "{icon}",
 		"format-icons": {

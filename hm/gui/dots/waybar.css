@@ -64,3 +64,7 @@ window#waybar {
 	background-color: #fd971f;
 	padding: 0 10px;
 }
+
+#mpris {
+	padding: 0 10px;
+}
