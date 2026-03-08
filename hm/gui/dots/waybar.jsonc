@@ -24,13 +24,16 @@
 	"mpris": {
 		"format": "{status_icon} {dynamic}",
 		"format-stopped": "",
-		"dynamic-len": 100,
+		"dynamic-len": 80,
+		"dynamic-order": [
+			"title",
+			"artist",
+			"album"
+		],
 		"dynamic-importance-order": [
 			"artist",
 			"title",
-			"length",
-			"album",
-			"position"
+			"album"
 		],
 		"status-icons": {
 			"playing": " ",
