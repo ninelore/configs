@@ -27,7 +27,7 @@
       };
       settings = {
         font_features = "IosevkaNF " + lib.join " " config.ninelore.font_features;
-        shell = "nu";
+        shell = lib.getExe config.programs.nushell.package;
         wayland_titlebar_color = "background";
         remember_window_size = true;
         enabled_layouts = "splits:split_axis=auto";

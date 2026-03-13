@@ -17,7 +17,7 @@
       polarity = "dark";
 
       # Theme
-      base16Scheme = ../../9lorekai.yaml;
+      base16Scheme = ../9lorekai.yaml;
 
       # Target overrides
       targets = {

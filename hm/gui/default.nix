@@ -7,7 +7,6 @@
 {
   imports = [
     ./niri.nix
-    ./theme.nix
     ./web.nix
   ];
 

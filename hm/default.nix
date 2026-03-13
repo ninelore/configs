@@ -32,6 +32,7 @@
     ./cli
     ./gui
     ./gui/extra.nix
+    ./theme.nix
   ];
 
   config = {
