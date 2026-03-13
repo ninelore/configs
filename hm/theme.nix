@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.ninelore.gui {
+  config = {
     home.packages = with pkgs; [
       # Extra fonts
       iosevka
