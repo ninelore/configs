@@ -35,12 +35,20 @@
   ];
 
   config = {
-    programs.kitty.package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
     assertions = [
       {
         assertion = !config.ninelore.extraApps || (config.ninelore.extraApps && config.ninelore.gui);
         message = "`config.ninelore.extraApps` config depends on `config.ninelore.gui`";
       }
+    ];
+
+    programs.kitty.package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
+
+    ninelore.font_features = [
+      "cv10=3"
+      "cv36=1"
+      "VSAB=3"
+      "VLAA=2"
     ];
   };
 }

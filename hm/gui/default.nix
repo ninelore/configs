@@ -65,13 +65,6 @@
       };
     };
 
-    ninelore.font_features = [
-      "cv10=3"
-      "cv36=1"
-      "VSAB=3"
-      "VLAA=2"
-    ];
-
     programs = {
       mpv = {
         enable = true;
