@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   options = {
     ninelore.gui = lib.mkOption {
@@ -29,10 +34,13 @@
     ./gui/extra.nix
   ];
 
-  config.assertions = [
-    {
-      assertion = !config.ninelore.extraApps || (config.ninelore.extraApps && config.ninelore.gui);
-      message = "`config.ninelore.extraApps` config depends on `config.ninelore.gui`";
-    }
-  ];
+  config = {
+    programs.kitty.package = lib.mkIf (!config.ninelore.gui) pkgs.emptyDirectory;
+    assertions = [
+      {
+        assertion = !config.ninelore.extraApps || (config.ninelore.extraApps && config.ninelore.gui);
+        message = "`config.ninelore.extraApps` config depends on `config.ninelore.gui`";
+      }
+    ];
+  };
 }
