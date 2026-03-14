@@ -33,7 +33,7 @@ in
   config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
     home = {
       packages = with pkgs; [
-        blueberry
+        blueman
         brightnessctl
         cliphist
         cliphist-fuzzel
