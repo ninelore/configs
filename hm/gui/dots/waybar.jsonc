@@ -18,7 +18,6 @@
 		"network",
 		"wireplumber",
 		"battery",
-		"temperature",
 		"power-profiles-daemon"
 	],
 	"mpris": {
@@ -43,9 +42,6 @@
 		"ignored-players": [
 			"firefox"
 		]
-	},
-	"temperature": {
-		"format": " {temperatureC}°C"
 	},
 	"idle_inhibitor": {
 		"format": "{icon}",
