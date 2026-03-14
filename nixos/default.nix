@@ -53,6 +53,9 @@ in
     ];
 
     boot = {
+      blacklistedKernelModules = [
+        "int3400_thermal" # bogus thermal zone
+      ];
       kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
       initrd.systemd.enable = mkDefault true;
       # kernelParams = [ ];
