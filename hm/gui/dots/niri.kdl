@@ -98,10 +98,6 @@ overview {
 	backdrop-color "#151515"
 }
 
-clipboard {
-	disable-primary
-}
-
 animations {
 	slowdown 0.5
 }
