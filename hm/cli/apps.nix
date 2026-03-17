@@ -12,6 +12,7 @@ in
       ddcutil
       dmidecode
       file
+      ffmpeg
       flyctl
       hexpatch
       jq
