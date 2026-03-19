@@ -31,11 +31,11 @@
       ];
     in
     {
-      devShells = forSystems (system: {
-        default = inputs.ninelore.devShells.${system}.default;
-      });
+      inherit (inputs.ninelore) formatter;
 
-      formatter = forSystems (system: inputs.nixpkgs.legacyPackages.${system}.nixfmt);
+      devShells = forSystems (system: {
+        inherit (inputs.ninelore.devShells.${system}) default;
+      });
 
       lib = import ./lib;
 
