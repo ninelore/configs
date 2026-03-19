@@ -223,11 +223,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1773895966,
-        "narHash": "sha256-n0QS6c0wVad5mOYjt6NYTT6vyss/BR9s7nT1Jqlz2yA=",
+        "lastModified": 1773933902,
+        "narHash": "sha256-cQk7v5D52jiQt/LxNdMLkzwnzSMSsuJVEtG9iVCG9u8=",
         "owner": "ninelore",
         "repo": "flake",
-        "rev": "8a12bf6caeea08b433e6bce94b2f4184abfadf90",
+        "rev": "2b9d9c672f8252839a68983b6bc24583ed58b454",
         "type": "github"
       },
       "original": {
