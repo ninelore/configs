@@ -21,7 +21,7 @@
   boot.kernelModules = [ "kvm-intel" ];
 
   boot.initrd.luks.devices."root" = {
-    device = "/dev/disk/by-uuid/344b2bdb-794f-4a65-b630-471c2334892b";
+    device = "/dev/disk/by-uuid/842942b6-fcfb-4abe-8c7f-b6f34d9e1087";
     allowDiscards = true;
   };
 
@@ -36,7 +36,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D122-2426";
+    device = "/dev/disk/by-uuid/0217-D152";
     fsType = "vfat";
     options = [
       "fmask=0077"
