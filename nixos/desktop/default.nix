@@ -74,6 +74,7 @@ in
       gamemode = {
         enable = mkDefault true;
       };
+      gnome-disks.enable = true;
       gnupg.agent.enable = mkDefault true;
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
       nix-index-database.comma.enable = mkDefault true;
