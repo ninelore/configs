@@ -87,8 +87,6 @@ in
           wl-clipboard
           # Always have these available
           bash-language-server
-          ccls
-          clang-tools
           lua-language-server
           marksman
           markdown-oxide
