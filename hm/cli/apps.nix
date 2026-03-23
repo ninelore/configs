@@ -97,7 +97,6 @@ in
           nixfmt
           nufmt
           nushell
-          rust-analyzer
           shellcheck
           stylua
           typescript-language-server
