@@ -11,6 +11,9 @@
       iosevka
     ];
 
+    # Silence eval warning about changed default with stateVersion 26.05
+    gtk.gtk4.theme = lib.mkDefault config.gtk.theme;
+
     stylix = {
       # Stylix basics
       enable = true;
