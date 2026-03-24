@@ -31,7 +31,6 @@
           kicad-small
           libreoffice-fresh
           loupe
-          kdePackages.okular
           pdfarranger
           quasselClient
           scrcpy
@@ -49,7 +48,6 @@
         ]
         ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
           discord-canary
-          onlyoffice-desktopeditors
           spotify
           wine64
         ];
