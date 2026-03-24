@@ -71,9 +71,7 @@ in
       };
       flashprog.enable = mkDefault true;
       flashrom.enable = mkDefault true;
-      gamemode = {
-        enable = mkDefault true;
-      };
+      gamemode.enable = mkDefault true;
       gnome-disks.enable = true;
       gnupg.agent.enable = mkDefault true;
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;

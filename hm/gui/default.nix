@@ -16,16 +16,13 @@
         with pkgs;
         [
           # GUI Apps
-          #anytype
           appimage-run
+          ausweisapp
           darktable
           element-desktop
           gimp3
-          gnome-calculator
           gnome-clocks
           gnome-connections
-          gnome-disk-utility
-          gnome-maps
           gradia
           hunspell
           hunspellDicts.de_DE
@@ -36,7 +33,9 @@
           loupe
           kdePackages.okular
           pdfarranger
+          quasselClient
           scrcpy
+          signal-desktop
           thunderbird
           warp
           wl-clipboard
@@ -49,6 +48,7 @@
           ))
         ]
         ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
+          discord-canary
           onlyoffice-desktopeditors
           spotify
           wine64
@@ -101,6 +101,7 @@
         enable = true;
         indicator = true;
       };
+      protonmail-bridge.enable = true;
     };
   };
 }

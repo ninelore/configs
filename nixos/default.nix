@@ -22,6 +22,7 @@ in
 
     # Fails due to disabledModules
     documentation.nixos.checkRedirects = false;
+    documentation.doc.enable = false;
 
     nix = {
       package = pkgs.nixVersions.latest;
@@ -170,7 +171,7 @@ in
         enable = true;
         clean = {
           enable = false;
-          extraArgs = "--keep 3 --keep-since 7d";
+          extraArgs = "--keep 2 --keep-since 7d";
         };
       };
     };
