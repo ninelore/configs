@@ -32,9 +32,7 @@ in
 
   programs = {
     btop.enable = true;
-    distrobox = {
-      enable = true;
-    };
+    distrobox.enable = true;
     direnv.enable = true;
     fastfetch.enable = true;
     fd = {
@@ -50,12 +48,23 @@ in
       package = pkgs.gitFull;
       lfs.enable = true;
       settings = {
+        alias = {
+          ci = "commit";
+          co = "checkout";
+          s = "status";
+          pushfwl = "push --force-with-lease";
+        };
+        gpg.ssh.defaultKeyCommand = "ssh-add -L";
         color.ui = true;
         commit.verbose = true;
         core.editor = EDITOR;
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
         pull.rebase = true;
+      };
+      signing = {
+        format = "ssh";
+        signByDefault = true;
       };
       ignores = [
         "*.session.sql"
