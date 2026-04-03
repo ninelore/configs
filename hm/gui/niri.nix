@@ -169,7 +169,7 @@ in
         topMargin = 0.9;
         stylePath = pkgs.writeText "swayosd-style.css" noRoundCornerCSS;
       };
-      swww.enable = true;
+      awww.enable = true;
     };
 
     systemd.user.services =

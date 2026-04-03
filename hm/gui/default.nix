@@ -58,7 +58,7 @@
         QT_AUTO_SCREEN_SCALE_FACTOR = 1;
         QT_ENABLE_HIGHDPI_SCALING = 1;
         QT_QPA_PLATFORM = "wayland;xcb";
-        SWWW_TRANSITION_STEP = 255;
+        AWWW_TRANSITION_STEP = 255;
       };
     };
 
