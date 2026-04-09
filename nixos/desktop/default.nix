@@ -31,6 +31,7 @@ in
         (pkgs.bottles.override { removeWarningPopup = true; })
         cliphist
         crosspipe
+        file-roller
         luminance
         loupe
         mpv
