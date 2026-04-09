@@ -32,6 +32,7 @@
           libreoffice-fresh
           loupe
           pdfarranger
+          qtcreator
           quasselClient
           scrcpy
           signal-desktop
