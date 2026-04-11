@@ -19,7 +19,6 @@
           appimage-run
           ausweisapp
           darktable
-          element-desktop
           gimp3
           gnome-clocks
           gnome-connections
