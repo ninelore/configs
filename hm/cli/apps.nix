@@ -75,44 +75,39 @@ in
       gitCredentialHelper.enable = true;
       settings.editor = EDITOR;
     };
-    neovim =
-      let
-        nvimPkgs = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system};
-      in
-      {
-        enable = true;
-        package = nvimPkgs.default;
-        defaultEditor = true;
-        viAlias = true;
-        vimAlias = true;
-        withNodeJs = true;
-        withPython3 = false;
-        withRuby = false;
-        extraPackages = with pkgs; [
-          curl
-          gcc
-          git
-          gnutar
-          ripgrep
-          nvimPkgs.tree-sitter
-          wl-clipboard
-          # Always have these available
-          bash-language-server
-          lua-language-server
-          marksman
-          markdown-oxide
-          nil
-          nixd
-          nixfmt
-          nufmt
-          nushell
-          shellcheck
-          stylua
-          typescript-language-server
-          vscode-langservers-extracted
-          yaml-language-server
-        ];
-      };
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      withNodeJs = true;
+      withPython3 = false;
+      withRuby = false;
+      extraPackages = with pkgs; [
+        curl
+        gcc
+        git
+        gnutar
+        ripgrep
+        tree-sitter
+        wl-clipboard
+        # Always have these available
+        bash-language-server
+        lua-language-server
+        marksman
+        markdown-oxide
+        nil
+        nixd
+        nixfmt
+        nufmt
+        nushell
+        shellcheck
+        stylua
+        typescript-language-server
+        vscode-langservers-extracted
+        yaml-language-server
+      ];
+    };
     ripgrep = {
       enable = true;
       arguments = [
