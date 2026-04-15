@@ -121,5 +121,9 @@ in
         "--smart-case"
       ];
     };
+    yazi = {
+      enable = true;
+      shellWrapperName = "y";
+    };
   };
 }
