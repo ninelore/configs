@@ -37,6 +37,7 @@
           signal-desktop
           thunderbird
           warp
+          wireshark
           wl-clipboard
           (pkgs.ghidra.withExtensions (
             p: with p; [
