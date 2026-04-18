@@ -35,6 +35,7 @@ in
             packages = [ pkgs.scripts-9l ];
           };
           targets.genericLinux.enable = true;
+          programs.home-manager.enable = true;
           nix = {
             package = pkgs.nixVersions.latest;
             settings = {
