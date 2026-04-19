@@ -15,7 +15,6 @@ in
 
   imports = [
     ./desktop
-    ./element-web.nix
   ];
 
   options.ninelore.common = lib.mkEnableOption "ninelore's common options.";
@@ -26,8 +25,6 @@ in
     # Fails due to disabledModules
     documentation.nixos.checkRedirects = false;
     documentation.doc.enable = false;
-
-    ninelore.element = true;
 
     nix = {
       package = pkgs.nixVersions.latest;
