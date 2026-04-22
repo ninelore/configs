@@ -40,13 +40,6 @@ let
       (mkSystem {
         inherit inputs;
         defaultUser = "9l";
-        hostName = "9l-eldrid";
-        swapfile = 32 * 1024;
-        extraModules = [ { ninelore.desktop = true; } ];
-      })
-      (mkSystem {
-        inherit inputs;
-        defaultUser = "9l";
         hostName = "9l-tomato";
         system = "aarch64-linux";
         extraModules = [ { ninelore.desktop = true; } ];
