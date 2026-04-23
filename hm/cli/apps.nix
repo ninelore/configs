@@ -70,11 +70,6 @@ in
         "*.session.sql"
       ];
     };
-    gh = {
-      enable = true;
-      gitCredentialHelper.enable = true;
-      settings.editor = EDITOR;
-    };
     neovim = {
       enable = true;
       sideloadInitLua = true;
