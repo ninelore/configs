@@ -125,6 +125,15 @@
           "kitty_mod+end" = "scroll_end";
         };
       };
+      neovide = {
+        enable = true;
+        settings = {
+          fork = true;
+          font.features = {
+            "Iosevka Nerd Font" = config.ninelore.font_features;
+          };
+        };
+      };
       mpv = {
         enable = true;
         scripts = with pkgs.mpvScripts; [

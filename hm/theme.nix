@@ -38,6 +38,10 @@
           @define-color accent_color #${base08-hex};
           @define-color accent_bg_color #${base08-hex};
         '';
+        neovide = {
+          opacity.override.terminal = 1;
+          fonts.override.monospace.name = "Iosevka Nerd Font";
+        };
         kitty = {
           fonts.override.monospace.name = "Iosevka Nerd Font";
           colors.override = {
