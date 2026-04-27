@@ -27,9 +27,6 @@ let
   '';
 in
 {
-  imports = [
-  ];
-
   config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
     home = {
       packages = with pkgs; [
@@ -58,6 +55,7 @@ in
             terminal = "${pkgs.kitty}/bin/kitty";
             y-margin = 10;
             dpi-aware = "no";
+            width = 60;
           };
           border = {
             width = 2;
