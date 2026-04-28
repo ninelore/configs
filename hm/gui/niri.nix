@@ -160,6 +160,18 @@ in
           allow-when-locked = true;
           action = dms-ipc "brightness" "decrement" "5" "";
         };
+        "XF86AudioPlay" = {
+          allow-when-locked = true;
+          action = dms-ipc "mpris" "playPause";
+        };
+        "XF86AudioNext" = {
+          allow-when-locked = true;
+          action = dms-ipc "mpris" "next";
+        };
+        "XF86AudioPrev" = {
+          allow-when-locked = true;
+          action = dms-ipc "mpris" "previous";
+        };
         # TODO: Broken, IPC cant handle wildcards
         # "XF86KbdBrightnessUp" = {
         #   allow-when-locked = true;
