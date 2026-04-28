@@ -13,7 +13,6 @@ in
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
-    inputs.danksearch.homeModules.dsearch
   ];
 
   config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
@@ -25,7 +24,6 @@ in
       ];
     };
 
-    programs.dsearch.enable = true;
     programs.dank-material-shell = {
       enable = true;
       systemd.enable = true;
