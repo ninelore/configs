@@ -110,7 +110,6 @@ in
     };
 
     services = {
-      blueman.enable = true;
       greetd = {
         enable = mkDefault true;
         useTextGreeter = mkDefault true;
