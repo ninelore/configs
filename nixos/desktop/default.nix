@@ -28,6 +28,7 @@ in
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
     programs.niri.package = pkgs.niri-unstable;
     programs.niri.enable = true;
+    systemd.user.services.niri-flake-polkit.enable = false;
 
     environment = {
       systemPackages = with pkgs; [

@@ -72,7 +72,7 @@
           size = 11.5;
         };
         settings = {
-          font_features = "IosevkaNF " + lib.join " " config.ninelore.font_features;
+          font_features = "IosevkaNF cv10=3 cv36=1 VSAB=3 VLAA=2";
           shell = lib.getExe config.programs.nushell.package;
           wayland_titlebar_color = "background";
           remember_window_size = true;
@@ -82,6 +82,10 @@
           kitty_mod = "ctrl+shift";
           tab_activity_symbol = "\"󰦖 \"";
         };
+        extraConfig = ''
+          include dank-tabs.conf
+          include dank-theme.conf
+        '';
         keybindings = {
           "kitty_mod+c" = "copy_to_clipboard";
           "kitty_mod+v" = "paste_from_clipboard";
@@ -130,7 +134,7 @@
         settings = {
           fork = true;
           font.features = {
-            "Iosevka Nerd Font" = config.ninelore.font_features;
+            "Iosevka Nerd Font" = lib.splitString " " "cv10=3 cv36=1 VSAB=3 VLAA=2";
           };
         };
       };

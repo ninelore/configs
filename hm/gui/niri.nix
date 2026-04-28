@@ -1,32 +1,20 @@
 {
   nixosConfig ? null,
   config,
+  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  cliphist-fuzzel = pkgs.writeShellScript "cliphist-fuzzel" ''
-    cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
-  '';
-
-  kbd_backlight_osd = pkgs.writeShellScript "kbd_backlight_osd" ''
-    ctl="${pkgs.brightnessctl}/bin/brightnessctl -d *kbd_backlight"
-    $ctl s $1
-    current=$(${pkgs.bc}/bin/bc <<< "scale=2; $($ctl g) / $($ctl m)")
-    if [[ $current == '0' ]]; then
-      current='0.0001'
-    fi
-    swayosd-client --custom-icon=input-keyboard --custom-progress="$current"
-  '';
-
-  noRoundCornerCSS = ''
-    * {
-      border-radius: 0;
-    }
-  '';
+  dms-ipc = with config.lib.niri.actions; spawn "dms" "ipc";
 in
 {
+  imports = [
+    inputs.dms.homeModules.dank-material-shell
+    inputs.dms.homeModules.niri
+  ];
+
   config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
     home = {
       packages = with pkgs; [
@@ -36,156 +24,20 @@ in
       ];
     };
 
-    xdg.configFile."waybar/config.jsonc".source = ./dots/waybar.jsonc;
-
-    programs = {
-      fuzzel = {
-        enable = true;
-        settings = {
-          main = {
-            font = lib.mkForce "Iosevka Nerd Font Propo:size=16:fontfeatures='${lib.join " " config.ninelore.font_features}'";
-            anchor = "top";
-            terminal = "${pkgs.kitty}/bin/kitty";
-            y-margin = 10;
-            dpi-aware = "no";
-            width = 60;
-          };
-          border = {
-            width = 2;
-            radius = 0;
-          };
-        };
-      };
-      hyprlock = {
-        enable = true;
-        settings =
-          let
-            span =
-              inner: "<span font_features='${lib.join ", " config.ninelore.font_features}'>${inner}</span>";
-            font_family = "Iosevka Nerd Font Propo";
-          in
-          {
-            background = [
-              {
-                path = "screenshot";
-                color = "rgba(12, 12, 12, 1.0)";
-                blur_passes = 5;
-              }
-            ];
-            label = [
-              {
-                inherit font_family;
-                text = span "$TIME";
-                font_size = 300;
-                position = "0, 100";
-              }
-            ];
-            input-field = [
-              {
-                inherit font_family;
-                size = "300,40";
-                outer_color = "rgb(1a1a1a)";
-                inner_color = "rgb(0c0c0c)";
-                font_color = "rgb(c4c5b5)";
-                fade_timeout = 1000;
-                hide_input = true;
-                rounding = 0;
-                check_color = "rgb(fd971f)";
-                fail_color = "rgb(f4005f)";
-                fail_text = span "$FAIL <b>($ATTEMPTS)</b>";
-                position = "0, 300";
-                valign = "bottom";
-              }
-            ];
-          };
-      };
-      waybar = {
-        enable = true;
-        systemd.enable = true;
-        style = ./dots/waybar.css;
-      };
+    programs.dank-material-shell = {
+      enable = true;
+      systemd.enable = true;
+      niri.includes.filesToInclude = [
+        "alttab"
+        "binds"
+        "colors"
+        "cursor"
+        "layout"
+        "outputs"
+        "windowrules"
+        "wpblur"
+      ];
     };
-
-    services = {
-      hypridle =
-        let
-          lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
-          display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
-        in
-        {
-          enable = true;
-          settings = {
-            general = {
-              inherit lock_cmd;
-              before_sleep_cmd = lock_cmd;
-              after_sleep_cmd = display "on";
-            };
-            listener = [
-              {
-                timeout = 300;
-                on-timeout = lock_cmd;
-              }
-              {
-                timeout = 320;
-                on-timeout = display "off";
-                on-resume = display "on";
-              }
-              {
-                timeout = 1800;
-                on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
-              }
-            ];
-          };
-        };
-      swaync = {
-        enable = true;
-        settings = {
-          positionX = "center";
-          positionY = "top";
-          cssPriority = "user";
-          fit-to-screen = false;
-          control-center-margin-top = 8;
-          hide-on-action = false;
-        };
-        style = noRoundCornerCSS + ''
-          .notification-group.collapsed .notification-row .notification {
-            background: inherit;
-          }
-        '';
-      };
-      swayosd = {
-        enable = true;
-        topMargin = 0.9;
-        stylePath = pkgs.writeText "swayosd-style.css" noRoundCornerCSS;
-      };
-      awww.enable = true;
-    };
-
-    systemd.user.services =
-      let
-        wmService =
-          srv:
-          lib.recursiveUpdate srv {
-            Unit = {
-              After = [ config.wayland.systemd.target ];
-              PartOf = [ config.wayland.systemd.target ];
-            };
-            Install = {
-              WantedBy = [ config.wayland.systemd.target ];
-            };
-          };
-      in
-      {
-        cliphist = wmService {
-          Unit = {
-            Description = "Cliphist";
-          };
-          Service = {
-            Type = "simple";
-            ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} store";
-          };
-        };
-      };
 
     programs.niri.settings = {
       prefer-no-csd = true;
@@ -215,10 +67,11 @@ in
         };
       };
       layout = {
-        gaps = 2;
+        gaps = 4;
         center-focused-column = "never";
         always-center-single-column = true;
         focus-ring.width = 2;
+        default-column-width.proportion = 0.5;
         tab-indicator = {
           gap = 4;
           width = 6;
@@ -270,10 +123,54 @@ in
         }
       ];
       binds = {
+        # DMS
+        "Mod+D" = {
+          action = dms-ipc "spotlight" "toggle";
+          hotkey-overlay.title = "Toggle Application Launcher";
+        };
+        "Mod+X" = {
+          action = dms-ipc "powermenu" "toggle";
+          hotkey-overlay.title = "Toggle Power Menu";
+        };
+        "Mod+V" = {
+          action = dms-ipc "clipboard" "toggle";
+          hotkey-overlay.title = "Toggle Clipboard Manager";
+        };
+        "XF86AudioRaiseVolume" = {
+          allow-when-locked = true;
+          action = dms-ipc "audio" "increment" "3";
+        };
+        "XF86AudioLowerVolume" = {
+          allow-when-locked = true;
+          action = dms-ipc "audio" "decrement" "3";
+        };
+        "XF86AudioMute" = {
+          allow-when-locked = true;
+          action = dms-ipc "audio" "mute";
+        };
+        "XF86AudioMicMute" = {
+          allow-when-locked = true;
+          action = dms-ipc "audio" "micmute";
+        };
+        "XF86MonBrightnessUp" = {
+          allow-when-locked = true;
+          action = dms-ipc "brightness" "increment" "5" "";
+        };
+        "XF86MonBrightnessDown" = {
+          allow-when-locked = true;
+          action = dms-ipc "brightness" "decrement" "5" "";
+        };
+        # TODO: Broken, IPC cant handle wildcards
+        # "XF86KbdBrightnessUp" = {
+        #   allow-when-locked = true;
+        #   action = dms-ipc "brightness" "decrement" "5" "*kbd_backlight";
+        # };
+        # "XF86KbdBrightnessDown" = {
+        #   allow-when-locked = true;
+        #   action = dms-ipc "brightness" "decrement" "5" "*kbd_backlight";
+        # };
         # Externals
         "Mod+Return".action.spawn = "kitty";
-        "Mod+D".action.spawn = "fuzzel";
-        "Mod+V".action.spawn = "${cliphist-fuzzel}";
         "Mod+Escape" = {
           hotkey-overlay.title = "Lock the Screen";
           action.spawn = [
@@ -431,90 +328,6 @@ in
         "Mod+Ctrl+WheelScrollUp" = {
           cooldown-ms = 150;
           action.move-column-to-workspace-up = [ ];
-        };
-        # Fn keys
-        "XF86AudioRaiseVolume" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "swayosd-client"
-            "--output-volume"
-            "raise"
-          ];
-        };
-        "XF86AudioLowerVolume" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "swayosd-client"
-            "--output-volume"
-            "lower"
-          ];
-        };
-        "XF86AudioMute" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "swayosd-client"
-            "--output-volume"
-            "mute-toggle"
-          ];
-        };
-        "XF86AudioMicMute" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "swayosd-client"
-            "--input-volume"
-            "mute-toggle"
-          ];
-        };
-        "XF86AudioPlay" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "playerctl"
-            "play-pause"
-          ];
-        };
-        "XF86AudioNext" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "playerctl"
-            "next"
-          ];
-        };
-        "XF86AudioPrev" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "playerctl"
-            "previous"
-          ];
-        };
-        "XF86MonBrightnessUp" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "swayosd-client"
-            "--brightness"
-            "raise"
-          ];
-        };
-        "XF86MonBrightnessDown" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "swayosd-client"
-            "--brightness"
-            "lower"
-          ];
-        };
-        "XF86KbdBrightnessUp" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "${kbd_backlight_osd}"
-            "10%+"
-          ];
-        };
-        "XF86KbdBrightnessDown" = {
-          allow-when-locked = true;
-          action.spawn = [
-            "${kbd_backlight_osd}"
-            "10%-"
-          ];
         };
       };
       outputs = {

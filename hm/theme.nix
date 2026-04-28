@@ -6,63 +6,44 @@
 }:
 {
   config = lib.mkIf config.ninelore.gui {
-    home.packages = with pkgs; [
-      # Extra fonts
-      iosevka
-    ];
+    gtk = {
+      enable = true;
+      # TODO: drop gtk4 line when stateVersion is raised to 26.05
+      gtk4.theme = null;
+      gtk3.theme = {
+        name = "Adw-gtk3";
+        package = pkgs.adw-gtk3;
+      };
+    };
 
-    # Silence eval warning about changed default with stateVersion 26.05
-    gtk.gtk4.theme = lib.mkDefault config.gtk.theme;
+    qt = {
+      enable = true;
+      platformTheme.name = "qtct";
+      style.name = "breeze";
+    };
 
     stylix = {
       # Stylix basics
       enable = true;
-      polarity = "dark";
+      autoEnable = false;
 
       # Theme
       base16Scheme = ../9lorekai.yaml;
 
       # Target overrides
       targets = {
-        # Disable
-        btop.enable = false;
-        hyprlock.colors.enable = false;
-        neovim.enable = false;
-        waybar.enable = false;
-
-        # Overrides
-        fuzzel.colors.override = {
-          base0D-hex = config.lib.stylix.colors.base08-hex;
-        };
-        gtk.extraCss = with config.lib.stylix.colors; ''
-          @define-color accent_color #${base08-hex};
-          @define-color accent_bg_color #${base08-hex};
-        '';
-        neovide = {
-          opacity.override.terminal = 1;
-          fonts.override.monospace.name = "Iosevka Nerd Font";
-        };
+        nushell.enable = true;
+        starship.enable = true;
+        tmux.enable = true;
+        yazi.enable = true;
         kitty = {
-          fonts.override.monospace.name = "Iosevka Nerd Font";
+          enable = true;
           colors.override = {
             base00-hex = "0c0c0c";
             base01-hex = "0c0c0c";
             base0D-hex = "9d65fe";
           };
           variant256Colors = true;
-        };
-        qt.standardDialogs = "xdgdesktopportal";
-        swaync = {
-          fonts.enable = false; # Inherits Fontconfig?
-          colors.override.withHashtag = with config.lib.stylix.colors.withHashtag; {
-            base0D = base01;
-            base0F = base08;
-          };
-        };
-
-        # Browsers
-        librewolf = {
-          profileNames = [ "default" ];
         };
       };
 
@@ -81,7 +62,7 @@
         sansSerif = serif;
         monospace = {
           package = pkgs.nerd-fonts.iosevka;
-          name = "Iosevka Nerd Font:fontfeatures='${lib.join " " config.ninelore.font_features}'";
+          name = "Iosevka Nerd Font";
         };
         emoji = {
           package = pkgs.noto-fonts-color-emoji;
