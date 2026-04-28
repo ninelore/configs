@@ -38,6 +38,7 @@ in
       ./../nixos
       inputs.ninelore.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
+      inputs.niri.nixosModules.niri
       inputs.nix-index-database.nixosModules.nix-index
       {
         networking = { inherit hostName; };

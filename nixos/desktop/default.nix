@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -24,6 +25,8 @@ in
   config = lib.mkIf config.ninelore.desktop {
     ninelore.common = true;
 
+    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+    programs.niri.package = pkgs.niri-unstable;
     programs.niri.enable = true;
 
     environment = {
