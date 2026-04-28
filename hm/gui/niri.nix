@@ -59,7 +59,7 @@ in
           scroll-method = "two-finger";
         };
         keyboard = {
-          numlock = true;
+          numlock = (nixosConfig.networking.hostName != "9l-drobit");
           xkb = {
             layout = "us";
             variant = "altgr-intl";
