@@ -26,7 +26,7 @@ in
     ninelore.common = true;
 
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-    programs.niri.package = pkgs.niri-unstable;
+    programs.niri.package = pkgs.niri;
     programs.niri.enable = true;
     systemd.user.services.niri-flake-polkit.enable = false;
 
@@ -44,6 +44,7 @@ in
         pwvucontrol
         wl-clipboard
         xclip
+        xwayland-satellite
       ];
     };
 
