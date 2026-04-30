@@ -76,12 +76,6 @@ in
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            sharedModules = [
-              inputs.stylix.homeModules.stylix
-              {
-                stylix.overlays.enable = false;
-              }
-            ];
             extraSpecialArgs = {
               inherit inputs defaultUser;
               nixosConfig = config;

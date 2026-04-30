@@ -82,10 +82,15 @@
           clear_all_shortcuts = "yes";
           kitty_mod = "ctrl+shift";
           tab_activity_symbol = "\"󰦖 \"";
+          background_opacity = 0.8;
+          background_blur = 10;
         };
         extraConfig = ''
           include dank-tabs.conf
           include dank-theme.conf
+          # override from dms
+          tab_bar_margin_width 0
+          tab_bar_margin_height 0 0
         '';
         keybindings = {
           "kitty_mod+c" = "copy_to_clipboard";
@@ -134,6 +139,10 @@
         enable = true;
         settings = {
           fork = true;
+          font = {
+            normal = "Iosevka Nerd Font";
+            size = 11.5;
+          };
           font.features = {
             "Iosevka Nerd Font" = lib.splitString " " "cv10=3 cv36=1 VSAB=3 VLAA=2";
           };

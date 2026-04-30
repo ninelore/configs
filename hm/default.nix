@@ -15,6 +15,5 @@
   imports = [
     ./cli
     ./gui
-    ./theme.nix
   ];
 }

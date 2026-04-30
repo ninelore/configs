@@ -24,6 +24,35 @@ in
       ];
     };
 
+    gtk = {
+      enable = true;
+      # TODO: drop gtk4 line when stateVersion is raised to 26.05
+      gtk4.theme = null;
+      gtk3.theme = {
+        name = "Adw-gtk3";
+        package = pkgs.adw-gtk3;
+      };
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = {
+        name = "qtct";
+        package = pkgs.kdePackages.qt6ct;
+      };
+      style.name = "breeze";
+    };
+
+    fonts.fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = [ "Inter Nerd Font" ];
+        sansSerif = [ "Inter Nerd Font" ];
+        emoji = [ "Noto Color Emoji" ];
+        monospace = [ "Iosevka Nerd Font:size=11.5:fontfeatures='+ss07 cv36=1'" ];
+      };
+    };
+
     programs.dank-material-shell = {
       enable = true;
       systemd.enable = true;
@@ -346,8 +375,6 @@ in
         "HP Inc. HP X34 6CM25210CS" = {
           # Primary @ ~
           scale = 1;
-          position.x = 0;
-          position.y = 0;
           mode = {
             # This Monitor wont choose the highest refresh mode by default.
             # TODO: Does this workaround work?
@@ -358,20 +385,14 @@ in
         "AU Optronics 0xA48F Unknown" = {
           # Builtin 9l-drobit
           scale = 1;
-          position.x = -1920;
-          position.y = 0;
         };
         "Thermotrex Corporation TL140ADXP01 Unknown" = {
           # Builtin 9l-zephyr
           scale = 1.3;
-          position.x = -1969;
-          position.y = 0;
         };
         "BOE 0x095F Unknown" = {
           # Builtin 9l-tomato
           scale = 1.15;
-          position.x = -1961;
-          position.y = 0;
         };
       };
     };
