@@ -32,7 +32,7 @@
           loupe
           pdfarranger
           qtcreator
-          quasselClient
+          quasselClient_git
           scrcpy
           signal-desktop
           thunderbird
