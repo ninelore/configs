@@ -18,7 +18,10 @@
 
     qt = {
       enable = true;
-      platformTheme.name = "qtct";
+      platformTheme = {
+        name = "qtct";
+        package = pkgs.kdePackages.qt6ct;
+      };
       style.name = "breeze";
     };
 
@@ -32,11 +35,13 @@
 
       # Target overrides
       targets = {
+        neovide.enable = true;
         nushell.enable = true;
         starship.enable = true;
         tmux.enable = true;
         yazi.enable = true;
         kitty = {
+          # Gets overridden by DMS. This is a 'fallback' theme ;)
           enable = true;
           colors.override = {
             base00-hex = "0c0c0c";
