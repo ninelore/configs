@@ -4,9 +4,6 @@
   pkgs,
   ...
 }:
-let
-  inherit (lib) mkDefault;
-in
 {
   # FIXME: (2025-11-08) Weird infinite recursion in
   # default value expression of `hardware.facter.detected.dhcp`.
@@ -30,7 +27,7 @@ in
       package = pkgs.nixVersions.latest;
       settings = {
         experimental-features = "nix-command flakes";
-        auto-optimise-store = mkDefault true;
+        auto-optimise-store = true;
         trusted-users = [
           "@wheel"
         ];
@@ -54,16 +51,16 @@ in
         "int3400_thermal" # bogus thermal zone
       ];
       kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-      initrd.systemd.enable = mkDefault true;
+      initrd.systemd.enable = true;
       # kernelParams = [ ];
-      tmp.cleanOnBoot = mkDefault true;
+      tmp.cleanOnBoot = true;
       loader = {
-        timeout = mkDefault 0;
+        timeout = 0;
         systemd-boot = {
-          enable = mkDefault true;
-          configurationLimit = mkDefault 15;
+          enable = true;
+          configurationLimit = 15;
         };
-        efi.canTouchEfiVariables = mkDefault true;
+        efi.canTouchEfiVariables = true;
       };
       binfmt.emulatedSystems =
         lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [ "aarch64-linux" ]
@@ -74,7 +71,7 @@ in
 
     systemd = {
       services."getty@tty11" = {
-        enable = mkDefault true;
+        enable = true;
         wantedBy = [ "getty.target" ];
         serviceConfig.Restart = "always";
       };
@@ -83,11 +80,11 @@ in
 
     hardware = {
       bluetooth = {
-        enable = mkDefault true;
-        powerOnBoot = mkDefault true;
+        enable = true;
+        powerOnBoot = true;
       };
-      i2c.enable = mkDefault true;
-      keyboard.qmk.enable = mkDefault true;
+      i2c.enable = true;
+      keyboard.qmk.enable = true;
     }
     // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system != "x86_64-linux") {
       graphics.enable32Bit = lib.mkForce false;
@@ -95,21 +92,20 @@ in
 
     security = {
       doas = {
-        enable = mkDefault true;
+        enable = true;
         extraConfig = ''
           permit persist keepenv :wheel
         '';
       };
-      rtkit.enable = mkDefault true;
+      rtkit.enable = true;
       pam.services.systemd-run0 = { };
     };
 
     networking = {
-      useDHCP = mkDefault true;
-      networkmanager.enable = mkDefault true;
+      networkmanager.enable = true;
       firewall = rec {
-        enable = mkDefault true;
-        allowPing = mkDefault false;
+        enable = true;
+        allowPing = false;
         allowedTCPPortRanges = [
           # KDEConnect
           {
@@ -127,8 +123,8 @@ in
       };
     };
 
-    time.timeZone = mkDefault "Europe/Berlin";
-    i18n.defaultLocale = mkDefault "en_GB.UTF-8";
+    time.timeZone = "Europe/Berlin";
+    i18n.defaultLocale = "en_GB.UTF-8";
     i18n.supportedLocales = [
       "C.UTF-8/UTF-8"
       "en_US.UTF-8/UTF-8"
@@ -136,15 +132,15 @@ in
       "de_DE.UTF-8/UTF-8"
     ];
     i18n.extraLocaleSettings = {
-      LC_MEASUREMENT = mkDefault "de_DE.UTF-8";
-      LC_MONETARY = mkDefault "de_DE.UTF-8";
-      LC_NUMERIC = mkDefault "en_US.UTF-8";
-      LC_PAPER = mkDefault "de_DE.UTF-8";
-      LC_TELEPHONE = mkDefault "de_DE.UTF-8";
-      LC_TIME = mkDefault "en_US.UTF-8";
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_MONETARY = "de_DE.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "de_DE.UTF-8";
+      LC_TELEPHONE = "de_DE.UTF-8";
+      LC_TIME = "en_US.UTF-8";
     };
     environment = {
-      localBinInPath = mkDefault true;
+      localBinInPath = true;
       systemPackages = with pkgs; [
         curl
         dmidecode
@@ -161,8 +157,8 @@ in
     };
 
     programs = {
-      nix-index-database.comma.enable = mkDefault true;
-      nix-ld.enable = mkDefault true;
+      nix-index-database.comma.enable = true;
+      nix-ld.enable = true;
       nh = {
         enable = true;
         clean = {
@@ -174,14 +170,14 @@ in
 
     virtualisation = {
       podman = {
-        enable = mkDefault true;
-        dockerSocket.enable = mkDefault true;
-        dockerCompat = mkDefault true;
+        enable = true;
+        dockerSocket.enable = true;
+        dockerCompat = true;
       };
       libvirtd = {
-        enable = mkDefault true;
-        onBoot = mkDefault "ignore";
-        qemu.swtpm.enable = mkDefault true;
+        enable = true;
+        onBoot = "ignore";
+        qemu.swtpm.enable = true;
       };
     };
   };

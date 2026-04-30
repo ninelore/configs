@@ -1,8 +1,5 @@
 {
-  config,
   inputs,
-  lib,
-  pkgs,
   ...
 }:
 {
@@ -14,7 +11,7 @@
     ./sh.nix
   ];
 
-  nix.channels.nixpkgs = lib.mkDefault inputs.nixpkgs;
+  nix.channels.nixpkgs = inputs.nixpkgs;
 
   home.sessionVariables.NIXPKGS_ALLOW_UNFREE = 1;
 }

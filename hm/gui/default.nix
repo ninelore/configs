@@ -67,7 +67,7 @@
     programs = {
       kitty = {
         enable = true;
-        font = lib.mkDefault {
+        font = {
           name = "Iosevka Nerd Font";
           package = pkgs.nerd-fonts.iosevka;
           size = 11.5;

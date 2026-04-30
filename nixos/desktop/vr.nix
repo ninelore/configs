@@ -4,9 +4,6 @@
   pkgs,
   ...
 }:
-let
-  inherit (lib) mkDefault;
-in
 {
   options.ninelore.vr = lib.mkEnableOption "vr stuff";
 
@@ -19,16 +16,16 @@ in
     ];
     services = {
       monado = {
-        enable = mkDefault true;
-        defaultRuntime = mkDefault true;
-        forceDefaultRuntime = mkDefault true;
+        enable = true;
+        defaultRuntime = true;
+        forceDefaultRuntime = true;
       };
       udev.packages = with pkgs; [ xr-hardware ];
     };
     systemd.user.services.monado.environment = {
-      WMR_HANDTRACKING = mkDefault "0";
-      XRT_COMPOSITOR_COMPUTE = mkDefault "1";
-      # XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT = mkDefault "1";
+      WMR_HANDTRACKING = "0";
+      XRT_COMPOSITOR_COMPUTE = "1";
+      # XRT_COMPOSITOR_FORCE_WAYLAND_DIRECT = "1";
     };
   };
 }

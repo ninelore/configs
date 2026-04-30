@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) mkDefault mkForce;
+  inherit (lib) mkForce;
 
   nm-editor = pkgs.writeShellScriptBin "nm-connection-editor" ''
     ${pkgs.networkmanagerapplet}/bin/nm-connection-editor $@
@@ -49,7 +49,7 @@ in
     };
 
     fonts = {
-      enableDefaultPackages = mkDefault true;
+      enableDefaultPackages = true;
       packages = with pkgs; [
         nerd-fonts.iosevka
         inter-nerdfont
@@ -69,29 +69,29 @@ in
     };
 
     programs = {
-      dconf.enable = mkDefault true;
+      dconf.enable = true;
       firefox = {
-        enable = mkDefault true;
+        enable = true;
         package = pkgs.librewolf;
       };
-      flashprog.enable = mkDefault true;
-      flashrom.enable = mkDefault true;
-      gamemode.enable = mkDefault true;
+      flashprog.enable = true;
+      flashrom.enable = true;
+      gamemode.enable = true;
       gnome-disks.enable = true;
-      gnupg.agent.enable = mkDefault true;
+      gnupg.agent.enable = true;
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
-      nix-index-database.comma.enable = mkDefault true;
-      nix-ld.enable = mkDefault true;
-      virt-manager.enable = mkDefault true;
-      wireshark.enable = mkDefault true;
-      ydotool.enable = mkDefault true;
+      nix-index-database.comma.enable = true;
+      nix-ld.enable = true;
+      virt-manager.enable = true;
+      wireshark.enable = true;
+      ydotool.enable = true;
     };
 
     security = {
       pam.services = {
         hyprlock = { };
       };
-      polkit.enable = mkDefault true;
+      polkit.enable = true;
     };
 
     systemd = {
@@ -113,19 +113,19 @@ in
     services = {
       accounts-daemon.enable = true;
       greetd = {
-        enable = mkDefault true;
-        useTextGreeter = mkDefault true;
+        enable = true;
+        useTextGreeter = true;
         settings = {
           default_session = {
-            command = mkDefault "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --kb-power 1";
+            command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --kb-power 1";
           };
         };
       };
       dbus.packages = with pkgs; [ swayosd ];
-      gnome.sushi.enable = mkDefault true;
-      gnome.gnome-keyring.enable = mkDefault true;
-      gnome.gcr-ssh-agent.enable = mkDefault true;
-      gvfs.enable = mkDefault true;
+      gnome.sushi.enable = true;
+      gnome.gnome-keyring.enable = true;
+      gnome.gcr-ssh-agent.enable = true;
+      gvfs.enable = true;
       logind.settings.Login = {
         HandlePowerKey = "suspend";
         HandleLidSwitch = "suspend";
@@ -133,16 +133,16 @@ in
         HandleLidSwitchDocked = "ignore";
       };
       pcscd.enable = true;
-      playerctld.enable = mkDefault true;
+      playerctld.enable = true;
       udev.packages = with pkgs; [ swayosd ];
       pipewire = {
-        enable = mkDefault true;
-        alsa.enable = mkDefault true;
-        alsa.support32Bit = mkDefault true;
-        pulse.enable = mkDefault true;
-        jack.enable = mkDefault true;
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+        jack.enable = true;
         wireplumber = {
-          enable = mkDefault true;
+          enable = true;
           extraConfig = {
             "10-disable-camera" = {
               "wireplumber.profiles" = {
@@ -182,19 +182,19 @@ in
       power-profiles-daemon.enable = mkForce false;
       tlp.enable = mkForce false;
       upower = {
-        enable = mkDefault true;
+        enable = true;
       };
       tuned = {
-        enable = mkDefault true;
+        enable = true;
       };
     };
 
-    virtualisation.waydroid.enable = mkDefault true;
+    virtualisation.waydroid.enable = true;
 
     xdg = {
       sounds.enable = true;
       terminal-exec = {
-        enable = mkDefault true;
+        enable = true;
         settings = {
           default = [
             "kitty.desktop"
@@ -203,6 +203,6 @@ in
       };
     };
 
-    powerManagement.enable = mkDefault true;
+    powerManagement.enable = true;
   };
 }
