@@ -21,6 +21,8 @@ in
         brightnessctl
         cliphist
         pwvucontrol
+        bibata-cursors
+        tela-icon-theme
       ];
     };
 
