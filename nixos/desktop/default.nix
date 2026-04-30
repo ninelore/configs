@@ -111,6 +111,7 @@ in
     };
 
     services = {
+      accounts-daemon.enable = true;
       greetd = {
         enable = mkDefault true;
         useTextGreeter = mkDefault true;
