@@ -39,7 +39,7 @@ in
     qt = {
       enable = true;
       platformTheme = {
-        name = "qtct";
+        name = "qt6ct";
         package = pkgs.kdePackages.qt6ct;
       };
       style.name = "breeze";
