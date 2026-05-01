@@ -373,30 +373,6 @@ in
           action.move-column-to-workspace-up = [ ];
         };
       };
-      outputs = {
-        "HP Inc. HP X34 6CM25210CS" = {
-          # Primary @ ~
-          scale = 1;
-          mode = {
-            # This Monitor wont choose the highest refresh mode by default.
-            # TODO: Does this workaround work?
-            width = 3440;
-            height = 1440;
-          };
-        };
-        "AU Optronics 0xA48F Unknown" = {
-          # Builtin 9l-drobit
-          scale = 1;
-        };
-        "Thermotrex Corporation TL140ADXP01 Unknown" = {
-          # Builtin 9l-zephyr
-          scale = 1.3;
-        };
-        "BOE 0x095F Unknown" = {
-          # Builtin 9l-tomato
-          scale = 1.15;
-        };
-      };
     };
   };
 }
