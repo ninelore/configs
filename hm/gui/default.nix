@@ -180,10 +180,7 @@
 
     services = {
       easyeffects.enable = true;
-      kdeconnect = {
-        enable = true;
-        indicator = true;
-      };
+      kdeconnect.enable = true;
       protonmail-bridge.enable = true;
     };
   };

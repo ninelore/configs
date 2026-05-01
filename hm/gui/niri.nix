@@ -13,6 +13,7 @@ in
   imports = [
     inputs.dms.homeModules.dank-material-shell
     inputs.dms.homeModules.niri
+    inputs.dms-plugin-registry.modules.default
   ];
 
   config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
@@ -68,6 +69,9 @@ in
         "windowrules"
         "wpblur"
       ];
+      plugins = {
+        dankKDEConnect.enable = true;
+      };
     };
 
     programs.niri.settings = {
