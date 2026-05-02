@@ -31,13 +31,13 @@
           libreoffice-fresh
           loupe
           pdfarranger
+          qalculate-qt
           qtcreator
           quasselClient_git
           scrcpy
           signal-desktop
           thunderbird
           warp
-          wireshark
           wl-clipboard
           (pkgs.ghidra.withExtensions (
             p: with p; [

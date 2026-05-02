@@ -38,7 +38,7 @@
 
     nixpkgs.overlays = [
       # (final: prev: { })
-      # FIXME 2026-04-26: openldap test failure
+      # FIXME 2026-04-26: openldap test failure, still present 2026-05-02
       (final: prev: {
         openldap = prev.openldap.overrideAttrs (_: {
           doCheck = !prev.stdenv.hostPlatform.isi686;

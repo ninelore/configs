@@ -19,12 +19,22 @@ in
   config = lib.mkIf (config.ninelore.gui && (nixosConfig != null && nixosConfig.ninelore.desktop)) {
     home = {
       packages = with pkgs; [
+        # Utils
         brightnessctl
         cliphist
         pwvucontrol
+        # Theming
+        pywalfox-native
         bibata-cursors
         tela-icon-theme
       ];
+      activation = {
+        pywalfox-activation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          run --quiet ${lib.getExe pkgs.pywalfox-native} $VERBOSE_ARG install
+          run ln -sf $VERBOSE_ARG \
+            $HOME/.cache/wal/dank-pywalfox.json $HOME/.cache/wal/colors.json
+        '';
+      };
     };
 
     gtk = {
