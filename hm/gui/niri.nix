@@ -24,17 +24,9 @@ in
         cliphist
         pwvucontrol
         # Theming
-        pywalfox-native
         bibata-cursors
         tela-icon-theme
       ];
-      activation = {
-        pywalfox-activation = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          run --quiet ${lib.getExe pkgs.pywalfox-native} $VERBOSE_ARG install
-          run ln -sf $VERBOSE_ARG \
-            $HOME/.cache/wal/dank-pywalfox.json $HOME/.cache/wal/colors.json
-        '';
-      };
     };
 
     gtk = {
@@ -42,7 +34,7 @@ in
       # TODO: drop gtk4 line when stateVersion is raised to 26.05
       gtk4.theme = null;
       gtk3.theme = {
-        name = "Adw-gtk3";
+        name = "adw-gtk3";
         package = pkgs.adw-gtk3;
       };
     };
