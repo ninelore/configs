@@ -18,14 +18,17 @@
       librewolf = {
         enable = true;
         settings = {
+          "browser.profiles.enabled" = false;
           "webgl.disabled" = false;
           "middlemouse.paste" = false;
-          "identity.fxaccounts.enabled" = true;
           "browser.compactmode.show" = true;
         };
         profiles = {
           default = {
             settings = {
+              "general.autoScroll" = true;
+              "identity.fxaccounts.enabled" = true;
+              "privacy.resistFingerprinting" = false;
               "browser.startup.page" = 3;
               "privacy.clearOnShutdown.history" = false;
               "privacy.clearOnShutdown.cookies" = false;
@@ -33,7 +36,8 @@
               "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
               "privacy.clearOnShutdown_v2.formdata" = false;
               "network.cookie.lifetimePolicy" = 0;
-              "general.autoScroll" = true;
+              # Inherit GTK Theme
+              "widget.gtk.libadwaita-colors.enabled" = false;
               # Personal preferences
               "browser.uidensity" = 1;
               "browser.toolbars.bookmarks.visibility" = "newtab";
