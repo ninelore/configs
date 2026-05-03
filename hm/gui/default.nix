@@ -16,7 +16,6 @@
         with pkgs;
         [
           # GUI Apps
-          appimage-run
           ausweisapp
           darktable
           gimp3
