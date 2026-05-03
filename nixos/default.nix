@@ -157,6 +157,7 @@
     };
 
     programs = {
+      fuse.enable = true;
       nix-index-database.comma.enable = true;
       nix-ld.enable = true;
       nh = {
