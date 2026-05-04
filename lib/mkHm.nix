@@ -22,7 +22,7 @@ in
     };
     extraSpecialArgs = { inherit inputs username; };
     modules = [
-      ./../hm
+      ./../hm/cli
       inputs.ninelore.homeModules.default
       inputs.nix-index-database.homeModules.nix-index
       (
@@ -42,18 +42,7 @@ in
               auto-optimise-store = true;
             };
           };
-          # FIXME: Broken
-          # targets.genericLinux.nixGL = {
-          #   packages = inputs.nixgl.packages;
-          #   installScripts = [
-          #     "mesa"
-          #     "mesaPrime"
-          #     "nvidiaPrime"
-          #   ];
-          # };
-          programs = {
-            nix-index-database.comma.enable = true;
-          };
+          programs.nix-index-database.comma.enable = true;
         }
       )
     ]

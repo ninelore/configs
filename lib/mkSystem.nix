@@ -82,10 +82,8 @@ in
             };
             users.${defaultUser} = {
               imports = [
-                ./../hm
-                {
-                  ninelore.gui = lib.mkDefault true;
-                }
+                ./../hm/cli
+                ./../hm/gui
               ]
               ++ extraHomeModules;
             };

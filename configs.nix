@@ -54,11 +54,6 @@ let
         inherit inputs;
         username = "ninel";
       })
-      (mkHm {
-        inherit inputs;
-        username = "ninelor";
-        extraModules = [ { ninelore.gui = true; } ];
-      })
     ];
   };
 in
