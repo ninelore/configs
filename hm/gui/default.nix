@@ -17,6 +17,7 @@
         # GUI Apps
         ausweisapp
         darktable
+        gaphor
         gimp3
         gnome-clocks
         gnome-connections
