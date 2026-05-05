@@ -87,8 +87,7 @@ in
       nix-index-database.comma.enable = true;
       nix-ld.enable = true;
       virt-manager.enable = true;
-      # FIXME: Broken as of 2026-05-02, fixed in nixpkgs master, waiting for channel update
-      # wireshark.enable = true;
+      wireshark.enable = true;
       ydotool.enable = true;
     };
 
