@@ -29,7 +29,6 @@
         kicad-small
         libreoffice-fresh
         loupe
-        pdfarranger
         qalculate-qt
         qtcreator
         quasselClient_git
