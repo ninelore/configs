@@ -17,6 +17,7 @@
         # GUI Apps
         ausweisapp
         darktable
+        fritzing
         gaphor
         gimp3
         gnome-clocks
