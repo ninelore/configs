@@ -49,6 +49,11 @@
     boot = {
       blacklistedKernelModules = [
         "int3400_thermal" # bogus thermal zone
+        # Security
+        "esp4"
+        "esp6"
+        "rxrpc"
+        "algif_aead"
       ];
       kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
       initrd.systemd.enable = true;
