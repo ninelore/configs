@@ -47,8 +47,7 @@
         ))
       ]
       ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
-        # FIXME: disabled due to EoL openssl dependency
-        # discord-canary
+        discord-canary
         spotify
         wine64
       ];
