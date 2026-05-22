@@ -27,6 +27,8 @@
         hunspellDicts.de_DE
         hunspellDicts.en_GB-ise
         inkscape
+        jetbrains.clion
+        jetbrains.goland
         kicad-small
         libreoffice-fresh
         loupe
