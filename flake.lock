@@ -68,11 +68,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1779143084,
-        "narHash": "sha256-YTAXo7e5VpjngPvQTKPBYYVb1zDBL+XAbbVWkp4RRmw=",
+        "lastModified": 1779421355,
+        "narHash": "sha256-H6OYHNws3N3Hc/67ALFWR2MruRLu9XB8/11IUlm4yoQ=",
         "owner": "ninelore",
         "repo": "flake",
-        "rev": "7e07427d7ee3cb2a4332ad1255b1ea3f46938577",
+        "rev": "6b5cf9993b81c77437d8a433387e195836b0ccb8",
         "type": "github"
       },
       "original": {
