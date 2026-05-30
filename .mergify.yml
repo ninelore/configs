@@ -1,8 +1,9 @@
 pull_request_rules:
   - name: Automatic merge
-    description: Merge flake.lock updates
+    description: Merge updates
     conditions:
-      - author = github-actions[bot]
-      - modified-files = flake.lock
+      - author = dependabot[bot]
+      - files = "flake.lock"
+      - check-success = "Nix Flake Checks"
     actions:
       merge:
