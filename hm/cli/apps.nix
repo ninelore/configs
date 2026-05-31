@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   EDITOR = "nvim";
 in
@@ -92,11 +92,10 @@ in
         lua-language-server
         marksman
         markdown-oxide
-        nil
         nixd
         nixfmt
         nufmt
-        nushell
+        config.programs.nushell.package
         shellcheck
         stylua
         typescript-language-server

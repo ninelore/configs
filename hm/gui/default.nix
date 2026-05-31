@@ -26,6 +26,7 @@
         hunspell
         hunspellDicts.de_DE
         hunspellDicts.en_GB-ise
+        imhex
         inkscape
         jetbrains.clion
         kicad-small

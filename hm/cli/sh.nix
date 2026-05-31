@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   shellAliases = {
     "c" = "clear";
@@ -18,7 +18,7 @@ in
       clock24 = true;
       keyMode = "vi";
       newSession = true;
-      shell = "${pkgs.nushell}/bin/nu";
+      shell = "${config.programs.nushell.package}/bin/nu";
       shortcut = "s";
       # plugins = with pkgs.tmuxPlugins; [ ];
     };
