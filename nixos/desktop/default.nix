@@ -28,10 +28,13 @@ in
   config = lib.mkIf config.ninelore.desktop {
     ninelore.common = true;
 
-    # Niri + DMS
-    programs.dank-material-shell.greeter = {
+    # Niri, DMS, greetd
+    services.displayManager.ly = {
       enable = true;
-      compositor.name = "niri";
+      x11Support = false;
+      settings = {
+        bigclock = "en";
+      };
     };
     programs.niri.enable = true;
     programs.niri.package = pkgs.niri;
