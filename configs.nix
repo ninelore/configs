@@ -12,7 +12,6 @@ let
         swapfile = 16 * 1024;
         extraModules = [
           {
-            ninelore.desktop = true;
             ninelore.gaming = true;
             ninelore.vr = false;
           }
@@ -23,7 +22,6 @@ let
         defaultUser = "9l";
         hostName = "9l-drobit";
         swapfile = 32 * 1024;
-        extraModules = [ { ninelore.desktop = true; } ];
       })
       (mkSystem {
         inherit inputs;
@@ -32,7 +30,6 @@ let
         swapfile = 64 * 1024;
         extraModules = [
           {
-            ninelore.desktop = true;
             ninelore.gaming = true;
           }
         ];
@@ -42,7 +39,6 @@ let
         defaultUser = "9l";
         hostName = "9l-tomato";
         system = "aarch64-linux";
-        extraModules = [ { ninelore.desktop = true; } ];
       })
     ];
     hm = mergeAttrsList [

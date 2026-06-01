@@ -18,10 +18,6 @@ in
 
   home = {
     packages = with pkgs; [
-      # Utils
-      brightnessctl
-      cliphist
-      pwvucontrol
       # Theming
       bibata-cursors
       tela-icon-theme

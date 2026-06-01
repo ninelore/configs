@@ -38,8 +38,10 @@ in
       ./../nixos
       inputs.ninelore.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
-      inputs.niri.nixosModules.niri
       inputs.nix-index-database.nixosModules.nix-index
+      inputs.niri.nixosModules.niri
+      inputs.dms.nixosModules.greeter
+      inputs.dms.nixosModules.dank-material-shell
       {
         networking = { inherit hostName; };
         nixpkgs.hostPlatform = lib.mkDefault system;

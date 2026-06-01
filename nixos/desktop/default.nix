@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -8,9 +7,13 @@
 let
   inherit (lib) mkForce;
 
-  nm-editor = pkgs.writeShellScriptBin "nm-connection-editor" ''
-    ${pkgs.networkmanagerapplet}/bin/nm-connection-editor $@
-  '';
+  nm-editor = pkgs.makeDesktopItem {
+    name = "nm-connection-editor";
+    exec = "${lib.getExe' pkgs.networkmanagerapplet "nm-connection-editor"}";
+    icon = "preferences-system-network";
+    comment = "Manage and change your network connection settings";
+    desktopName = "Advanced Network Configuration";
+  };
 in
 {
   imports = [
@@ -18,22 +21,26 @@ in
     ./vr.nix
   ];
 
-  options = {
-    ninelore.desktop = lib.mkEnableOption "ninelore's desktop options.";
+  options.ninelore.desktop = lib.mkEnableOption "ninelore's desktop options." // {
+    default = true;
   };
 
   config = lib.mkIf config.ninelore.desktop {
     ninelore.common = true;
 
-    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-    programs.niri.package = pkgs.niri;
+    # Niri + DMS
+    programs.dank-material-shell.greeter = {
+      enable = true;
+      compositor.name = "niri";
+    };
     programs.niri.enable = true;
+    programs.niri.package = pkgs.niri;
+    programs.dank-material-shell.enable = true;
     systemd.user.services.niri-flake-polkit.enable = false;
 
     environment = {
       systemPackages = with pkgs; [
         (pkgs.bottles.override { removeWarningPopup = true; })
-        cliphist
         crosspipe
         file-roller
         luminance
@@ -60,6 +67,7 @@ in
         noto-fonts
         noto-fonts-cjk-sans
         open-sans
+        material-symbols
       ];
       fontconfig.defaultFonts = mkForce {
         monospace = [ "Iosevka Nerd Font" ];
@@ -95,15 +103,6 @@ in
 
     services = {
       accounts-daemon.enable = true;
-      greetd = {
-        enable = true;
-        useTextGreeter = true;
-        settings = {
-          default_session = {
-            command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --kb-power 1";
-          };
-        };
-      };
       gnome.sushi.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gcr-ssh-agent.enable = true;
