@@ -91,28 +91,7 @@ in
       ydotool.enable = true;
     };
 
-    security = {
-      pam.services = {
-        hyprlock = { };
-      };
-      polkit.enable = true;
-    };
-
-    systemd = {
-      services.swayosd-libinput-backend = {
-        description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc.";
-        documentation = [ "https://github.com/ErikReider/SwayOSD" ];
-        wantedBy = [ "graphical.target" ];
-        partOf = [ "graphical.target" ];
-        after = [ "graphical.target" ];
-        serviceConfig = {
-          Type = "dbus";
-          BusName = "org.erikreider.swayosd";
-          ExecStart = "${pkgs.swayosd}/bin/swayosd-libinput-backend";
-          Restart = "on-failure";
-        };
-      };
-    };
+    security.polkit.enable = true;
 
     services = {
       accounts-daemon.enable = true;
@@ -125,7 +104,6 @@ in
           };
         };
       };
-      dbus.packages = with pkgs; [ swayosd ];
       gnome.sushi.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gcr-ssh-agent.enable = true;
@@ -138,7 +116,6 @@ in
       };
       pcscd.enable = true;
       playerctld.enable = true;
-      udev.packages = with pkgs; [ swayosd ];
       pipewire = {
         enable = true;
         alsa.enable = true;
@@ -185,12 +162,8 @@ in
       # Power Management
       power-profiles-daemon.enable = mkForce false;
       tlp.enable = mkForce false;
-      upower = {
-        enable = true;
-      };
-      tuned = {
-        enable = true;
-      };
+      upower.enable = true;
+      tuned.enable = true;
     };
 
     virtualisation.waydroid.enable = true;
