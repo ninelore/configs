@@ -159,6 +159,12 @@ in
           };
         };
       };
+      udev.extraRules = ''
+        # EspoTek Labrador
+        ENV{ID_VENDOR_ID}=="03eb", ENV{ID_MODEL_ID}=="ba94", MODE="0666"
+        ENV{ID_VENDOR_ID}=="03eb", ENV{ID_MODEL_ID}=="a000", MODE="0666"
+        ENV{ID_VENDOR_ID}=="03eb", ENV{ID_MODEL_ID}=="2fe4", MODE="0666"
+      '';
       # Power Management
       power-profiles-daemon.enable = mkForce false;
       tlp.enable = mkForce false;
