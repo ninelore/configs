@@ -22,6 +22,11 @@ let
         defaultUser = "9l";
         hostName = "9l-drobit";
         swapfile = 32 * 1024;
+        extraModules = [
+          {
+            services.printing.enable = true;
+          }
+        ];
       })
       (mkSystem {
         inherit inputs;
