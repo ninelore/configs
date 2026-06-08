@@ -28,7 +28,6 @@
         hunspellDicts.en_GB-ise
         imhex
         inkscape
-        jetbrains.clion
         kicad-small
         libreoffice-fresh
         loupe
