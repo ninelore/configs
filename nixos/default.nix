@@ -90,9 +90,9 @@
       };
       i2c.enable = true;
       keyboard.qmk.enable = true;
-    }
-    // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system != "x86_64-linux") {
-      graphics.enable32Bit = lib.mkForce false;
+      # Somehow this got implicitly enabled on
+      # aarch64-linux, couldn't invesitgate yet.
+      graphics.enable32Bit = lib.mkForce pkgs.stdenv.hostPlatform.isx86_64;
     };
 
     security = {
