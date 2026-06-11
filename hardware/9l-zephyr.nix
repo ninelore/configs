@@ -9,6 +9,9 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  # Fixup nixos-hardware module
+  boot.kernelParams = [ "pcie_aspm.policy=default" ];
+
   services = {
     asusd.enable = true;
     supergfxd.enable = false;
@@ -25,22 +28,21 @@
   boot.kernelModules = [ "kvm-amd" ];
 
   boot.initrd.luks.devices."root" = {
-    device = "/dev/disk/by-uuid/9c50dbd6-3a0b-4b6b-86b0-f326320a27dd";
+    device = "/dev/disk/by-uuid/fe0cca76-d54d-4af1-a533-5b56473cfad2";
     allowDiscards = true;
   };
 
   fileSystems."/" = {
     device = "/dev/mapper/root";
-    fsType = "ext4";
+    fsType = "btrfs";
     options = [
-      "noatime"
-      "nodiratime"
-      "discard"
+      "subvol=@"
+      "compress=zstd:3"
     ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D547-AF4A";
+    device = "/dev/disk/by-uuid/F304-B7AB";
     fsType = "vfat";
     options = [
       "fmask=0077"
