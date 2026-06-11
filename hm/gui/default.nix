@@ -32,7 +32,6 @@
         libreoffice-fresh
         loupe
         qalculate-qt
-        qtcreator
         quasselClient_git
         scrcpy
         signal-desktop
