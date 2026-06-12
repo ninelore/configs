@@ -111,13 +111,7 @@
       firewall = rec {
         enable = true;
         allowPing = false;
-        allowedTCPPortRanges = [
-          # KDEConnect
-          {
-            from = 1714;
-            to = 1764;
-          }
-        ];
+        allowedTCPPortRanges = [ ];
         allowedUDPPortRanges = allowedTCPPortRanges;
       };
       hosts = {

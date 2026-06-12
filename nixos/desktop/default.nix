@@ -95,6 +95,7 @@ in
       gnome-disks.enable = true;
       gnupg.agent.enable = true;
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+      kdeconnect.enable = true;
       nix-index-database.comma.enable = true;
       nix-ld.enable = true;
       virt-manager.enable = true;
@@ -118,6 +119,10 @@ in
       };
       pcscd.enable = true;
       playerctld.enable = true;
+      protonmail-bridge = {
+        enable = false;
+        path = [ pkgs.gnome-keyring ];
+      };
       pipewire = {
         enable = true;
         alsa.enable = true;

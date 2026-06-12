@@ -176,9 +176,5 @@
 
   dconf.enable = true;
 
-  services = {
-    easyeffects.enable = true;
-    kdeconnect.enable = true;
-    protonmail-bridge.enable = true;
-  };
+  services.easyeffects.enable = true;
 }
