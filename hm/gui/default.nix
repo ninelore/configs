@@ -176,5 +176,8 @@
 
   dconf.enable = true;
 
-  services.easyeffects.enable = true;
+  services = {
+    easyeffects.enable = true;
+    kdeconnect.enable = true;
+  };
 }
