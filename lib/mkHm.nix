@@ -23,6 +23,7 @@ in
     extraSpecialArgs = { inherit inputs username; };
     modules = [
       ./../hm/cli
+      ./../overlays.nix
       inputs.ninelore.homeModules.default
       inputs.nix-index-database.homeModules.nix-index
       (

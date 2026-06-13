@@ -36,6 +36,7 @@ in
     modules = [
       ./../hardware/${hostName}.nix
       ./../nixos
+      ./../overlays.nix
       inputs.ninelore.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.nix-index-database.nixosModules.nix-index
