@@ -57,7 +57,7 @@ in
           | lines
           | parse "{n}={v}"
           | where n not-in $env or v != ($env | get $it.n)
-          | where n not-in ["_", "LAST_EXIT_CODE", "DIRS_POSITION", "SHLVL", "STARSHIP_SHELL", "STARSHIP_SESSION_KEY"]
+          | where n not-in ["_", "LAST_EXIT_CODE", "DIRS_POSITION", "SHELL", "SHLVL", "STARSHIP_SHELL", "STARSHIP_SESSION_KEY"]
           | transpose --header-row
           | into record
           | load-env
