@@ -24,6 +24,7 @@ in
     };
 
     nix-your-shell.enable = true;
+    nix-your-shell.nix-output-monitor.enable = true;
     carapace.enable = true;
     zoxide.enable = true;
 
@@ -51,6 +52,16 @@ in
         PROMPT_INDICATOR_VI_INSERT = "";
         PROMPT_INDICATOR_VI_NORMAL = "";
       };
+      loginFile.text = ''
+        bash -lic env
+          | lines
+          | parse "{n}={v}"
+          | where n not-in $env or v != ($env | get $it.n)
+          | where n not-in ["_", "LAST_EXIT_CODE", "DIRS_POSITION", "SHLVL", "STARSHIP_SHELL", "STARSHIP_SESSION_KEY"]
+          | transpose --header-row
+          | into record
+          | load-env
+      '';
       settings = {
         show_banner = false;
         edit_mode = "vi";
