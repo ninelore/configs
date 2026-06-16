@@ -91,7 +91,6 @@ in
         bash-language-server
         lua-language-server
         marksman
-        markdown-oxide
         nixd
         nixfmt
         nufmt
