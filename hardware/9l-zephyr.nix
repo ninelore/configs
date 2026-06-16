@@ -7,15 +7,17 @@
   imports = [
     inputs.nixos-hardware.nixosModules.asus-zephyrus-ga402
     (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.cardwire.nixosModules.default
   ];
-
-  # Fixup nixos-hardware module
-  boot.kernelParams = [ "pcie_aspm.policy=default" ];
 
   services = {
     asusd.enable = true;
     supergfxd.enable = false;
+    cardwire.enable = true;
   };
+
+  # Fixup nixos-hardware module
+  boot.kernelParams = [ "pcie_aspm.policy=default" ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.initrd.availableKernelModules = [

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkForce;
+  inherit (lib) mkDefault mkForce;
 
   nm-editor = pkgs.makeDesktopItem {
     name = "nm-connection-editor";
@@ -173,10 +173,10 @@ in
         ENV{ID_VENDOR_ID}=="03eb", ENV{ID_MODEL_ID}=="2fe4", MODE="0666"
       '';
       # Power Management
-      power-profiles-daemon.enable = mkForce false;
-      tlp.enable = mkForce false;
+      tuned.enable = !config.services.asusd.enable;
+      power-profiles-daemon.enable = config.services.asusd.enable;
       upower.enable = true;
-      tuned.enable = true;
+      tlp.enable = false;
     };
 
     virtualisation.waydroid.enable = true;

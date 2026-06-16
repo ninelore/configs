@@ -25,6 +25,10 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    cardwire = {
+      url = "github:opengamingcollective/cardwire";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
