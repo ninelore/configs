@@ -32,7 +32,6 @@
     programs.steam = {
       enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
       protontricks.enable = true;
-      gamescopeSession.enable = true;
       remotePlay.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
