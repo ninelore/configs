@@ -98,12 +98,19 @@
 
     networking = {
       networkmanager.enable = true;
-      firewall = rec {
-        enable = true;
-        allowPing = false;
-        allowedTCPPortRanges = [ ];
-        allowedUDPPortRanges = allowedTCPPortRanges;
-      };
+      firewall =
+        let
+          commonPorts = [ ];
+          commonPortRanges = [ ];
+        in
+        {
+          enable = true;
+          allowPing = false;
+          allowedTCPPorts = commonPorts ++ [ ];
+          allowedUDPPorts = commonPorts ++ [ ];
+          allowedTCPPortRanges = commonPortRanges ++ [ ];
+          allowedUDPPortRanges = commonPortRanges ++ [ ];
+        };
       hosts = {
         "127.0.0.1" = [
           "localhost"
