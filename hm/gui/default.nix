@@ -132,19 +132,6 @@
         "kitty_mod+end" = "scroll_end";
       };
     };
-    neovide = {
-      enable = true;
-      settings = {
-        fork = true;
-        font = {
-          normal = "Iosevka Nerd Font";
-          size = 11.5;
-        };
-        font.features = {
-          "Iosevka Nerd Font" = lib.splitString " " "cv10=3 cv36=1 VSAB=3 VLAA=2";
-        };
-      };
-    };
     mpv = {
       enable = true;
       scripts = with pkgs.mpvScripts; [
