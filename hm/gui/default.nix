@@ -42,7 +42,6 @@
           p: with p; [
             ghidraninja-ghidra-scripts
             ret-sync
-            wasm
           ]
         ))
       ]

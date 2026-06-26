@@ -1,6 +1,11 @@
 {
   nixpkgs.overlays = [
-    # (final: prev: { })
+    # Permanent stuff
+    (final: prev: {
+      tree-sitter = prev.tree-sitter.override { wasmSupport = true; };
+      neovim-unwrapped = prev.neovim-unwrapped.override { wasmSupport = true; };
+    })
+    # Fixes
     (final: prev: {
       # FIXME 2026-04-26: openldap test failure, still present 2026-05-02
       openldap = prev.openldap.overrideAttrs (_: {
@@ -14,5 +19,6 @@
         ];
       });
     })
+    # (final: prev: { })
   ];
 }
