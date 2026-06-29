@@ -141,7 +141,7 @@ in
       {
         matches = [
           { app-id = "^org\.gnome\.World\.Secrets$"; }
-          { app-id = "thunderbird"; }
+          { app-id = "^org\.gnome\.Evolution$"; }
           { app-id = "signal"; }
         ];
         block-out-from = "screen-capture";

@@ -35,7 +35,6 @@
         quasselClient_git
         scrcpy
         signal-desktop
-        thunderbird
         warp
         wl-clipboard
         (pkgs.ghidra.withExtensions (

@@ -85,6 +85,7 @@ in
         binfmt = true;
       };
       dconf.enable = true;
+      evolution.enable = true;
       firefox = {
         enable = true;
         package = pkgs.librewolf;
@@ -107,9 +108,10 @@ in
 
     services = {
       accounts-daemon.enable = true;
-      gnome.sushi.enable = true;
+      gnome.evolution-data-server.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gcr-ssh-agent.enable = true;
+      gnome.sushi.enable = true;
       gvfs.enable = true;
       logind.settings.Login = {
         HandlePowerKey = "suspend";
@@ -120,7 +122,7 @@ in
       pcscd.enable = true;
       playerctld.enable = true;
       protonmail-bridge = {
-        enable = false;
+        enable = true;
         path = [ pkgs.gnome-keyring ];
       };
       pipewire = {
