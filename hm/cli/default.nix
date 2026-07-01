@@ -9,6 +9,8 @@
     ./9l.nix
     ./apps.nix
     ./sh.nix
+    # TODO: Import elsewhere?
+    ../emacs.nix
   ];
 
   nix.channels.nixpkgs = inputs.nixpkgs;

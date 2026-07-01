@@ -85,7 +85,7 @@ in
         git
         gnutar
         ripgrep
-        tree-sitter
+        (tree-sitter.override { wasmSupport = true; })
         wl-clipboard
         # Always have these available
         bash-language-server
