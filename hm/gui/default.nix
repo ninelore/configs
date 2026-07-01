@@ -36,6 +36,7 @@
         scrcpy
         signal-desktop
         warp
+        wireshark
         wl-clipboard
         (pkgs.ghidra.withExtensions (
           p: with p; [

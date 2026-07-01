@@ -100,7 +100,11 @@ in
       nix-index-database.comma.enable = true;
       nix-ld.enable = true;
       virt-manager.enable = true;
-      wireshark.enable = true;
+      wireshark = {
+        enable = true;
+        dumpcap.enable = true;
+        usbmon.enable = true;
+      };
       ydotool.enable = true;
     };
 
