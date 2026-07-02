@@ -78,16 +78,19 @@
         # Keymap
         clear_all_shortcuts = "yes";
         kitty_mod = "ctrl+shift";
-        tab_activity_symbol = "\"󰦖 \"";
         background_opacity = 0.8;
         background_blur = 10;
+        tab_bar_edge = "top";
+        tab_bar_style = "powerline";
+        tab_powerline_style = "slanted";
+        tab_bar_align = "left";
+        tab_bar_min_tabs = 2;
+        tab_activity_symbol = " ● ";
+        tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title[:30]}{title[30:] and '…'} [{index}]";
+        active_tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title[:30]}{title[30:] and '…'} [{index}]";
       };
       extraConfig = ''
-        include dank-tabs.conf
-        include dank-theme.conf
-        # override from dms
-        tab_bar_margin_width 0
-        tab_bar_margin_height 0 0
+        include themes/noctalia.conf
       '';
       keybindings = {
         "kitty_mod+c" = "copy_to_clipboard";

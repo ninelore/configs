@@ -7,21 +7,26 @@
   ...
 }:
 let
-  dms-ipc = with config.lib.niri.actions; spawn "dms" "ipc";
+  noc-msg = with config.lib.niri.actions; spawn "noctalia" "msg";
 in
 {
   imports = [
-    inputs.dms.homeModules.dank-material-shell
-    inputs.dms.homeModules.niri
-    inputs.dms-plugin-registry.nixosModules.default
+    inputs.noctalia.homeModules.default
   ];
 
   home = {
     packages = with pkgs; [
-      # Theming
-      bibata-cursors
-      tela-icon-theme
+      nwg-displays
     ];
+    pointerCursor = {
+      enable = true;
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+      size = 24;
+      dotIcons.enable = true;
+      gtk.enable = true;
+      x11.enable = true;
+    };
   };
 
   gtk = {
@@ -31,6 +36,10 @@ in
     gtk3.theme = {
       name = "adw-gtk3";
       package = pkgs.adw-gtk3;
+    };
+    iconTheme = {
+      name = "tela-dracula";
+      package = pkgs.tela-icon-theme;
     };
   };
 
@@ -53,29 +62,130 @@ in
     };
   };
 
-  programs.dank-material-shell = {
+  programs.noctalia = {
     enable = true;
-    systemd.enable = true;
-    niri.includes.filesToInclude = [
-      "alttab"
-      "binds"
-      "colors"
-      "cursor"
-      "layout"
-      "outputs"
-      "windowrules"
-      "wpblur"
-    ];
-    plugins = {
-      dankKDEConnect.enable = true;
-      cardwireManager.enable = nixosConfig != null && nixosConfig.services.cardwire.enable;
+    # systemd.enable = true;
+    settings = {
+      backdrop.enabled = true;
+      wallpaper.enabled = true;
+      desktop_widgets.enabled = false;
+      brightness.enable_ddcutil = true;
+      theme = {
+        source = "wallpaper";
+        templates = {
+          builtin_ids = [
+            "gtk3"
+            "gtk4"
+            "kitty"
+            "niri"
+            "qt"
+          ];
+          community_ids = [ "yazi" ];
+        };
+      };
+      control_center = {
+        width = 850;
+        calendar.show_week_numbers = true;
+      };
+      shell = {
+        font_family = "Inter Nerd Font";
+        launch_apps_as_systemd_services = true;
+        niri_overview_type_to_launch_enabled = true;
+        panel_anchor_bar = "default";
+        polkit_agent = true;
+        launcher = {
+          compact = true;
+          providers.windows.global = true;
+        };
+        panel = {
+          session_placement = "floating";
+          session_position = "center";
+        };
+        screenshot = {
+          confirm_region = true;
+          directory = "~/Pictures/Screenshots";
+        };
+      };
+      idle = {
+        pre_action_fade_seconds = 5;
+        behavior_order = [
+          "lock"
+          "screen-off"
+          "lock-and-suspend"
+        ];
+        behavior = {
+          lock = {
+            action = "lock";
+            enabled = true;
+            timeout = 300.0;
+          };
+          screen-off = {
+            action = "screen_off";
+            enabled = true;
+            timeout = 320.0;
+          };
+          lock-and-suspend = {
+            action = "lock_and_suspend";
+            enabled = true;
+            timeout = 1800.0;
+          };
+        };
+      };
+      bar.default = {
+        start = [
+          "launcher"
+          "workspaces"
+          "active_window"
+          "media"
+        ];
+        center = [ "clock" ];
+        end = [
+          "tray"
+          "privacy"
+          "clipboard"
+          "caffeine"
+          "temp"
+          "battery"
+          "network"
+          "bluetooth"
+          "volume"
+          "brightness"
+        ];
+        background_opacity = 0.8;
+        margin_ends = 0;
+        radius = 0;
+        scale = 0.9;
+        shadow = false;
+        thickness = 21;
+        widget_spacing = 10;
+      };
+      widget = {
+        clock = {
+          font_weight = 700;
+          format = "{:%a %m/%d  %H:%M}";
+          scale = 1.15;
+          actions = {
+            left = "panel-toggle control-center";
+            right = "panel-toggle wallpaper";
+          };
+        };
+        workspaces = {
+          display = "none";
+        };
+        privacy.hide_inactive = true;
+      };
     };
   };
 
   programs.niri.settings = {
+    includes = with config.lib.niri.include; [
+      (optional "noctalia.kdl")
+      (optional "monitor.kdl")
+    ];
     prefer-no-csd = true;
     overview.zoom = 0.6;
     animations.slowdown = 0.5;
+    debug.honor-xdg-activation-with-invalid-serial = true;
     hotkey-overlay = {
       hide-not-bound = true;
       skip-at-startup = true;
@@ -129,6 +239,10 @@ in
     };
     window-rules = [
       {
+        # Matches all
+        clip-to-geometry = true;
+      }
+      {
         matches = [
           { app-id = "^notificationtoasts_\d+_desktop$"; }
         ];
@@ -155,69 +269,77 @@ in
         open-floating = true;
       }
     ];
+    layer-rules = [
+      {
+        matches = [ { namespace = "^noctalia-backdrop"; } ];
+        place-within-backdrop = true;
+      }
+    ];
     binds = {
       # DMS
       "Mod+D" = {
-        action = dms-ipc "spotlight" "toggle";
+        action = noc-msg "panel-toggle" "launcher";
         hotkey-overlay.title = "Toggle Application Launcher";
       };
       "Mod+X" = {
-        action = dms-ipc "powermenu" "toggle";
+        action = noc-msg "panel-toggle" "session";
         hotkey-overlay.title = "Toggle Power Menu";
       };
       "Mod+V" = {
-        action = dms-ipc "clipboard" "toggle";
+        action = noc-msg "panel-toggle" "clipboard";
         hotkey-overlay.title = "Toggle Clipboard Manager";
       };
       "XF86AudioRaiseVolume" = {
         allow-when-locked = true;
-        action = dms-ipc "audio" "increment" "3";
+        action = noc-msg "volume-up";
       };
       "XF86AudioLowerVolume" = {
         allow-when-locked = true;
-        action = dms-ipc "audio" "decrement" "3";
+        action = noc-msg "volume-down";
       };
       "XF86AudioMute" = {
         allow-when-locked = true;
-        action = dms-ipc "audio" "mute";
+        action = noc-msg "volume-mute";
       };
       "XF86AudioMicMute" = {
         allow-when-locked = true;
-        action = dms-ipc "audio" "micmute";
+        action = noc-msg "mic-mute";
       };
       "XF86MonBrightnessUp" = {
         allow-when-locked = true;
-        action = dms-ipc "brightness" "increment" "5" "";
+        action = noc-msg "brightness-up";
       };
       "XF86MonBrightnessDown" = {
         allow-when-locked = true;
-        action = dms-ipc "brightness" "decrement" "5" "";
+        action = noc-msg "brightness-down";
       };
       "XF86AudioPlay" = {
         allow-when-locked = true;
-        action = dms-ipc "mpris" "playPause";
+        action = noc-msg "media" "toggle";
       };
       "XF86AudioNext" = {
         allow-when-locked = true;
-        action = dms-ipc "mpris" "next";
+        action = noc-msg "media" "next";
       };
       "XF86AudioPrev" = {
         allow-when-locked = true;
-        action = dms-ipc "mpris" "previous";
+        action = noc-msg "media" "previous";
       };
-      # TODO: Broken, IPC cant handle wildcards
-      # "XF86KbdBrightnessUp" = {
-      #   allow-when-locked = true;
-      #   action = dms-ipc "brightness" "decrement" "5" "*kbd_backlight";
-      # };
-      # "XF86KbdBrightnessDown" = {
-      #   allow-when-locked = true;
-      #   action = dms-ipc "brightness" "decrement" "5" "*kbd_backlight";
-      # };
+      "XF86KbdBrightnessUp" = {
+        allow-when-locked = true;
+        action = noc-msg "keyboard-backlight-up";
+      };
+      "XF86KbdBrightnessDown" = {
+        allow-when-locked = true;
+        action = noc-msg "keyboard-backlight-down";
+      };
       # Externals
       "Mod+Return".action.spawn = [
         "kitty"
         "-1"
+      ];
+      "Mod+N".action.spawn = [
+        "nwg-displays"
       ];
       "Mod+Escape" = {
         hotkey-overlay.title = "Lock the Screen";

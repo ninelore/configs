@@ -28,7 +28,6 @@ in
   config = lib.mkIf config.ninelore.desktop {
     ninelore.common = true;
 
-    # Niri, DMS, greetd
     services.displayManager.ly = {
       enable = true;
       x11Support = false;
@@ -38,8 +37,12 @@ in
     };
     programs.niri.enable = true;
     programs.niri.package = pkgs.niri;
-    programs.dank-material-shell.enable = true;
-    systemd.user.services.niri-flake-polkit.enable = false;
+    programs.noctalia = {
+      enable = true;
+      recommendedServices.enable = true;
+      systemd.enable = true;
+    };
+    # systemd.user.services.niri-flake-polkit.enable = false;
 
     environment = {
       systemPackages = with pkgs; [

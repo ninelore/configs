@@ -41,8 +41,7 @@ in
       inputs.home-manager.nixosModules.home-manager
       inputs.nix-index-database.nixosModules.nix-index
       inputs.niri.nixosModules.niri
-      inputs.dms.nixosModules.greeter
-      inputs.dms.nixosModules.dank-material-shell
+      inputs.noctalia.nixosModules.default
       inputs.cardwire.nixosModules.default
       {
         # CachyOS Kernels

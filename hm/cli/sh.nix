@@ -11,6 +11,10 @@ let
   };
 in
 {
+
+  # Overwrite Noctalia
+  home.file.${config.programs.starship.configPath}.force = true;
+
   programs = {
     tmux = {
       enable = true;
