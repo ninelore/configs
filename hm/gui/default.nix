@@ -47,7 +47,6 @@
       ]
       ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
         discord-canary
-        spotify
         wine64
       ];
     sessionVariables = {
