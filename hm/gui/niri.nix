@@ -224,9 +224,7 @@ in
       };
       "Mod+P" = {
         repeat = false;
-        action.spawn-sh = "${
-          lib.getExe (pkgs.wl-mirror.override { installExampleScripts = false; })
-        } $(niri msg --json focused-output | jq -r .name)";
+        action.spawn-sh = "${lib.getExe pkgs.wl-mirror} $(niri msg --json focused-output | jq -r .name)";
       };
       # Compositor control
       "Mod+W" = {
