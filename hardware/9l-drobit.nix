@@ -1,6 +1,7 @@
 {
   inputs,
   modulesPath,
+  pkgs,
   ...
 }:
 
@@ -11,6 +12,8 @@
     inputs.ninelore.nixosModules.cros
     inputs.ninelore.nixosModules.crosSetuid
   ];
+
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v4;
 
   boot.kernelParams = [
     "initcall_blacklist=simpledrm_platform_driver_init"

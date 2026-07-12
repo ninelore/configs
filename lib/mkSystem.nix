@@ -44,6 +44,7 @@ in
       inputs.dms.nixosModules.greeter
       inputs.dms.nixosModules.dank-material-shell
       {
+        nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
         networking = { inherit hostName; };
         nixpkgs.hostPlatform = lib.mkDefault system;
         swapDevices = lib.optionals (swapfile > 1) [
