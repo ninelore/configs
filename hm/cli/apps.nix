@@ -43,6 +43,17 @@ in
       ];
     };
     fzf.enable = true;
+    # Fix annoying nushell deprecation warning
+    # TODO: remove on/after next fzf update
+    fzf.package = pkgs.fzf.overrideAttrs {
+      patches = [
+        (pkgs.fetchpatch {
+          url = "https://github.com/junegunn/fzf/commit/24832e97ef9640e5f859ede8dc163cf3c27145cb.patch";
+          hash = "sha256-Ul4IphXeWB3evUy/X0pj6vNzKEoPGwaY53pdjZTGG+8=";
+        })
+      ];
+    };
+    # </>
     git = {
       enable = true;
       package = pkgs.gitFull;
