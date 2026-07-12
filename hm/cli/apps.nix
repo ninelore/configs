@@ -14,6 +14,7 @@ in
       file
       ffmpeg
       flyctl
+      git-credential-email
       hexpatch
       jq
       pciutils
