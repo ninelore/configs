@@ -19,6 +19,7 @@ in
       jq
       pciutils
       picocom
+      pmbootstrap
       (python3.withPackages (
         ps: with ps; [
           gnureadline
