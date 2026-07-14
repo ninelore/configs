@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   modulesPath,
   pkgs,
   ...
@@ -15,8 +16,14 @@
 
   services = {
     asusd.enable = true;
-    supergfxd.enable = false;
-    cardwire.enable = true;
+    supergfxd.enable = lib.mkForce false;
+    cardwire = {
+      enable = true;
+      settings = {
+        battery_auto_switch = true;
+        battery_auto_switch_mode = "smart";
+      };
+    };
   };
 
   # Fixup nixos-hardware module
