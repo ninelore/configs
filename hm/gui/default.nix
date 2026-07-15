@@ -17,7 +17,7 @@
         # GUI Apps
         ausweisapp
         blender
-        freecad
+        # freecad # TODO: broken 2026-07-15
         gaphor
         gimp3
         gnome-clocks
