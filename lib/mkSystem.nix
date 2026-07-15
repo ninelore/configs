@@ -75,6 +75,8 @@ in
               "wireshark"
               "ydotool"
               "dialout"
+              "kvm"
+              "qemu"
             ];
           };
           home-manager = {
