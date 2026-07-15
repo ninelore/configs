@@ -16,8 +16,8 @@
       [
         # GUI Apps
         ausweisapp
-        darktable
-        fritzing
+        blender
+        freecad
         gaphor
         gimp3
         gnome-clocks
@@ -33,6 +33,7 @@
         loupe
         qalculate-qt
         quasselClient_git
+        rawtherapee
         scrcpy
         signal-desktop
         warp
