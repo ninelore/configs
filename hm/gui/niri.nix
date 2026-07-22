@@ -68,6 +68,7 @@ in
     ];
     plugins = {
       dankKDEConnect.enable = true;
+      cardwireManager.enable = nixosConfig != null && nixosConfig.services.cardwire.enable;
     };
   };
 

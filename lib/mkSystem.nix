@@ -43,6 +43,7 @@ in
       inputs.niri.nixosModules.niri
       inputs.dms.nixosModules.greeter
       inputs.dms.nixosModules.dank-material-shell
+      inputs.cardwire.nixosModules.default
       {
         # CachyOS Kernels
         nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
