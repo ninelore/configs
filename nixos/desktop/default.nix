@@ -51,6 +51,7 @@ in
         mpv
         nautilus
         nm-editor
+        papers
         pwvucontrol
         wl-clipboard
         xclip
