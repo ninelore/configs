@@ -48,7 +48,7 @@ in
           programs.bash.profileExtra = ''
             # openrc user runlevel
             mkdir -p ~/.config/rc/runlevels/gui
-            exec openrc -U gui || true
+            openrc -U gui || true
           '';
         }
       )
