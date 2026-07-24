@@ -44,6 +44,12 @@ in
             };
           };
           programs.nix-index-database.comma.enable = true;
+          programs.nh.enable = true;
+          programs.bash.profileExtra = ''
+            # openrc user runlevel
+            mkdir -p ~/.config/rc/runlevels/gui
+            exec openrc -U gui || true
+          '';
         }
       )
     ]
