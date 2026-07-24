@@ -25,6 +25,7 @@ in
           gnureadline
         ]
       ))
+      tinyxxd
       vboot_reference
       unzip
       usbutils
