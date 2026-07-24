@@ -215,7 +215,10 @@ in
       #   action = dms-ipc "brightness" "decrement" "5" "*kbd_backlight";
       # };
       # Externals
-      "Mod+Return".action.spawn = "kitty";
+      "Mod+Return".action.spawn = [
+        "kitty"
+        "-1"
+      ];
       "Mod+Escape" = {
         hotkey-overlay.title = "Lock the Screen";
         action.spawn = [
