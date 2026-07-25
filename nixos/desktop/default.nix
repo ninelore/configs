@@ -42,7 +42,7 @@ in
       recommendedServices.enable = true;
       systemd.enable = true;
     };
-    # systemd.user.services.niri-flake-polkit.enable = false;
+    systemd.user.services.niri-flake-polkit.enable = false;
 
     environment = {
       systemPackages = with pkgs; [
