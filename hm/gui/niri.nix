@@ -31,13 +31,12 @@ in
 
   gtk = {
     enable = true;
-    # TODO: drop gtk4 line when stateVersion is raised to 26.05
     gtk3.theme = {
       name = "adw-gtk3";
       package = pkgs.adw-gtk3;
     };
     iconTheme = {
-      name = "Tela-dracula";
+      name = "Tela-black";
       package = pkgs.tela-icon-theme;
     };
   };
@@ -150,6 +149,7 @@ in
           "volume"
           "brightness"
         ];
+        font_family = "Iosevka NFP";
         background_opacity = 0.8;
         margin_ends = 0;
         radius = 0;
@@ -264,6 +264,7 @@ in
         matches = [
           { app-id = "com.saivert.pwvucontrol"; }
           { app-id = "tuned-gui"; }
+          { app-id = "nwg-displays"; }
         ];
         open-floating = true;
       }
