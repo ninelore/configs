@@ -8,6 +8,7 @@
 }:
 let
   noc-msg = with config.lib.niri.actions; spawn "noctalia" "msg";
+  corner-radius = 3.0;
 in
 {
   imports = [
@@ -86,6 +87,7 @@ in
         calendar.show_week_numbers = true;
       };
       shell = {
+        corner_radius_scale = corner-radius / 10;
         font_family = "Inter Nerd Font";
         launch_apps_as_systemd_services = true;
         niri_overview_type_to_launch_enabled = true;
@@ -240,6 +242,12 @@ in
       {
         # Matches all
         clip-to-geometry = true;
+        geometry-corner-radius = {
+          bottom-left = corner-radius;
+          bottom-right = corner-radius;
+          top-left = corner-radius;
+          top-right = corner-radius;
+        };
       }
       {
         matches = [
