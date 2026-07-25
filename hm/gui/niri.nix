@@ -173,6 +173,7 @@ in
           display = "none";
         };
         privacy.hide_inactive = true;
+        media.hide_when_no_media = true;
       };
     };
   };
