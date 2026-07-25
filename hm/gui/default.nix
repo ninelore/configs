@@ -168,5 +168,7 @@
   services = {
     easyeffects.enable = true;
     kdeconnect.enable = true;
+    # TODO noctalia future feature or plugin?
+    kdeconnect.indicator = true;
   };
 }

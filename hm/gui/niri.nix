@@ -32,13 +32,12 @@ in
   gtk = {
     enable = true;
     # TODO: drop gtk4 line when stateVersion is raised to 26.05
-    gtk4.theme = null;
     gtk3.theme = {
       name = "adw-gtk3";
       package = pkgs.adw-gtk3;
     };
     iconTheme = {
-      name = "tela-dracula";
+      name = "Tela-dracula";
       package = pkgs.tela-icon-theme;
     };
   };
