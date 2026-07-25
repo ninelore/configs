@@ -165,7 +165,6 @@ in
           scale = 1.15;
           actions = {
             left = "panel-toggle control-center";
-            right = "panel-toggle wallpaper";
           };
         };
         workspaces = {
