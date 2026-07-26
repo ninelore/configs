@@ -6,16 +6,13 @@
     ninelore.url = "github:ninelore/flake";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
       url = "github:epireyn/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
