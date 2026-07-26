@@ -82,6 +82,10 @@ in
           community_ids = [ "yazi" ];
         };
       };
+      notification = {
+        position = "top_center";
+        background_opacity = 0.8;
+      };
       control_center = {
         width = 850;
         calendar.show_week_numbers = true;
@@ -273,6 +277,7 @@ in
           { app-id = "com.saivert.pwvucontrol"; }
           { app-id = "tuned-gui"; }
           { app-id = "nwg-displays"; }
+          { app-id = "dev.noctalia.Noctalia"; }
         ];
         open-floating = true;
       }
