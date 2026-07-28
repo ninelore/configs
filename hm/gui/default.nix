@@ -36,6 +36,7 @@
         rawtherapee
         scrcpy
         signal-desktop
+        video-trimmer
         warp
         wireshark
         wl-clipboard

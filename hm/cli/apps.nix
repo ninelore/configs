@@ -117,5 +117,9 @@ in
       enable = true;
       shellWrapperName = "y";
     };
+    yt-dlp = {
+      enable = true;
+      extraConfig = "-t mp4";
+    };
   };
 }
