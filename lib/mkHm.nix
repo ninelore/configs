@@ -23,6 +23,7 @@ in
     extraSpecialArgs = { inherit inputs username; };
     modules = [
       ./../hm/cli
+      ./../hm/gui/apps-with-config.nix
       ./../overlays.nix
       inputs.ninelore.homeModules.default
       inputs.nix-index-database.homeModules.nix-index
@@ -35,6 +36,7 @@ in
             packages = [ pkgs.scripts-9l ];
           };
           targets.genericLinux.enable = true;
+          targets.genericLinux.gpu.enable = true;
           programs.home-manager.enable = true;
           nix = {
             package = pkgs.nixVersions.latest;

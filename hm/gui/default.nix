@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./apps-with-config.nix
     ./niri.nix
     ./web.nix
   ];
@@ -192,23 +193,6 @@
         "kitty_mod+," = "scroll_to_prompt -1";
         "kitty_mod+home" = "scroll_home";
         "kitty_mod+end" = "scroll_end";
-      };
-    };
-    mpv = {
-      enable = true;
-      scripts = with pkgs.mpvScripts; [
-        mpris
-        (quality-menu.override { oscSupport = true; })
-        sponsorblock-minimal
-        thumbfast
-        videoclip
-      ];
-      scriptOpts = {
-        thumbfast = {
-          spawn_first = true;
-          network = true;
-          hwdec = true;
-        };
       };
     };
     obs-studio = {
