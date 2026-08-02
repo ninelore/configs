@@ -174,7 +174,7 @@ in
           };
         };
         workspaces = {
-          display = "none";
+          show_labels = false;
         };
         privacy.hide_inactive = true;
         media.hide_when_no_media = true;
