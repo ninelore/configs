@@ -1,12 +1,12 @@
 { pkgs, ... }:
-let
-  package = ((pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [ epkgs.ghostel ]));
-in
 {
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+    extraPackages = epkgs: [ epkgs.ghostel ];
+  };
   services.emacs = {
     enable = true;
     # defaultEditor = true;
-    inherit package;
   };
-  home.packages = [ package ];
 }
