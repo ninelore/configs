@@ -8,6 +8,8 @@ let
     "q" = "exit";
     "untar" = "tar -xavf";
     "v" = "nvim";
+    "ee" = "emacsclient -a= -cn";
+    "e" = "emacsclient -a= -nw";
   };
 in
 {
