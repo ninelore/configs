@@ -11,3 +11,8 @@ updates:
     schedule:
       interval: "cron"
       cronjob: "30 2 * * *"
+    groups:
+      batch:
+        patterns:
+          - "*"
+
