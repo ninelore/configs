@@ -175,8 +175,8 @@
       libvirtd = {
         enable = true;
         onBoot = "ignore";
-        qemu.swtpm.enable = true;
       };
+      spiceUSBRedirection.enable = true;
     };
   };
 }

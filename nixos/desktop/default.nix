@@ -56,6 +56,7 @@ in
         nm-editor
         papers
         pwvucontrol
+        quickemu
         wl-clipboard
         xclip
         xwayland-satellite
