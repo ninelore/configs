@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkDefault mkForce;
+  inherit (lib) mkForce;
 
   nm-editor = pkgs.makeDesktopItem {
     name = "nm-connection-editor";
@@ -46,10 +46,8 @@ in
 
     environment = {
       systemPackages = with pkgs; [
-        (pkgs.bottles.override { removeWarningPopup = true; })
         crosspipe
         file-roller
-        luminance
         loupe
         mpv
         nautilus
@@ -67,13 +65,11 @@ in
       enableDefaultPackages = true;
       packages = with pkgs; [
         nerd-fonts.iosevka
-        inter-nerdfont
         inter
         iosevka
         fira
         monaspace
         noto-fonts
-        noto-fonts-cjk-sans
         open-sans
         material-symbols
       ];
@@ -117,6 +113,10 @@ in
 
     services = {
       accounts-daemon.enable = true;
+      ddccontrol = {
+        enable = true;
+        package = pkgs.ddcutil-service;
+      };
       gnome.evolution-data-server.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gcr-ssh-agent.enable = true;

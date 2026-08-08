@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -79,7 +78,6 @@
         enable = true;
         powerOnBoot = true;
       };
-      i2c.enable = true;
       keyboard.qmk.enable = true;
       # Somehow this got implicitly enabled on
       # aarch64-linux, couldn't invesitgate yet.
@@ -87,6 +85,8 @@
     };
 
     security = {
+      # TODO: sudo-rs? run0-sudo-shim?
+      # TODO: drop doas once above is done
       doas = {
         enable = true;
         extraConfig = ''
