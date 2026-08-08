@@ -31,17 +31,6 @@ let
       (mkSystem {
         inherit inputs;
         defaultUser = "9l";
-        hostName = "9l-omen";
-        swapfile = 64 * 1024;
-        extraModules = [
-          {
-            ninelore.gaming = true;
-          }
-        ];
-      })
-      (mkSystem {
-        inherit inputs;
-        defaultUser = "9l";
         hostName = "9l-tomato";
         system = "aarch64-linux";
       })
