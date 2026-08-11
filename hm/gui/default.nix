@@ -69,7 +69,7 @@
       font = {
         name = "Iosevka Nerd Font";
         package = pkgs.nerd-fonts.iosevka;
-        size = 11.5;
+        size = 11;
       };
       settings = {
         font_features = "IosevkaNF cv10=3 cv36=1 VSAB=3 VLAA=2";
