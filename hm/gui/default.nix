@@ -73,6 +73,7 @@
       };
       settings = {
         font_features = "IosevkaNF cv10=3 cv36=1 VSAB=3 VLAA=2";
+        modify_font = "cell_height 110%";
         shell = lib.getExe config.programs.nushell.package;
         wayland_titlebar_color = "background";
         remember_window_size = true;
