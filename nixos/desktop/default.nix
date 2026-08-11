@@ -75,8 +75,8 @@ in
       ];
       fontconfig.defaultFonts = mkForce {
         monospace = [ "Iosevka Nerd Font" ];
-        sansSerif = [ "Inter Nerd Font" ];
-        serif = [ "Noto Serif" ];
+        sansSerif = [ "Inter" ];
+        serif = [ "Inter" ];
       };
     };
 
