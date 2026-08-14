@@ -62,8 +62,6 @@
         ++ lib.optionals (pkgs.stdenv.hostPlatform.system == "aarch64-linux") [ "x86_64-linux" ];
     };
 
-    services.fwupd.enable = true;
-
     systemd = {
       services."getty@tty11" = {
         enable = true;
@@ -151,6 +149,11 @@
         scripts-9l
         usbutils
       ];
+    };
+
+    services = {
+      fwupd.enable = true;
+      tailscale.enable = true;
     };
 
     programs = {
