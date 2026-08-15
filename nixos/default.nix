@@ -97,6 +97,7 @@
 
     networking = {
       networkmanager.enable = true;
+      wireguard.enable = true;
       firewall =
         let
           commonPorts = [ ];
@@ -148,6 +149,7 @@
         powertop
         scripts-9l
         usbutils
+        wireguard-tools
       ];
     };
 
