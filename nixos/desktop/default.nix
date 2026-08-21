@@ -114,7 +114,8 @@ in
     services = {
       accounts-daemon.enable = true;
       ddccontrol = {
-        enable = true;
+        # TODO: Broken
+        enable = false;
         package = pkgs.ddcutil-service;
       };
       gnome.evolution-data-server.enable = true;
