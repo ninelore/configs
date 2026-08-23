@@ -27,10 +27,12 @@
         hunspell
         hunspellDicts.de_DE
         hunspellDicts.en_GB-ise
+        hyphenDicts.en_GB
+        hyphenDicts.de_DE
         imhex
         inkscape
         kicad-small
-        libreoffice-fresh
+        libreoffice
         loupe
         qalculate-qt
         quasselClient_git
