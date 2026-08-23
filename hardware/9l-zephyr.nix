@@ -16,7 +16,7 @@
   services = {
     asusd.enable = true;
     supergfxd.enable = lib.mkForce false;
-    cardwire.enable = true;
+    cardwired.enable = true;
   };
 
   # Fixup nixos-hardware module

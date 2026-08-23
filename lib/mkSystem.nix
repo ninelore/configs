@@ -41,7 +41,6 @@ in
       inputs.home-manager.nixosModules.home-manager
       inputs.nix-index-database.nixosModules.nix-index
       inputs.niri.nixosModules.niri
-      inputs.cardwire.nixosModules.default
       inputs.noctalia.nixosModules.default
       {
         # Noctalia binary cache
