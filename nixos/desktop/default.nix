@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -28,21 +29,17 @@ in
   config = lib.mkIf config.ninelore.desktop {
     ninelore.common = true;
 
-    services.displayManager.ly = {
-      enable = true;
-      x11Support = false;
-      settings = {
-        bigclock = "en";
-      };
-    };
-    programs.niri.enable = true;
-    programs.niri.package = pkgs.niri;
+    programs.noctalia-greeter.enable = true;
     programs.noctalia = {
       enable = true;
       recommendedServices.enable = true;
       systemd.enable = true;
     };
-    systemd.user.services.niri-flake-polkit.enable = false;
+    programs.umbriel = {
+      enable = true;
+      portalPackage =
+        inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    };
 
     environment = {
       systemPackages = with pkgs; [

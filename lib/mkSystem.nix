@@ -40,8 +40,9 @@ in
       inputs.ninelore.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.nix-index-database.nixosModules.nix-index
-      inputs.niri.nixosModules.niri
+      inputs.umbriel.nixosModules.default
       inputs.noctalia.nixosModules.default
+      inputs.noctalia-greeter.nixosModules.default
       {
         # Noctalia binary cache
         nix.settings = {

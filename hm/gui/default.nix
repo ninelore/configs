@@ -7,7 +7,7 @@
 {
   imports = [
     ./apps-with-config.nix
-    ./niri.nix
+    ./deskenv.nix
     ./web.nix
   ];
 

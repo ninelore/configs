@@ -6,13 +6,24 @@
     ninelore.url = "github:ninelore/flake";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    noctalia.url = "github:noctalia-dev/noctalia/cachix";
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    umbriel = {
+      url = "git+https://github.com/noctalia-dev/umbriel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {
-      url = "github:epireyn/niri-flake";
+    xdg-desktop-portal-umbriel = {
+      url = "github:noctalia-dev/xdg-desktop-portal-umbriel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/cachix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
