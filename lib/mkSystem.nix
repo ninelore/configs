@@ -40,17 +40,9 @@ in
       inputs.ninelore.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
       inputs.nix-index-database.nixosModules.nix-index
-      inputs.niri.nixosModules.niri
+      inputs.umbriel.nixosModules.default
       inputs.noctalia.nixosModules.default
-      {
-        # Noctalia binary cache
-        nix.settings = {
-          substituters = [ "https://noctalia.cachix.org" ];
-          trusted-public-keys = [
-            "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-          ];
-        };
-      }
+      inputs.noctalia-greeter.nixosModules.default
       {
         # CachyOS Kernels
         nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
