@@ -115,6 +115,9 @@
           "localhost"
           "lolcathost"
         ];
+        "192.168.250.1" = [
+          "auth.sakamoto.pl"
+        ];
       };
     };
 
