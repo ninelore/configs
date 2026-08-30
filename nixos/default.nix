@@ -83,16 +83,14 @@
     };
 
     security = {
-      # TODO: sudo-rs? run0-sudo-shim?
-      # TODO: drop doas once above is done
-      doas = {
+      run0 = {
         enable = true;
-        extraConfig = ''
-          permit persist keepenv :wheel
-        '';
+        sudo-shim.enable = true;
+        persistentAuth.enable = true;
       };
+      polkit.settings.Polkitd.ExpirationSeconds = 600;
+      sudo.enable = false;
       rtkit.enable = true;
-      pam.services.systemd-run0 = { };
     };
 
     networking = {
