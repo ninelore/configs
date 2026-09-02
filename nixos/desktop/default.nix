@@ -47,8 +47,6 @@ in
     environment = {
       systemPackages = with pkgs; [
         crosspipe
-        ddccontrol
-        ddcutil
         file-roller
         loupe
         mpv
@@ -112,10 +110,14 @@ in
     };
 
     security.polkit.enable = true;
-    hardware.i2c.enable = true;
 
     services = {
       accounts-daemon.enable = true;
+      ddccontrol = {
+        # TODO: Broken
+        enable = false;
+        package = pkgs.ddcutil-service;
+      };
       gnome.evolution-data-server.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gcr-ssh-agent.enable = true;
