@@ -97,9 +97,13 @@ in
       gnome-disks.enable = true;
       gnupg.agent.enable = true;
       gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
-      kdeconnect.enable = true;
       nix-index-database.comma.enable = true;
       nix-ld.enable = true;
+      tether = {
+        enable = true;
+        wifi.enable = true;
+        wifi.openFirewall = true;
+      };
       virt-manager.enable = true;
       wireshark = {
         enable = true;

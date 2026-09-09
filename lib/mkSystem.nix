@@ -42,6 +42,7 @@ in
       inputs.nix-index-database.nixosModules.nix-index
       inputs.niri.nixosModules.niri
       inputs.noctalia.nixosModules.default
+      inputs.tether.nixosModules.default
       {
         # Noctalia binary cache
         nix.settings = {
