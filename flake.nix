@@ -15,10 +15,6 @@
       url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tether = {
-      url = "github:zackb/tether";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

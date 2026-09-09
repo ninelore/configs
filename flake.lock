@@ -344,28 +344,7 @@
         "nix-index-database": "nix-index-database_2",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "noctalia": "noctalia",
-        "tether": "tether"
-      }
-    },
-    "tether": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788934501,
-        "narHash": "sha256-g5McWVI7ieZi2EQ6bWxmT2itR3pvfAMs+4DcmLQ/LiE=",
-        "owner": "zackb",
-        "repo": "tether",
-        "rev": "411e05eb055d4fd70d60dd86e4d1680fce0b965b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zackb",
-        "repo": "tether",
-        "type": "github"
+        "noctalia": "noctalia"
       }
     },
     "xwayland-satellite-stable": {
