@@ -84,6 +84,7 @@ in
               "podman"
               "adbusers"
               "plugdev"
+              "i2c"
               "openrazer"
               "wireshark"
               "ydotool"
