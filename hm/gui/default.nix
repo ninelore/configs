@@ -18,7 +18,7 @@
         # GUI Apps
         ausweisapp
         blender
-        freecad
+        # freecad # Broken dep (ifcopenshell)
         gaphor
         gimp3
         gnome-clocks
