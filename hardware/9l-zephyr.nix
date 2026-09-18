@@ -19,6 +19,21 @@
     cardwired.enable = true;
   };
 
+  # Broken amdgpu blobs break everything
+  nixpkgs.overlays = [
+    (final: prev: {
+      linux-firmware = prev.linux-firmware.overrideAttrs (_: {
+        version = "20260810";
+        src = final.fetchFromGitLab {
+          owner = "kernel-firmware";
+          repo = "linux-firmware";
+          tag = "20260810";
+          hash = "sha256-P/fPpqaatp8Z2GV+I/OChiWGn6AhV+8w1RMFuX/LqHc=";
+        };
+      });
+    })
+  ];
+
   # Fixup nixos-hardware module
   boot.kernelParams = [ "pcie_aspm.policy=default" ];
 
